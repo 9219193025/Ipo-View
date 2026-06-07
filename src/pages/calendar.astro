@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllIpos } from '../data/ipos';
+import { fmtDate } from '../data/helpers';
+
+type EventKind = 'open' | 'close' | 'allotment' | 'listing';
+
+interface CalEvent {
+  date: string;
+  kind: EventKind;
+  name: string;
+  slug: string;
+  type: 'mainboard' | 'sme';
+}
+
+const KIND_LABEL: Record<EventKind, string> = {
+  open: 'Opens', close: 'Closes', allotment: 'Allotment', listing: 'Lists',
+};
+
+const all = getAllIpos();
+const events: CalEvent[] = [];
+for (const i of all) {
+  events.push({ date: i.openDate, kind: 'open', name: i.name, slug: i.slug, type: i.type });
+  events.push({ date: i.closeDate, kind: 'close', name: i.name, slug: i.slug, type: i.type });
+  events.push({ date: i.allotmentDate, kind: 'allotment', name: i.name, slug: i.slug, type: i.type });
+  events.push({ date: i.listingDate, kind: 'listing', name: i.name, slug: i.slug, type: i.type });
+}
+events.sort((a, b) => a.date.localeCompare(b.date));
+
+// Anchor month = month of the first open IPO (where the action is).
+const firstOpen = all.find((i) => i.status === 'open') ?? all[0];
+const [aY, aM] = firstOpen.openDate.split('-').map(Number);
+const anchorYear = aY;
+const anchorMonth = aM - 1; // 0-indexed
+
+// Build a 6x7 matrix (Mon-start) for the anchor month, server-rendered.
+function monthMatrix(year: number, month: number) {
+  const first = new Date(Date.UTC(year, month, 1));
+  const offset = (first.getUTCDay() + 6) % 7; // Mon=0
+  const start = new Date(first);
+  start.setUTCDate(1 - offset);
+  const cells: { iso: string; day: number; inMonth: boolean }[] = [];
+  for (let n = 0; n < 42; n++) {
+    const d = new Date(start);
+    d.setUTCDate(start.getUTCDate() + n);
+    cells.push({
+      iso: d.toISOString().slice(0, 10),
+      day: d.getUTCDate(),
+      inMonth: d.getUTCMonth() === month,
+    });
+  }
+  return cells;
+}
+const cells = monthMatrix(anchorYear, anchorMonth);
+const monthName = new Date(Date.UTC(anchorYear, anchorMonth, 1)).toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+const eventsByDate: Record<string, CalEvent[]> = {};
+for (const e of events) (eventsByDate[e.date] ??= []).push(e);
+
+const kindClass: Record<EventKind, string> = {
+  open: 'text-info border-info/50',
+  close: 'text-warn border-warn/50',
+  allotment: 'text-brand-hover border-brand/50',
+  listing: 'text-pos border-pos/50',
+};
+
+const title = 'IPO Calendar 2026 — Open, Allotment & Listing Dates | IPO Views';
+const description = 'Visual IPO calendar: open, close, allotment and listing dates for all mainboard & SME IPOs, colour-coded. Never miss an IPO date again.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-8 sm:py-10">
+    <h1 class="page-title">IPO Calendar</h1>
+    <p class="mt-2 max-w-2xl text-text-muted">
+      Every key date — open, close, allotment and listing — on one colour-coded grid.
+    </p>
+
+    <!-- legend -->
+    <div class="mt-5 flex flex-wrap items-center gap-2 text-xs">
+      <span class="pill border border-info/50 text-info">● Opens</span>
+      <span class="pill border border-warn/50 text-warn">● Closes</span>
+      <span class="pill border border-brand/50 text-brand-hover">● Allotment</span>
+      <span class="pill border border-pos/50 text-pos">● Lists</span>
+      <span class="ml-2 text-text-faint">Solid = Mainboard · Outlined = SME</span>
+    </div>
+
+    <!-- calendar -->
+    <div class="card mt-5 p-3 sm:p-5" data-calendar>
+      <div class="mb-4 flex items-center justify-between">
+        <button id="cal-prev" type="button" class="grid h-9 w-9 place-items-center rounded-md text-text-muted hover:bg-surface-2" aria-label="Previous month">‹</button>
+        <h2 id="cal-title" class="text-h3 font-bold">{monthName}</h2>
+        <button id="cal-next" type="button" class="grid h-9 w-9 place-items-center rounded-md text-text-muted hover:bg-surface-2" aria-label="Next month">›</button>
+      </div>
+
+      <div class="grid grid-cols-7 gap-1 text-center">
+        {weekdays.map((w) => (
+          <div class="label py-1">{w}</div>
+        ))}
+      </div>
+
+      <div id="cal-grid" class="mt-1 grid grid-cols-7 gap-1">
+        {cells.map((c) => {
+          const evs = eventsByDate[c.iso] ?? [];
+          return (
+            <div class={`min-h-[64px] rounded-md border border-border p-1 sm:min-h-[92px] ${c.inMonth ? 'bg-bg' : 'bg-surface/40 opacity-50'}`}>
+              <span class="num text-xs text-text-muted">{c.day}</span>
+              <div class="mt-1 flex flex-col gap-0.5">
+                {evs.slice(0, 3).map((e) => (
+                  <a href={`/ipo/${e.slug}`} title={`${e.name} — ${KIND_LABEL[e.kind]}`}
+                    class={`truncate rounded px-1 py-0.5 text-[10px] font-medium leading-tight ${kindClass[e.kind]} ${e.type === 'mainboard' ? 'border bg-surface-2' : 'border border-dashed'}`}>
+                    {KIND_LABEL[e.kind]}: {e.name}
+                  </a>
+                ))}
+                {evs.length > 3 && <span class="px-1 text-[10px] text-text-faint">+{evs.length - 3} more</span>}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- chronological list (SEO + no-JS fallback) -->
+    <section class="mt-8">
+      <h2 class="text-h2 font-bold">Upcoming dates</h2>
+      <ul class="mt-4 divide-y divide-border overflow-hidden rounded-[var(--radius-card)] border border-border">
+        {events.map((e) => (
+          <li class="flex items-center justify-between gap-3 bg-surface px-4 py-3 text-sm">
+            <div class="min-w-0">
+              <a href={`/ipo/${e.slug}`} class="font-medium hover:text-brand-hover">{e.name}</a>
+              <span class="ml-2 text-xs text-text-faint">{e.type === 'sme' ? 'SME' : 'Mainboard'}</span>
+            </div>
+            <div class="flex shrink-0 items-center gap-3">
+              <span class={`pill border ${kindClass[e.kind]}`}>{KIND_LABEL[e.kind]}</span>
+              <span class="num text-text-muted">{fmtDate(e.date).slice(0, 6)}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+
+  <script is:inline define:vars={{ events, anchorYear, anchorMonth, KIND_LABEL, kindClass }}>
+    (function () {
+      const grid = document.getElementById('cal-grid');
+      const titleEl = document.getElementById('cal-title');
+      if (!grid || !titleEl) return;
+      let y = anchorYear, m = anchorMonth;
+
+      const byDate = {};
+      for (const e of events) (byDate[e.date] = byDate[e.date] || []).push(e);
+
+      function render() {
+        const first = new Date(Date.UTC(y, m, 1));
+        const offset = (first.getUTCDay() + 6) % 7;
+        const start = new Date(first); start.setUTCDate(1 - offset);
+        let html = '';
+        for (let n = 0; n < 42; n++) {
+          const d = new Date(start); d.setUTCDate(start.getUTCDate() + n);
+          const iso = d.toISOString().slice(0, 10);
+          const inMonth = d.getUTCMonth() === m;
+          const evs = byDate[iso] || [];
+          html += '<div class="min-h-[64px] rounded-md border border-border p-1 sm:min-h-[92px] ' +
+            (inMonth ? 'bg-bg' : 'bg-surface/40 opacity-50') + '">' +
+            '<span class="num text-xs text-text-muted">' + d.getUTCDate() + '</span>' +
+            '<div class="mt-1 flex flex-col gap-0.5">';
+          evs.slice(0, 3).forEach((e) => {
+            const cls = kindClass[e.kind] + ' ' + (e.type === 'mainboard' ? 'border bg-surface-2' : 'border border-dashed');
+            html += '<a href="/ipo/' + e.slug + '" title="' + e.name + '" class="truncate rounded px-1 py-0.5 text-[10px] font-medium leading-tight ' + cls + '">' +
+              KIND_LABEL[e.kind] + ': ' + e.name + '</a>';
+          });
+          if (evs.length > 3) html += '<span class="px-1 text-[10px] text-text-faint">+' + (evs.length - 3) + ' more</span>';
+          html += '</div></div>';
+        }
+        grid.innerHTML = html;
+        titleEl.textContent = new Date(Date.UTC(y, m, 1)).toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+      }
+
+      document.getElementById('cal-prev').addEventListener('click', () => { m--; if (m < 0) { m = 11; y--; } render(); });
+      document.getElementById('cal-next').addEventListener('click', () => { m++; if (m > 11) { m = 0; y++; } render(); });
+    })();
+  </script>
+</BaseLayout>

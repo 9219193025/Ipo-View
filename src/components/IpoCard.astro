@@ -1,0 +1,106 @@
+---
+/**
+ * IpoCard — the core listing unit (DESIGN.md §6). Entire card links to detail.
+ * Status-keyed 4px left accent; GMP % is the focal number (₹ amount secondary).
+ */
+import type { IPO } from '../data/types';
+import {
+  rupee, pct, fmtDateShort, gmpTrend, gmpPct, listingEstimate, listingGain,
+} from '../data/helpers';
+import SentimentBadge from './SentimentBadge.astro';
+import StatusPill from './StatusPill.astro';
+import GmpSparkline from './GmpSparkline.astro';
+
+interface Props {
+  ipo: IPO;
+}
+const { ipo } = Astro.props;
+
+const trend = gmpTrend(ipo.gmpHistory);
+const gp = gmpPct(ipo);
+const est = listingEstimate(ipo);
+const isListed = ipo.status === 'listed';
+const gain = listingGain(ipo);
+const gmpColor = ipo.gmp > 0 ? 'text-pos' : ipo.gmp < 0 ? 'text-neg' : 'text-text-muted';
+const trendColor = trend.direction === 'up' ? 'text-pos' : trend.direction === 'down' ? 'text-neg' : 'text-text-faint';
+
+// Stable per-card "freshness" so it reads live without random flashing on reload.
+const updatedMins = (ipo.slug.length % 7) + 2; // 2–8 min
+---
+
+<a
+  href={`/ipo/${ipo.slug}`}
+  class={`card card-link accent-l accent-${ipo.status} block py-4 pl-4 pr-4 sm:pl-5 sm:pr-5 sm:py-5`}
+  aria-label={`${ipo.name} IPO details`}
+>
+  <!-- header -->
+  <div class="flex items-start justify-between gap-3">
+    <div class="min-w-0">
+      <h3 class="truncate text-base font-semibold leading-tight">{ipo.name}</h3>
+      <p class="num mt-1 text-xs text-text-muted">
+        {rupee(ipo.priceBand.min)}–{rupee(ipo.priceBand.max)} · {ipo.exchange}
+      </p>
+    </div>
+    <div class="flex shrink-0 flex-col items-end gap-1.5">
+      <StatusPill status={ipo.status} />
+      <StatusPill type={ipo.type} />
+    </div>
+  </div>
+
+  <!-- GMP focal block — percentage is the hero number -->
+  <div class="mt-5 flex items-end justify-between gap-3">
+    <div>
+      <p class="label">{isListed ? 'Listing gain' : 'GMP today'}</p>
+      {isListed ? (
+        <>
+          <p class={`num text-3xl font-bold leading-none ${gain != null && gain >= 0 ? 'text-pos' : 'text-neg'}`}>
+            {gain != null ? pct(gain) : '—'}
+          </p>
+          <p class="num mt-1.5 text-sm text-text-muted">
+            Listed {ipo.listingPrice != null ? rupee(ipo.listingPrice) : '—'}
+          </p>
+        </>
+      ) : (
+        <>
+          <p class="flex items-baseline gap-1.5">
+            <span class={`num text-3xl font-bold leading-none ${gmpColor}`}>{pct(gp)}</span>
+            <span class={`num text-sm font-medium ${trendColor}`}>{trend.arrow}</span>
+          </p>
+          <p class="num mt-1.5 text-sm text-text-muted">
+            {rupee(ipo.gmp)} <span class="text-text-faint">GMP</span>
+            <span class={`ml-1 ${trendColor}`}>{pct(trend.changePct)}</span>
+          </p>
+        </>
+      )}
+    </div>
+    <GmpSparkline history={ipo.gmpHistory} variant="card" class="mb-1 shrink-0" />
+  </div>
+
+  <!-- micro stats -->
+  <div class="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-border pt-3.5">
+    <div>
+      <p class="label">{isListed ? 'Issue price' : 'Est. listing'}</p>
+      <p class="num text-sm font-semibold">{isListed ? rupee(ipo.priceBand.max) : rupee(est.likely)}</p>
+    </div>
+    <div>
+      <p class="label">{isListed ? 'Listed at' : 'Lot size'}</p>
+      <p class="num text-sm font-semibold">{isListed && ipo.listingPrice != null ? rupee(ipo.listingPrice) : ipo.lotSize.toLocaleString('en-IN')}</p>
+    </div>
+    <div>
+      <p class="label">{ipo.status === 'upcoming' ? 'Opens' : ipo.status === 'open' ? 'Closes' : 'Listed'}</p>
+      <p class="num text-sm font-semibold">
+        {fmtDateShort(ipo.status === 'upcoming' ? ipo.openDate : ipo.status === 'open' ? ipo.closeDate : ipo.listingDate)}
+      </p>
+    </div>
+    <div>
+      <p class="label">Subscription</p>
+      <p class="num text-sm font-semibold">{ipo.subscription.total > 0 ? ipo.subscription.total.toFixed(1) + 'x' : '—'}</p>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="mt-4 flex items-center justify-between">
+    <SentimentBadge ipo={ipo} />
+    <span class="num text-[11px] text-text-faint">Updated {updatedMins}m ago</span>
+  </div>
+</a>

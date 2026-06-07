@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StatusPill from '../../components/StatusPill.astro';
+import SentimentBadge from '../../components/SentimentBadge.astro';
+import GmpSparkline from '../../components/GmpSparkline.astro';
+import SubscriptionBars from '../../components/SubscriptionBars.astro';
+import BrokerButtons from '../../components/BrokerButtons.astro';
+import NotifyButton from '../../components/NotifyButton.astro';
+import IpoCalculator from '../../components/IpoCalculator.astro';
+import { getAllIpos } from '../../data/ipos';
+import {
+  rupee, pct, times, fmtDate, gmpTrend, gmpPct, listingEstimate, listingGain,
+  gmpAccuracy, registrarLink,
+} from '../../data/helpers';
+
+export function getStaticPaths() {
+  return getAllIpos().map((ipo) => ({ params: { slug: ipo.slug }, props: { ipo } }));
+}
+
+const { ipo } = Astro.props;
+
+const trend = gmpTrend(ipo.gmpHistory);
+const gp = gmpPct(ipo);
+const est = listingEstimate(ipo);
+const gain = listingGain(ipo);
+const accuracy = gmpAccuracy(ipo);
+const reg = registrarLink(ipo.registrar);
+const isListed = ipo.status === 'listed';
+const isUpcoming = ipo.status === 'upcoming';
+const canApply = ipo.status === 'open';
+
+const gmpColor = ipo.gmp > 0 ? 'text-pos' : ipo.gmp < 0 ? 'text-neg' : 'text-text-muted';
+const trendColor = trend.direction === 'up' ? 'text-pos' : trend.direction === 'down' ? 'text-neg' : 'text-text-faint';
+
+const details = [
+  { label: 'Price band', value: `${rupee(ipo.priceBand.min)} – ${rupee(ipo.priceBand.max)}` },
+  { label: 'Lot size', value: `${ipo.lotSize.toLocaleString('en-IN')} shares` },
+  { label: 'Min investment', value: rupee(ipo.priceBand.max * ipo.lotSize) },
+  { label: 'Issue size', value: ipo.issueSize ?? '—' },
+  { label: 'Exchange', value: ipo.exchange },
+  { label: 'Type', value: ipo.type === 'sme' ? 'SME' : 'Mainboard' },
+  { label: 'Open date', value: fmtDate(ipo.openDate) },
+  { label: 'Close date', value: fmtDate(ipo.closeDate) },
+  { label: 'Allotment', value: fmtDate(ipo.allotmentDate) },
+  { label: 'Listing', value: fmtDate(ipo.listingDate) },
+];
+
+// SEO per brief
+const title = `${ipo.name} GMP Today ${rupee(ipo.gmp)} | IPO Views`;
+const description = isListed
+  ? `${ipo.name} listed at ${ipo.listingPrice != null ? rupee(ipo.listingPrice) : '—'} (${gain != null ? pct(gain) : '—'} gain). Issue price ${rupee(ipo.priceBand.max)}, subscribed ${times(ipo.subscription.total)}.`
+  : `${ipo.name} GMP today is ${rupee(ipo.gmp)} (${pct(gp)} of price). Price band ${rupee(ipo.priceBand.min)}–${rupee(ipo.priceBand.max)}, subscribed ${times(ipo.subscription.total)}, listing ${fmtDate(ipo.listingDate)}.`;
+
+const productLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: `${ipo.name} IPO`,
+  description: ipo.about ?? description,
+  category: 'IPO',
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'INR',
+    lowPrice: ipo.priceBand.min,
+    highPrice: ipo.priceBand.max,
+    availability: canApply ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
+  },
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: `${ipo.name} GMP`, item: new URL(`/ipo/${ipo.slug}`, Astro.site).href },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={[productLd, breadcrumbLd]}>
+  <div class="container-page py-6 sm:py-8">
+    <!-- breadcrumb -->
+    <nav class="mb-4 text-xs text-text-muted" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-text">Home</a> <span class="text-text-faint">/</span>
+      <span class="text-text">{ipo.name}</span>
+    </nav>
+
+    <!-- header -->
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+      <div class="min-w-0">
+        <div class="flex flex-wrap items-center gap-2">
+          <StatusPill status={ipo.status} />
+          <StatusPill type={ipo.type} />
+          <SentimentBadge ipo={ipo} />
+        </div>
+        <h1 class="mt-3 page-title">{ipo.name}</h1>
+        {ipo.about && <p class="mt-2 max-w-2xl text-sm text-text-muted">{ipo.about}</p>}
+      </div>
+
+      <!-- CTA cluster -->
+      <div class="flex shrink-0 flex-col gap-2 sm:flex-row lg:flex-col">
+        {canApply && (
+          <a href="#apply" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            Apply via UPI
+          </a>
+        )}
+        <NotifyButton slug={ipo.slug} name={ipo.name} label={isUpcoming ? 'Notify me on open' : 'Notify me'} />
+      </div>
+    </div>
+
+    <!-- top grid: GMP + estimator -->
+    <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <!-- GMP focal + chart -->
+      <div class="card p-5 lg:col-span-2">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="label">Grey Market Premium (today)</p>
+            <p class="mt-1 flex items-baseline gap-2">
+              <span class={`num text-4xl font-bold leading-none ${gmpColor}`}>{rupee(ipo.gmp)}</span>
+              <span class={`num text-sm font-semibold ${trendColor}`}>{trend.arrow} {pct(trend.changePct)} (7d)</span>
+            </p>
+            <p class="num mt-1 text-sm text-text-faint">{pct(gp)} of upper price band · updated daily</p>
+          </div>
+          {isListed && gain != null && (
+            <div class="text-right">
+              <p class="label">Actual listing gain</p>
+              <p class={`num text-3xl font-bold ${gain >= 0 ? 'text-pos' : 'text-neg'}`}>{pct(gain)}</p>
+            </div>
+          )}
+        </div>
+
+        <div class="mt-5">
+          <p class="label mb-2">7-day GMP trend</p>
+          <GmpSparkline history={ipo.gmpHistory} variant="full" class="w-full" />
+        </div>
+
+        <!-- history table -->
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full min-w-[420px] text-sm">
+            <thead class="label text-left">
+              <tr>
+                {ipo.gmpHistory.map((p) => (
+                  <th class="px-2 py-1 text-center font-medium">{fmtDate(p.date).slice(0, 6)}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {ipo.gmpHistory.map((p) => (
+                  <td class="num px-2 py-1 text-center">{rupee(p.gmp)}</td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Smart Listing Estimator (feature #2) -->
+      <div class="card p-5">
+        <h2 class="text-h3 font-bold">Smart Listing Estimator</h2>
+        <p class="mt-1 text-xs text-text-muted">Issue price + GMP, with a confidence band.</p>
+
+        <div class="mt-4 rounded-[var(--radius-control)] bg-bg p-4 text-center">
+          <p class="label">Most likely listing</p>
+          <p class="num mt-1 text-3xl font-bold text-pos">{rupee(est.likely)}</p>
+          <p class={`num mt-1 text-sm font-semibold ${est.gainPct >= 0 ? 'text-pos' : 'text-neg'}`}>{pct(est.gainPct)} expected gain</p>
+        </div>
+
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <div class="rounded-[var(--radius-control)] border border-border p-3 text-center">
+            <p class="label">Min</p>
+            <p class="num text-lg font-bold">{rupee(est.min)}</p>
+          </div>
+          <div class="rounded-[var(--radius-control)] border border-border p-3 text-center">
+            <p class="label">Max</p>
+            <p class="num text-lg font-bold">{rupee(est.max)}</p>
+          </div>
+        </div>
+
+        {accuracy && (
+          <div class="mt-4 rounded-[var(--radius-control)] border border-border p-3">
+            <div class="flex items-center justify-between">
+              <p class="label">GMP accuracy</p>
+              <p class={`num text-lg font-bold ${accuracy.score >= 80 ? 'text-pos' : accuracy.score >= 50 ? 'text-warn' : 'text-neg'}`}>{accuracy.score}%</p>
+            </div>
+            <p class="num mt-1 text-xs text-text-faint">Est. {rupee(accuracy.estimated)} vs actual {rupee(accuracy.actual)}</p>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- details + subscription -->
+    <div class="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <!-- key details -->
+      <div class="card p-5 lg:col-span-2">
+        <h2 class="text-h3 font-bold">IPO details</h2>
+        <dl class="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
+          {details.map((d) => (
+            <div>
+              <dt class="label">{d.label}</dt>
+              <dd class="num mt-0.5 text-sm font-semibold">{d.value}</dd>
+            </div>
+          ))}
+          <div class="col-span-2 sm:col-span-3">
+            <dt class="label">Registrar</dt>
+            <dd class="mt-0.5 text-sm font-semibold">
+              <a href={reg.url} target="_blank" rel="noopener" class="text-info hover:underline">{reg.name} ↗</a>
+            </dd>
+          </div>
+          {ipo.leadManagers && (
+            <div class="col-span-2 sm:col-span-3">
+              <dt class="label">Lead managers</dt>
+              <dd class="mt-0.5 text-sm">{ipo.leadManagers.join(', ')}</dd>
+            </div>
+          )}
+        </dl>
+      </div>
+
+      <!-- subscription -->
+      <div class="card p-5">
+        <h2 class="text-h3 font-bold">Subscription</h2>
+        <p class="mt-1 text-xs text-text-muted">{isUpcoming ? 'Opens for bidding soon.' : 'Times subscribed by category.'}</p>
+        <div class="mt-4">
+          <SubscriptionBars subscription={ipo.subscription} />
+        </div>
+      </div>
+    </div>
+
+    <!-- day-wise subscription (feature #4) -->
+    {ipo.subscriptionDays && ipo.subscriptionDays.length > 0 && (
+      <div class="card mt-4 p-5">
+        <h2 class="text-h3 font-bold">Day-wise subscription</h2>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full min-w-[560px] text-sm">
+            <thead class="bg-surface-2 text-left">
+              <tr class="label">
+                <th class="px-4 py-2.5 font-medium">Day</th>
+                <th class="px-4 py-2.5 text-right font-medium">QIB</th>
+                <th class="px-4 py-2.5 text-right font-medium">NII</th>
+                <th class="px-4 py-2.5 text-right font-medium">RII</th>
+                <th class="px-4 py-2.5 text-right font-medium">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ipo.subscriptionDays.map((d) => (
+                <tr class="border-t border-border">
+                  <td class="num px-4 py-2.5">Day {d.day} <span class="text-text-faint">· {fmtDate(d.date).slice(0, 6)}</span></td>
+                  <td class="num px-4 py-2.5 text-right">{times(d.qib)}</td>
+                  <td class="num px-4 py-2.5 text-right">{times(d.nii)}</td>
+                  <td class="num px-4 py-2.5 text-right">{times(d.rii)}</td>
+                  <td class="num px-4 py-2.5 text-right font-bold">{times(d.total)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )}
+
+    <!-- apply section -->
+    <div id="apply" class="card mt-4 p-5">
+      <h2 class="text-h3 font-bold">{canApply ? 'Apply to this IPO' : isUpcoming ? 'Get ready to apply' : 'Check allotment & apply elsewhere'}</h2>
+      <p class="mt-1 text-sm text-text-muted">
+        {canApply
+          ? 'One-tap apply via UPI through your broker. Closes ' + fmtDate(ipo.closeDate) + '.'
+          : isUpcoming
+            ? 'Opens ' + fmtDate(ipo.openDate) + '. Set an alert so you don\'t miss it.'
+            : 'This IPO is no longer open. Check your allotment status below.'}
+      </p>
+      <div class="mt-4">
+        {ipo.status === 'closed' || ipo.status === 'allotment' || isListed ? (
+          <a href="/allotment" class="btn btn-primary inline-flex">Check allotment status →</a>
+        ) : (
+          <BrokerButtons ipoName={ipo.name} />
+        )}
+      </div>
+    </div>
+
+    <!-- calculator prefilled -->
+    <div class="mt-4">
+      <IpoCalculator id="ipo-calculator" defaultPrice={ipo.priceBand.max} defaultLot={ipo.lotSize} />
+    </div>
+  </div>
+</BaseLayout>

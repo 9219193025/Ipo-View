@@ -1,0 +1,52 @@
+---
+/** Feature #4 — QIB / NII / RII subscription breakdown with progress bars. */
+import type { Subscription } from '../data/types';
+import { times } from '../data/helpers';
+
+interface Props {
+  subscription: Subscription;
+  /** value at which a bar is considered "full" (visual cap). */
+  cap?: number;
+  compact?: boolean;
+}
+const { subscription, cap = 50, compact = false } = Astro.props;
+
+const rows = [
+  { key: 'QIB', label: 'Qualified Institutional', value: subscription.qib },
+  { key: 'NII', label: 'Non-Institutional', value: subscription.nii },
+  { key: 'RII', label: 'Retail (RII)', value: subscription.rii },
+] as const;
+
+const widthPct = (v: number) => Math.min(100, (v / cap) * 100);
+const fillColor = (v: number) =>
+  v >= 10 ? 'var(--color-pos)' : v >= 1 ? 'var(--color-info)' : 'var(--color-text-faint)';
+---
+
+<div class="flex flex-col gap-2.5">
+  {rows.map((r) => (
+    <div>
+      <div class="flex items-baseline justify-between gap-2">
+        <span class={compact ? 'text-xs text-text-muted' : 'text-sm text-text-muted'}>
+          <span class="font-semibold text-text">{r.key}</span>
+          {!compact && <span class="ml-1 text-text-faint">{r.label}</span>}
+        </span>
+        <span class="num text-sm font-semibold" style={`color:${fillColor(r.value)}`}>
+          {r.value > 0 ? times(r.value) : '—'}
+        </span>
+      </div>
+      <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-surface-2" role="presentation">
+        <div
+          class="h-full rounded-full transition-[width] duration-500"
+          style={`width:${widthPct(r.value)}%;background:${fillColor(r.value)}`}
+        ></div>
+      </div>
+    </div>
+  ))}
+
+  <div class="mt-1 flex items-baseline justify-between border-t border-border pt-2">
+    <span class="text-sm font-semibold">Total subscription</span>
+    <span class="num text-lg font-bold" style={`color:${fillColor(subscription.total)}`}>
+      {subscription.total > 0 ? times(subscription.total) : '—'}
+    </span>
+  </div>
+</div>

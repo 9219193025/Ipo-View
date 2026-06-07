@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+/* Don't scan the synced Tailwind-docs snapshot or build output for classes —
+   only our own source. Paths are relative to this stylesheet. */
+@source not "../../.agents";
+@source not "../../dist";
+
+/* ===========================================================================
+   IPO Views — design tokens (maps 1:1 to DESIGN.md). Tailwind v4 @theme.
+   Tokens here generate utilities: bg-bg, text-pos, border-border, font-mono, etc.
+   =========================================================================== */
+@theme {
+  /* Surfaces */
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-surface-2: #334155;
+  --color-border: #2a3a50;
+  --color-border-strong: #3e5170;
+
+  /* Text */
+  --color-text: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-text-faint: #64748b;
+
+  /* Financial semantics */
+  --color-pos: #22c55e;
+  --color-pos-soft: #16341f;
+  --color-neg: #ef4444;
+  --color-neg-soft: #3a1a1c;
+  --color-warn: #f59e0b;
+  --color-warn-soft: #3a2a0e;
+  --color-info: #38bdf8;
+
+  /* Brand */
+  --color-brand: #6366f1;
+  --color-brand-hover: #818cf8;
+
+  /* Fonts */
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Radius */
+  --radius-control: 8px;
+  --radius-card: 12px;
+
+  /* Layout */
+  --container-page: 1200px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px -8px rgba(0, 0, 0, 0.5);
+
+  /* Type scale (clamp, mobile-first) */
+  --text-display: clamp(1.75rem, 5vw, 2.75rem);
+  --text-h1: clamp(1.5rem, 4vw, 2rem);
+  --text-h2: clamp(1.25rem, 3vw, 1.5rem);
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* ===========================================================================
+   Theming — dark is the default (above, via @theme). Light mode re-maps the
+   SAME semantic tokens, so every `bg-bg` / `text-text` / `border-pos` utility
+   switches automatically. These rules are UNLAYERED so they beat @theme.
+   Toggled by `data-theme` on <html> (see Header + no-FOUC script in BaseLayout).
+   =========================================================================== */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --color-bg: #f7f9fc;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef2f7;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* Text (dark navy ink on light) */
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-faint: #64748b;
+
+  /* Financial semantics — deepened for contrast on white (still clearly green/red) */
+  --color-pos: #15803d;
+  --color-pos-soft: #dcfce7;
+  --color-neg: #dc2626;
+  --color-neg-soft: #fee2e2;
+  --color-warn: #b45309;
+  --color-warn-soft: #fef3c7;
+  --color-info: #0369a1;
+
+  /* Brand */
+  --color-brand: #4f46e5;
+  --color-brand-hover: #4338ca;
+}
+
+/* Hero backdrop re-tuned for light (dark dots, pale navy glow). */
+[data-theme="light"] .hero-surface {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(15, 23, 42, 0.05) 1px, transparent 0),
+    radial-gradient(ellipse 110% 70% at 50% -10%, #e8eef9 0%, rgba(247, 249, 252, 0) 68%);
+}
+
+/* Theme-toggle icon visibility: show the action you'll get on click. */
+.theme-icon-sun,
+.theme-icon-moon { display: none; }
+[data-theme="dark"] .theme-icon-sun { display: block; }
+[data-theme="light"] .theme-icon-moon { display: block; }
+
+/* ===========================================================================
+   Base
+   =========================================================================== */
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4 {
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Visible focus ring everywhere — never removed (a11y) */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-brand) 40%, transparent);
+  }
+
+  /* Thin dark scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-surface-2) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ===========================================================================
+   Component utilities (DESIGN.md §6). Kept minimal; Tailwind utilities do the rest.
+   =========================================================================== */
+@layer components {
+  /* All financial numbers — JetBrains Mono, tabular (brief-mandated) */
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page { padding-inline: 1.5rem; }
+  }
+
+  /* Cards are flat — border only, no shadow/glow (editorial look). */
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+  }
+
+  .card-link {
+    transition: transform 150ms var(--ease-out-soft),
+                border-color 150ms var(--ease-out-soft);
+  }
+  .card-link:hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+  }
+
+  /* Thin, quiet labels — deliberately light against bold mono numbers. */
+  .label {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* Editorial serif headings */
+  .hero-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(3rem, 6vw, 4.5rem); /* 48px mobile → 72px desktop */
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+  .page-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+  }
+
+  /* Hero backdrop: dot grid + subtle non-colorful radial (navy → lighter navy). */
+  .hero-surface {
+    background-color: var(--color-bg);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.06) 1px, transparent 0),
+      radial-gradient(ellipse 110% 70% at 50% -10%, #16233f 0%, rgba(15, 23, 42, 0) 68%);
+    background-size: 22px 22px, 100% 100%;
+    background-repeat: repeat, no-repeat;
+  }
+
+  /* Status accent: 4px left border keyed to IPO status. */
+  .accent-l { border-left-width: 4px; }
+  .accent-open { border-left-color: var(--color-pos); }
+  .accent-upcoming { border-left-color: var(--color-info); }
+  .accent-allotment,
+  .accent-closed { border-left-color: var(--color-warn); }
+  .accent-listed { border-left-color: var(--color-border-strong); }
+
+  /* Pills */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 1rem;
+    border-radius: var(--radius-control);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 120ms var(--ease-out-soft),
+                border-color 120ms var(--ease-out-soft),
+                color 120ms var(--ease-out-soft);
+  }
+  .btn-primary {
+    background-color: var(--color-brand);
+    color: #fff;
+  }
+  .btn-primary:hover { background-color: var(--color-brand-hover); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-text-muted);
+  }
+  .btn-ghost:hover { color: var(--color-text); border-color: var(--color-brand); }
+}
+
+/* Live market dot — single calm pulse (DESIGN.md §7) */
+@keyframes io-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.market-dot-open {
+  animation: io-pulse 2s var(--ease-out-soft) infinite;
+}

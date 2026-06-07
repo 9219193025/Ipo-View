@@ -1,0 +1,122 @@
+---
+/**
+ * Feature #8 — IPO profit calculator. Vanilla JS, no framework.
+ * Inputs: issue price, lot size, lots applied, expected listing gain %.
+ * Output: investment, expected profit, post-tax profit (STCG 20% on listing gains).
+ */
+import type { IPO } from '../data/types';
+
+interface Props {
+  ipos?: IPO[];
+  defaultPrice?: number;
+  defaultLot?: number;
+  id?: string;
+}
+const { ipos = [], defaultPrice = 0, defaultLot = 0, id = 'calculator' } = Astro.props;
+---
+
+<section id={id} class="card p-5 sm:p-6" data-ipo-calc>
+  <h3 class="text-h3 font-bold">IPO Profit Calculator</h3>
+  <p class="mt-1 text-sm text-text-muted">Estimate listing-day profit after short-term tax.</p>
+
+  {ipos.length > 0 && (
+    <div class="mt-4">
+      <label class="label" for="calc-preset">Prefill from an IPO</label>
+      <select id="calc-preset" class="mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm focus-visible:border-brand">
+        <option value="">— Choose an IPO —</option>
+        {ipos.map((i) => (
+          <option value={`${i.priceBand.max}|${i.lotSize}|${i.gmp}`}>{i.name}</option>
+        ))}
+      </select>
+    </div>
+  )}
+
+  <div class="mt-4 grid grid-cols-2 gap-3">
+    <div>
+      <label class="label" for="calc-price">Issue price (₹)</label>
+      <input id="calc-price" type="number" min="0" inputmode="numeric" value={defaultPrice || ''} placeholder="0"
+        class="num mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm focus-visible:border-brand" />
+    </div>
+    <div>
+      <label class="label" for="calc-lot">Lot size (shares)</label>
+      <input id="calc-lot" type="number" min="0" inputmode="numeric" value={defaultLot || ''} placeholder="0"
+        class="num mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm focus-visible:border-brand" />
+    </div>
+    <div>
+      <label class="label" for="calc-lots">Lots applied</label>
+      <input id="calc-lots" type="number" min="1" inputmode="numeric" value="1"
+        class="num mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm focus-visible:border-brand" />
+    </div>
+    <div>
+      <label class="label" for="calc-gain">Expected listing gain (%)</label>
+      <input id="calc-gain" type="number" inputmode="decimal" value="20"
+        class="num mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm focus-visible:border-brand" />
+    </div>
+  </div>
+
+  <div class="mt-5 grid grid-cols-3 gap-3 border-t border-border pt-4">
+    <div>
+      <p class="label">Investment</p>
+      <p class="num text-lg font-bold" id="calc-invest">₹0</p>
+    </div>
+    <div>
+      <p class="label">Gross profit</p>
+      <p class="num text-lg font-bold text-pos" id="calc-gross">₹0</p>
+    </div>
+    <div>
+      <p class="label">After 20% tax</p>
+      <p class="num text-lg font-bold text-pos" id="calc-net">₹0</p>
+    </div>
+  </div>
+  <p class="mt-3 text-xs text-text-faint">Assumes 20% short-term capital gains tax on listing-day profit. Indicative only.</p>
+</section>
+
+<script>
+  const root = document.querySelector('[data-ipo-calc]');
+  if (root) {
+    const $ = (id: string) => root.querySelector('#' + id) as HTMLInputElement | HTMLSelectElement | null;
+    const price = $('calc-price') as HTMLInputElement;
+    const lot = $('calc-lot') as HTMLInputElement;
+    const lots = $('calc-lots') as HTMLInputElement;
+    const gain = $('calc-gain') as HTMLInputElement;
+    const preset = $('calc-preset') as HTMLSelectElement | null;
+    const out = {
+      invest: root.querySelector('#calc-invest') as HTMLElement,
+      gross: root.querySelector('#calc-gross') as HTMLElement,
+      net: root.querySelector('#calc-net') as HTMLElement,
+    };
+
+    const inr = (n: number) =>
+      (n < 0 ? '−₹' : '₹') + Math.abs(Math.round(n)).toLocaleString('en-IN');
+
+    function calc() {
+      const p = +price.value || 0;
+      const l = +lot.value || 0;
+      const n = +lots.value || 0;
+      const g = +gain.value || 0;
+      const shares = l * n;
+      const investment = p * shares;
+      const gross = investment * (g / 100);
+      const net = gross > 0 ? gross * 0.8 : gross;
+      out.invest.textContent = inr(investment);
+      out.gross.textContent = inr(gross);
+      out.net.textContent = inr(net);
+      const tone = gross >= 0 ? 'text-pos' : 'text-neg';
+      out.gross.className = out.net.className = 'num text-lg font-bold ' + tone;
+    }
+
+    [price, lot, lots, gain].forEach((el) => el?.addEventListener('input', calc));
+    preset?.addEventListener('change', () => {
+      const [p, l, gmp] = preset.value.split('|');
+      if (p) {
+        price.value = p;
+        lot.value = l;
+        // derive expected gain % from GMP vs price
+        const gainPct = +p > 0 ? ((+gmp / +p) * 100).toFixed(1) : '0';
+        gain.value = gainPct;
+        calc();
+      }
+    });
+    calc();
+  }
+</script>

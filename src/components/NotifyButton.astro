@@ -1,0 +1,69 @@
+---
+/**
+ * Feature #7 — Smart Alerts (PWA). "Notify me" button.
+ * Requests Notification permission; stores follow in localStorage; fires a
+ * confirmation notification. Real push needs a server + VAPID keys — this wires
+ * the client side and degrades gracefully where unsupported.
+ */
+interface Props {
+  slug: string;
+  name: string;
+  label?: string;
+}
+const { slug, name, label = 'Notify me' } = Astro.props;
+---
+
+<button
+  type="button"
+  class="btn btn-ghost"
+  data-notify
+  data-slug={slug}
+  data-name={name}
+>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+  <span data-notify-label>{label}</span>
+</button>
+
+<script>
+  document.querySelectorAll('[data-notify]').forEach((btn) => {
+    const el = btn as HTMLButtonElement;
+    const slug = el.dataset.slug!;
+    const key = 'ipoviews:follow:' + slug;
+    const labelEl = el.querySelector('[data-notify-label]') as HTMLElement;
+
+    const setFollowed = (on: boolean) => {
+      labelEl.textContent = on ? 'Alert on ✓' : 'Notify me';
+      el.classList.toggle('!border-pos', on);
+      el.classList.toggle('!text-pos', on);
+    };
+
+    if (localStorage.getItem(key)) setFollowed(true);
+
+    el.addEventListener('click', async () => {
+      if (localStorage.getItem(key)) {
+        localStorage.removeItem(key);
+        setFollowed(false);
+        return;
+      }
+      if (!('Notification' in window)) {
+        alert('Your browser does not support notifications.');
+        return;
+      }
+      let perm = Notification.permission;
+      if (perm === 'default') perm = await Notification.requestPermission();
+      if (perm !== 'granted') {
+        alert('Enable notifications in your browser to get IPO alerts.');
+        return;
+      }
+      localStorage.setItem(key, String(Date.now()));
+      setFollowed(true);
+      try {
+        const reg = await navigator.serviceWorker?.ready;
+        reg?.showNotification('IPO Views', {
+          body: `You'll be alerted about ${el.dataset.name}.`,
+          icon: '/favicon.svg',
+        });
+      } catch {}
+    });
+  });
+</script>

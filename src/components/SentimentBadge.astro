@@ -1,0 +1,24 @@
+---
+/** Feature #9 — GMP Sentiment Badge. 🔥 Hot / 📈 Rising / ⚠️ Cooling / ❌ Weak */
+import type { IPO } from '../data/types';
+import { sentiment } from '../data/helpers';
+
+interface Props {
+  ipo: IPO;
+  class?: string;
+}
+const { ipo, class: className = '' } = Astro.props;
+const s = sentiment(ipo);
+
+// Border-only pill — no solid background fill.
+const toneClass: Record<string, string> = {
+  pos: 'text-pos border border-pos/50',
+  warn: 'text-warn border border-warn/50',
+  neg: 'text-neg border border-neg/50',
+};
+---
+
+<span class={`pill ${toneClass[s.tone]} ${className}`} title={`Sentiment: ${s.label}`}>
+  <span aria-hidden="true">{s.emoji}</span>
+  <span>{s.label}</span>
+</span>

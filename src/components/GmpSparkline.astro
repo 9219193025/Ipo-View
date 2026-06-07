@@ -1,0 +1,97 @@
+---
+/**
+ * Feature #3 — GMP trend graph as inline SVG. Zero KB JS, accessible.
+ * Renders a polyline over gmpHistory; stroke colored by net change.
+ * `variant="card"` → tiny sparkline; `variant="full"` → labelled chart.
+ */
+import type { GmpPoint } from '../data/types';
+import { gmpTrend, rupee, fmtDateShort } from '../data/helpers';
+
+interface Props {
+  history: GmpPoint[];
+  variant?: 'card' | 'full';
+  width?: number;
+  height?: number;
+  class?: string;
+}
+const { history, variant = 'card', width, height, class: className = '' } = Astro.props;
+
+const W = width ?? (variant === 'full' ? 640 : 72);
+const H = height ?? (variant === 'full' ? 200 : 26);
+const pad = variant === 'full' ? { t: 16, r: 12, b: 24, l: 40 } : { t: 3, r: 3, b: 3, l: 3 };
+
+const pts = history.length ? history : [{ date: '', gmp: 0 }];
+const vals = pts.map((p) => p.gmp);
+const min = Math.min(...vals, 0);
+const max = Math.max(...vals, 1);
+const range = max - min || 1;
+
+const innerW = W - pad.l - pad.r;
+const innerH = H - pad.t - pad.b;
+
+const x = (i: number) => pad.l + (pts.length === 1 ? innerW / 2 : (i / (pts.length - 1)) * innerW);
+const y = (v: number) => pad.t + innerH - ((v - min) / range) * innerH;
+
+const linePts = pts.map((p, i) => `${x(i).toFixed(1)},${y(p.gmp).toFixed(1)}`).join(' ');
+// area fill path
+const areaPts = `${pad.l},${pad.t + innerH} ${linePts} ${(pad.l + innerW).toFixed(1)},${pad.t + innerH}`;
+
+const trend = gmpTrend(pts);
+const stroke = trend.direction === 'down' ? 'var(--color-neg)' : 'var(--color-pos)';
+const last = pts[pts.length - 1];
+const uid = 'spk-' + Math.abs(linePts.length * 7 + Math.round(max)).toString(36);
+
+const label = `GMP trend: ${trend.direction === 'up' ? 'rising' : trend.direction === 'down' ? 'falling' : 'flat'}, latest ${rupee(last.gmp)}`;
+
+// y-axis ticks for full variant
+const ticks = variant === 'full' ? [min, min + range / 2, max].map((v) => Math.round(v)) : [];
+---
+
+<svg
+  viewBox={`0 0 ${W} ${H}`}
+  width={W}
+  height={H}
+  class={className}
+  role="img"
+  aria-label={label}
+  preserveAspectRatio={variant === 'full' ? 'xMidYMid meet' : 'none'}
+>
+  <title>{label}</title>
+  <defs>
+    <linearGradient id={uid} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color={stroke} stop-opacity="0.28" />
+      <stop offset="100%" stop-color={stroke} stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  {variant === 'full' && ticks.map((t) => (
+    <g>
+      <line
+        x1={pad.l} x2={W - pad.r}
+        y1={y(t)} y2={y(t)}
+        stroke="var(--color-border)" stroke-width="1" stroke-dasharray="2 4"
+      />
+      <text x={pad.l - 6} y={y(t) + 3} text-anchor="end"
+        font-size="10" fill="var(--color-text-faint)" font-family="var(--font-mono)">{t}</text>
+    </g>
+  ))}
+
+  <polygon points={areaPts} fill={`url(#${uid})`} />
+  <polyline
+    points={linePts}
+    fill="none"
+    stroke={stroke}
+    stroke-width={variant === 'full' ? 2.5 : 1.75}
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
+  />
+  <circle cx={x(pts.length - 1)} cy={y(last.gmp)} r={variant === 'full' ? 4 : 2.4} fill={stroke} />
+
+  {variant === 'full' && pts.map((p, i) => (
+    (i === 0 || i === pts.length - 1) && (
+      <text x={x(i)} y={H - 6} text-anchor={i === 0 ? 'start' : 'end'}
+        font-size="10" fill="var(--color-text-faint)" font-family="var(--font-mono)">{fmtDateShort(p.date)}</text>
+    )
+  ))}
+</svg>

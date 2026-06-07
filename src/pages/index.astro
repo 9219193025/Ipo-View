@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IpoCard from '../components/IpoCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import IpoCalculator from '../components/IpoCalculator.astro';
+import { getAllIpos, getByStatus } from '../data/ipos';
+import {
+  rupee, pct, marketSentiment, siteAccuracy, byGmpDesc, listingGain, listingEstimate,
+} from '../data/helpers';
+
+const all = getAllIpos();
+const open = getByStatus('open').sort(byGmpDesc);
+const upcoming = getByStatus('upcoming').sort(byGmpDesc);
+const recentlyListed = getByStatus('listed')
+  .sort((a, b) => (b.listingDate < a.listingDate ? -1 : 1))
+  .slice(0, 4);
+
+const topGmp = [...all].filter((i) => i.status !== 'listed').sort(byGmpDesc)[0];
+const mood = marketSentiment(all);
+const accuracy = siteAccuracy(all);
+const avgSub = open.length ? open.reduce((a, i) => a + i.subscription.total, 0) / open.length : 0;
+
+const moodTone: Record<string, string> = {
+  pos: 'text-pos border-pos/50',
+  warn: 'text-warn border-warn/50',
+  neg: 'text-neg border-neg/50',
+};
+
+const stats = [
+  { label: 'Open IPOs now', value: String(open.length), sub: `${upcoming.length} upcoming` },
+  { label: 'Top GMP today', value: topGmp ? rupee(topGmp.gmp) : '—', sub: topGmp?.name ?? '' },
+  { label: 'Avg subscription', value: avgSub > 0 ? avgSub.toFixed(1) + 'x' : '—', sub: 'across open IPOs' },
+  { label: 'GMP accuracy', value: accuracy.count ? accuracy.score + '%' : '—', sub: `${accuracy.count} listed tracked` },
+];
+
+const title = 'IPO GMP Today — Live Grey Market Premium Tracker | IPO Views';
+const description = `Live IPO GMP today: ${open.length} open IPOs, top GMP ${topGmp ? rupee(topGmp.gmp) : '—'} (${topGmp?.name ?? ''}). Day-wise subscription, listing estimates & ${accuracy.score}% GMP accuracy.`;
+
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Live & Upcoming IPOs',
+  itemListElement: [...open, ...upcoming].map((i, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    name: i.name,
+    url: new URL(`/ipo/${i.slug}`, Astro.site).href,
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={[itemListLd]}>
+  <!-- HERO -->
+  <section class="hero-surface border-b border-border">
+    <div class="container-page py-10 sm:py-16">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class={`pill border ${moodTone[mood.tone]}`}>Market sentiment: {mood.mood}</span>
+        <span class="num pill border border-border text-text-muted">Avg GMP {pct(mood.avgGmpPct)} of price</span>
+      </div>
+
+      <h1 class="hero-title mt-5 max-w-3xl text-balance">
+        Live IPO <em class="italic text-text">Grey Market Premium</em>, tracked honestly.
+      </h1>
+      <p class="mt-5 max-w-xl text-text-muted">
+        Real-time GMP, day-wise subscription and the most accurate listing estimates for
+        every mainboard &amp; SME IPO — built for Indian retail investors.
+      </p>
+
+      <!-- stats bar: horizontal scroll on mobile, grid on desktop -->
+      <div class="mt-9 flex gap-3 overflow-x-auto pb-1 sm:mt-10 sm:grid sm:grid-cols-4 sm:gap-4 sm:overflow-visible sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {stats.map((s) => (
+          <div class="card min-w-[150px] shrink-0 px-4 py-4 sm:min-w-0">
+            <p class="label">{s.label}</p>
+            <p class="num mt-2 text-3xl font-bold leading-none">{s.value}</p>
+            <p class="mt-1.5 truncate text-xs text-text-faint">{s.sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container-page py-10 sm:py-12">
+    <!-- LIVE / OPEN -->
+    <section>
+      <SectionHeader
+        title="Live IPOs"
+        subtitle="Currently open for subscription — apply before the close date."
+      />
+      {open.length ? (
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {open.map((ipo) => <IpoCard ipo={ipo} />)}
+        </div>
+      ) : (
+        <p class="card p-6 text-center text-text-muted">No IPOs are open right now. Check the upcoming list below.</p>
+      )}
+    </section>
+
+    <!-- UPCOMING -->
+    <section class="mt-14">
+      <SectionHeader
+        title="Upcoming IPOs"
+        subtitle="Opening within the next 30 days."
+        href="/calendar"
+        hrefLabel="See calendar"
+      />
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {upcoming.map((ipo) => <IpoCard ipo={ipo} />)}
+      </div>
+    </section>
+
+    <!-- RECENTLY LISTED: actual vs estimated -->
+    <section class="mt-16">
+      <SectionHeader
+        title="Recently listed"
+        subtitle="How our GMP-based estimate compared to the actual listing."
+        href="/listed"
+        hrefLabel="All listed"
+      />
+      <div class="overflow-x-auto rounded-[var(--radius-card)] border border-border">
+        <table class="w-full min-w-[640px] text-sm">
+          <thead class="bg-surface-2 text-left">
+            <tr class="label">
+              <th class="px-4 py-3 font-medium">IPO</th>
+              <th class="px-4 py-3 text-right font-medium">Issue price</th>
+              <th class="px-4 py-3 text-right font-medium">Est. listing</th>
+              <th class="px-4 py-3 text-right font-medium">Actual listing</th>
+              <th class="px-4 py-3 text-right font-medium">Listing gain</th>
+            </tr>
+          </thead>
+          <tbody>
+            {recentlyListed.map((i) => {
+              const est = listingEstimate(i);
+              const gain = listingGain(i);
+              return (
+                <tr class="border-t border-border hover:bg-surface-2/40">
+                  <td class="px-4 py-3"><a href={`/ipo/${i.slug}`} class="font-medium hover:text-brand-hover">{i.name}</a></td>
+                  <td class="num px-4 py-3 text-right">{rupee(i.priceBand.max)}</td>
+                  <td class="num px-4 py-3 text-right text-text-muted">{rupee(est.likely)}</td>
+                  <td class="num px-4 py-3 text-right font-semibold">{i.listingPrice != null ? rupee(i.listingPrice) : '—'}</td>
+                  <td class={`num px-4 py-3 text-right font-bold ${gain != null && gain >= 0 ? 'text-pos' : 'text-neg'}`}>{gain != null ? pct(gain) : '—'}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section class="mt-14">
+      <SectionHeader title="Plan your application" subtitle="Estimate your listing-day profit after tax." />
+      <IpoCalculator ipos={[...open, ...upcoming]} />
+    </section>
+  </div>
+</BaseLayout>

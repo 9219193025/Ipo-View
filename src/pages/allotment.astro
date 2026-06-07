@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllIpos } from '../data/ipos';
+import { allRegistrars, registrarLink, fmtDate } from '../data/helpers';
+
+// IPOs whose allotment is relevant (closed → listed)
+const checkable = getAllIpos()
+  .filter((i) => ['closed', 'allotment', 'listed'].includes(i.status))
+  .sort((a, b) => (b.allotmentDate < a.allotmentDate ? -1 : 1));
+
+const registrars = allRegistrars();
+
+// map slug -> registrar url for the client picker
+const ipoRegMap = Object.fromEntries(
+  checkable.map((i) => [i.slug, { name: i.name, url: registrarLink(i.registrar).url, registrar: registrarLink(i.registrar).name, date: i.allotmentDate }]),
+);
+
+const title = 'IPO Allotment Status Checker — KFin, Link Intime, Bigshare | IPO Views';
+const description = 'Check your IPO allotment status by PAN. Direct links to KFin, Link Intime, Bigshare and all major registrars — auto-matched to each IPO.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-8 sm:py-10">
+    <h1 class="page-title">IPO Allotment Status</h1>
+    <p class="mt-2 max-w-2xl text-text-muted">
+      Enter your PAN and pick an IPO — we send you straight to the correct registrar's
+      official allotment page. We never store your PAN; the check happens on the registrar site.
+    </p>
+
+    <div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <!-- checker -->
+      <div class="card p-5 lg:col-span-2" data-allot>
+        <h2 class="text-h3 font-bold">Check by PAN</h2>
+
+        <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div class="sm:col-span-2">
+            <label class="label" for="al-ipo">Select IPO</label>
+            <select id="al-ipo" class="mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm focus-visible:border-brand">
+              <option value="">— Choose an IPO —</option>
+              {checkable.map((i) => (
+                <option value={i.slug}>{i.name} · allotment {fmtDate(i.allotmentDate).slice(0, 6)}</option>
+              ))}
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="label" for="al-pan">PAN number</label>
+            <input
+              id="al-pan" type="text" maxlength="10" autocomplete="off" spellcheck="false"
+              placeholder="ABCDE1234F"
+              class="num mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm uppercase tracking-widest focus-visible:border-brand"
+            />
+            <p id="al-pan-err" class="mt-1 hidden text-xs text-neg">Enter a valid 10-character PAN (e.g. ABCDE1234F).</p>
+          </div>
+        </div>
+
+        <div id="al-result" class="mt-4 hidden rounded-[var(--radius-control)] border border-border bg-bg p-4 text-sm"></div>
+
+        <button id="al-go" type="button" class="btn btn-primary mt-4 w-full sm:w-auto">Check allotment status →</button>
+        <p class="mt-3 text-xs text-text-faint">
+          Tip: allotment status usually goes live on the allotment date evening. Keep your
+          PAN, application number, or DP/Client ID handy on the registrar page.
+        </p>
+      </div>
+
+      <!-- registrar directory (feature #10) -->
+      <div class="card p-5">
+        <h2 class="text-h3 font-bold">Registrar directory</h2>
+        <p class="mt-1 text-xs text-text-muted">Official allotment pages.</p>
+        <ul class="mt-4 flex flex-col gap-2">
+          {registrars.map((r) => (
+            <li>
+              <a href={r.url} target="_blank" rel="noopener"
+                class="flex items-center justify-between rounded-[var(--radius-control)] border border-border px-3 py-2.5 text-sm transition-colors hover:border-brand hover:bg-surface-2">
+                <span class="font-medium">{r.name}</span>
+                <span class="text-text-faint">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ ipoRegMap }}>
+    const root = document.querySelector('[data-allot]');
+    if (root) {
+      const sel = root.querySelector('#al-ipo');
+      const pan = root.querySelector('#al-pan');
+      const err = root.querySelector('#al-pan-err');
+      const res = root.querySelector('#al-result');
+      const go = root.querySelector('#al-go');
+      const PAN_RE = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+
+      pan.addEventListener('input', () => {
+        pan.value = pan.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
+        err.classList.add('hidden');
+      });
+
+      go.addEventListener('click', () => {
+        const slug = sel.value;
+        const info = ipoRegMap[slug];
+        if (!slug || !info) {
+          res.className = 'mt-4 rounded-[var(--radius-control)] border border-warn/40 bg-warn-soft p-4 text-sm text-warn';
+          res.textContent = 'Please select an IPO first.';
+          res.classList.remove('hidden');
+          return;
+        }
+        if (!PAN_RE.test(pan.value)) {
+          err.classList.remove('hidden');
+          return;
+        }
+        res.className = 'mt-4 rounded-[var(--radius-control)] border border-border bg-bg p-4 text-sm';
+        res.innerHTML =
+          '<p class="font-semibold">' + info.name + '</p>' +
+          '<p class="mt-1 text-text-muted">Registrar: <span class="text-text">' + info.registrar + '</span></p>' +
+          '<p class="mt-1 text-text-muted">PAN <span class="num text-text">' + pan.value + '</span> ready. Opening the official allotment page…</p>' +
+          '<a href="' + info.url + '" target="_blank" rel="noopener" class="btn btn-primary mt-3 inline-flex">Open ' + info.registrar + ' ↗</a>';
+        res.classList.remove('hidden');
+        window.open(info.url, '_blank', 'noopener');
+      });
+    }
+  </script>
+</BaseLayout>

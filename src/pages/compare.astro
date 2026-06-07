@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllIpos } from '../data/ipos';
+import { rupee, pct, times, gmpTrend, gmpPct, listingEstimate, sentiment, byGmpDesc } from '../data/helpers';
+
+const all = getAllIpos();
+
+// Build a flat, client-friendly record per IPO (incl. a 0–100×0–30 sparkline path).
+function sparkPath(history: { gmp: number }[]) {
+  const vals = history.map((p) => p.gmp);
+  const min = Math.min(...vals, 0), max = Math.max(...vals, 1);
+  const range = max - min || 1;
+  return history
+    .map((p, i) => {
+      const x = history.length === 1 ? 50 : (i / (history.length - 1)) * 100;
+      const y = 30 - ((p.gmp - min) / range) * 28 - 1;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    })
+    .join(' ');
+}
+
+const data = all.map((i) => {
+  const t = gmpTrend(i.gmpHistory);
+  const s = sentiment(i);
+  return {
+    slug: i.slug,
+    name: i.name,
+    type: i.type === 'sme' ? 'SME' : 'Mainboard',
+    exchange: i.exchange,
+    priceBand: `${rupee(i.priceBand.min)}–${rupee(i.priceBand.max)}`,
+    lot: i.lotSize.toLocaleString('en-IN'),
+    gmp: rupee(i.gmp),
+    gmpRaw: i.gmp,
+    gmpPct: pct(gmpPct(i)),
+    est: rupee(listingEstimate(i).likely),
+    sub: i.subscription.total > 0 ? times(i.subscription.total) : '—',
+    qib: i.subscription.qib > 0 ? times(i.subscription.qib) : '—',
+    nii: i.subscription.nii > 0 ? times(i.subscription.nii) : '—',
+    rii: i.subscription.rii > 0 ? times(i.subscription.rii) : '—',
+    trend: `${t.arrow} ${pct(t.changePct)}`,
+    trendDir: t.direction,
+    sentiment: `${s.emoji} ${s.label}`,
+    sentTone: s.tone,
+    spark: sparkPath(i.gmpHistory),
+  };
+});
+
+const defaults = [...all].filter((i) => i.status !== 'listed').sort(byGmpDesc).slice(0, 3).map((i) => i.slug);
+
+const title = 'Compare IPOs Side by Side — GMP, Subscription & Listing | IPO Views';
+const description = 'Compare up to 3 IPOs side by side: GMP, grey-market trend, subscription, price band and estimated listing. Make a sharper application decision.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-8 sm:py-10">
+    <h1 class="page-title">Compare IPOs</h1>
+    <p class="mt-2 max-w-2xl text-text-muted">
+      Pick up to 3 IPOs and weigh GMP, grey-market trend, subscription and listing estimates
+      side by side.
+    </p>
+
+    <!-- chip selector -->
+    <div class="mt-5" data-compare data-defaults={JSON.stringify(defaults)}>
+      <p class="label mb-2">Select IPOs (max 3) — <span id="cmp-count" class="num">0/3</span></p>
+      <div class="flex flex-wrap gap-2">
+        {data.map((d) => (
+          <button
+            type="button"
+            data-chip={d.slug}
+            class="pill border border-border text-text-muted transition-colors hover:border-brand"
+          >{d.name}</button>
+        ))}
+      </div>
+
+      <!-- comparison area (built client-side) -->
+      <div id="cmp-area" class="mt-6 overflow-x-auto"></div>
+      <p id="cmp-empty" class="card mt-6 hidden p-6 text-center text-text-muted">Select at least one IPO to compare.</p>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ data, defaults }}>
+    (function () {
+      const root = document.querySelector('[data-compare]');
+      if (!root) return;
+      const area = root.querySelector('#cmp-area');
+      const empty = root.querySelector('#cmp-empty');
+      const counter = root.querySelector('#cmp-count');
+      const chips = Array.from(root.querySelectorAll('[data-chip]'));
+      const map = Object.fromEntries(data.map((d) => [d.slug, d]));
+      let selected = defaults.slice(0, 3);
+
+      const toneColor = { pos: 'var(--color-pos)', warn: 'var(--color-warn)', neg: 'var(--color-neg)' };
+      const rows = [
+        ['Type', 'type'], ['Exchange', 'exchange'], ['Price band', 'priceBand'],
+        ['Lot size', 'lot'], ['GMP', 'gmp'], ['GMP %', 'gmpPct'], ['Est. listing', 'est'],
+        ['Subscription', 'sub'], ['QIB', 'qib'], ['NII', 'nii'], ['RII', 'rii'],
+        ['7d trend', 'trend'], ['Sentiment', 'sentiment'],
+      ];
+
+      function syncChips() {
+        chips.forEach((c) => {
+          const on = selected.includes(c.dataset.chip);
+          c.classList.toggle('!border-brand', on);
+          c.classList.toggle('!text-text', on);
+          c.classList.toggle('bg-surface-2', on);
+          c.setAttribute('aria-pressed', String(on));
+        });
+        counter.textContent = selected.length + '/3';
+      }
+
+      function cell(d, key) {
+        if (key === 'gmp') {
+          const col = d.gmpRaw > 0 ? 'var(--color-pos)' : d.gmpRaw < 0 ? 'var(--color-neg)' : 'var(--color-text-muted)';
+          return '<span class="num font-bold" style="color:' + col + '">' + d.gmp + '</span>';
+        }
+        if (key === 'trend') {
+          const col = d.trendDir === 'up' ? 'var(--color-pos)' : d.trendDir === 'down' ? 'var(--color-neg)' : 'var(--color-text-faint)';
+          return '<span class="num" style="color:' + col + '">' + d.trend + '</span>';
+        }
+        if (key === 'sentiment') return '<span style="color:' + toneColor[d.sentTone] + '">' + d.sentiment + '</span>';
+        const numeric = ['priceBand','lot','gmpPct','est','sub','qib','nii','rii'].includes(key);
+        return '<span class="' + (numeric ? 'num' : '') + '">' + d[key] + '</span>';
+      }
+
+      function render() {
+        syncChips();
+        if (!selected.length) { area.innerHTML = ''; empty.classList.remove('hidden'); return; }
+        empty.classList.add('hidden');
+        const cols = selected.map((s) => map[s]);
+
+        let html = '<table class="w-full min-w-[480px] border-separate border-spacing-0 text-sm">';
+        // header with name + sparkline
+        html += '<thead><tr><th class="sticky left-0 z-10 bg-bg p-2"></th>';
+        cols.forEach((d) => {
+          const col = d.trendDir === 'down' ? 'var(--color-neg)' : 'var(--color-pos)';
+          html += '<th class="card p-3 text-left align-top" style="border-radius:12px 12px 0 0">' +
+            '<a href="/ipo/' + d.slug + '" class="font-semibold hover:text-brand-hover">' + d.name + '</a>' +
+            '<svg viewBox="0 0 100 30" preserveAspectRatio="none" class="mt-2 h-8 w-full"><polyline points="' + d.spark + '" fill="none" stroke="' + col + '" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>' +
+            '</th>';
+        });
+        html += '</tr></thead><tbody>';
+        rows.forEach(([label, key]) => {
+          html += '<tr><th class="sticky left-0 z-10 bg-bg p-2 text-left label whitespace-nowrap">' + label + '</th>';
+          cols.forEach((d) => { html += '<td class="border-b border-border bg-surface px-3 py-2.5">' + cell(d, key) + '</td>'; });
+          html += '</tr>';
+        });
+        html += '</tbody></table>';
+        area.innerHTML = html;
+      }
+
+      chips.forEach((c) => c.addEventListener('click', () => {
+        const slug = c.dataset.chip;
+        if (selected.includes(slug)) selected = selected.filter((s) => s !== slug);
+        else if (selected.length < 3) selected.push(slug);
+        else { c.animate([{ transform: 'translateX(-3px)' }, { transform: 'translateX(3px)' }, { transform: 'translateX(0)' }], { duration: 150 }); return; }
+        render();
+      }));
+
+      render();
+    })();
+  </script>
+</BaseLayout>

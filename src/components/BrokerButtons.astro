@@ -1,0 +1,26 @@
+---
+/** Feature #6 — Broker apply deep links (affiliate-ready). */
+import { BROKERS } from '../data/helpers';
+
+interface Props {
+  ipoName?: string;
+  class?: string;
+}
+const { ipoName, class: className = '' } = Astro.props;
+---
+
+<div class={`flex flex-wrap gap-2 ${className}`}>
+  {BROKERS.map((b) => (
+    <a
+      href={b.url}
+      target="_blank"
+      rel="noopener nofollow sponsored"
+      class="btn btn-ghost flex-1 min-w-[140px]"
+      style={`border-color:color-mix(in srgb, ${b.color} 55%, transparent)`}
+      aria-label={`Apply${ipoName ? ' for ' + ipoName : ''} via ${b.name}`}
+    >
+      <span class="inline-block h-2 w-2 rounded-full" style={`background:${b.color}`} aria-hidden="true"></span>
+      Apply via {b.name}
+    </a>
+  ))}
+</div>

@@ -1,0 +1,28 @@
+---
+import type { IpoStatus, IpoType } from '../data/types';
+import { STATUS_LABEL, statusTone } from '../data/helpers';
+
+interface Props {
+  status?: IpoStatus;
+  type?: IpoType;
+  class?: string;
+}
+const { status, type, class: className = '' } = Astro.props;
+
+// Border-only pills — 1px outline, no solid background fill.
+const toneClass: Record<string, string> = {
+  info: 'text-info border border-info/50',
+  brand: 'text-brand-hover border border-brand/50',
+  warn: 'text-warn border border-warn/50',
+  muted: 'text-text-muted border border-border-strong',
+};
+---
+
+{status && (
+  <span class={`pill ${toneClass[statusTone(status)]} ${className}`}>{STATUS_LABEL[status]}</span>
+)}
+{type && (
+  <span class={`pill ${type === 'sme' ? 'text-warn border border-warn/40' : 'text-info border border-info/40'} ${className}`}>
+    {type === 'sme' ? 'SME' : 'Mainboard'}
+  </span>
+)}
