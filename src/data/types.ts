@@ -56,4 +56,24 @@ export interface IPO {
   issueSize?: string;
   /** Lead manager(s). */
   leadManagers?: string[];
+
+  // --- live data provenance (populated by the merge layer) ---
+  /** ISO/string timestamp of the last GMP update from the Google Sheet, if any. */
+  gmpLastUpdated?: string;
+  /** Kostak rate (₹) from the GMP sheet, if provided. */
+  kostak?: number;
+  /** Whether official fields came from the NSE/BSE scraper. */
+  official?: boolean;
+}
+
+/** Upcoming US / HK IPO (Part 4 — global tracker). */
+export interface GlobalIPO {
+  country: 'US' | 'HK';
+  name: string;
+  filingDate?: string;
+  listingDate?: string;
+  amount?: string;
+  industry?: string;
+  exchange?: string;
+  url?: string;
 }

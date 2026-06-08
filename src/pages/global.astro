@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getGlobalIPOs, getSyncMeta } from '../data/index';
+import { fmtDate } from '../data/helpers';
+import type { GlobalIPO } from '../data/types';
+
+const all = getGlobalIPOs();
+const us = all.filter((i) => i.country === 'US');
+const hk = all.filter((i) => i.country === 'HK');
+const sync = getSyncMeta();
+
+const flag: Record<string, string> = { US: '🇺🇸', HK: '🇭🇰' };
+
+function syncedLabel(): string {
+  if (!sync.globalGeneratedAt) return 'Awaiting first sync';
+  const mins = Math.max(0, Math.round((Date.now() - Date.parse(sync.globalGeneratedAt)) / 60000));
+  if (mins < 1) return 'Updated just now';
+  if (mins < 60) return `Updated ${mins} min ago`;
+  return `Updated ${Math.round(mins / 60)}h ago`;
+}
+
+const title = 'Global IPO Tracker — Upcoming US & Hong Kong IPOs | IPO Views';
+const description = 'Upcoming US (SEC S-1 filings) and Hong Kong (HKEX) IPOs — company, industry, filing/listing dates and amounts, refreshed every 30 minutes.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-8 sm:py-10">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h1 class="page-title">Global IPO Tracker</h1>
+        <p class="mt-2 max-w-2xl text-text-muted">
+          Upcoming IPOs from the US (SEC EDGAR S-1 filings) and Hong Kong (HKEX),
+          from free official sources.
+        </p>
+      </div>
+      <span class="num pill border border-border text-text-faint">{syncedLabel()}</span>
+    </div>
+
+    <!-- tabs -->
+    <div class="mt-6 flex gap-2" role="tablist" data-global>
+      <button type="button" data-tab="US" role="tab" aria-selected="true"
+        class="pill border border-brand/50 text-text">
+        🇺🇸 United States <span class="num text-text-faint">({us.length})</span>
+      </button>
+      <button type="button" data-tab="HK" role="tab" aria-selected="false"
+        class="pill border border-border text-text-muted">
+        🇭🇰 Hong Kong <span class="num text-text-faint">({hk.length})</span>
+      </button>
+    </div>
+
+    {[['US', us], ['HK', hk]].map(([code, list]) => (
+      <section data-panel={code} class={code === 'US' ? 'mt-5' : 'mt-5 hidden'}>
+        {(list as GlobalIPO[]).length ? (
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {(list as GlobalIPO[]).map((i) => (
+              <a href={i.url} target="_blank" rel="noopener"
+                class="card card-link block p-4 sm:p-5">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="text-base font-semibold leading-tight">
+                    <span aria-hidden="true">{flag[i.country]}</span> {i.name}
+                  </h3>
+                  {i.industry && <span class="pill shrink-0 border border-info/50 text-info">{i.industry}</span>}
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-border pt-3.5">
+                  <div>
+                    <p class="label">{i.filingDate ? 'Filed' : 'Listing'}</p>
+                    <p class="num text-sm font-semibold">{fmtDate(i.filingDate || i.listingDate)}</p>
+                  </div>
+                  <div>
+                    <p class="label">Exchange</p>
+                    <p class="text-sm font-semibold">{i.exchange ?? '—'}</p>
+                  </div>
+                  <div>
+                    <p class="label">Amount</p>
+                    <p class="num text-sm font-semibold">{i.amount || '—'}</p>
+                  </div>
+                  <div class="flex items-end justify-end">
+                    <span class="text-xs font-medium text-brand-hover">Filing ↗</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="card p-6 text-center text-text-muted">
+            {code === 'HK'
+              ? 'No Hong Kong IPOs in the latest sync (HKEX feed may be temporarily unavailable).'
+              : 'No US filings in the latest sync.'}
+          </p>
+        )}
+      </section>
+    ))}
+
+    <p class="mt-6 text-xs text-text-faint">
+      Data from SEC EDGAR &amp; HKEX. Updated every 30 minutes via GitHub Actions.
+      US amounts are filed inside the S-1 document and aren't shown in the filing index.
+    </p>
+  </div>
+
+  <script>
+    const root = document.querySelector('[data-global]');
+    if (root) {
+      const tabs = Array.from(root.querySelectorAll('[data-tab]')) as HTMLElement[];
+      const panels = Array.from(document.querySelectorAll('[data-panel]')) as HTMLElement[];
+      tabs.forEach((tab) => tab.addEventListener('click', () => {
+        const code = tab.dataset.tab;
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute('aria-selected', String(on));
+          t.classList.toggle('border-brand/50', on);
+          t.classList.toggle('text-text', on);
+          t.classList.toggle('border-border', !on);
+          t.classList.toggle('text-text-muted', !on);
+        });
+        panels.forEach((p) => p.classList.toggle('hidden', p.dataset.panel !== code));
+      }));
+    }
+  </script>
+</BaseLayout>

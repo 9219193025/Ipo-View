@@ -24,8 +24,20 @@ const gain = listingGain(ipo);
 const gmpColor = ipo.gmp > 0 ? 'text-pos' : ipo.gmp < 0 ? 'text-neg' : 'text-text-muted';
 const trendColor = trend.direction === 'up' ? 'text-pos' : trend.direction === 'down' ? 'text-neg' : 'text-text-faint';
 
-// Stable per-card "freshness" so it reads live without random flashing on reload.
-const updatedMins = (ipo.slug.length % 7) + 2; // 2–8 min
+// Real "freshness" from the GMP sheet when available; else a stable per-card fallback.
+function updatedLabel(): string {
+  if (ipo.gmpLastUpdated) {
+    const t = Date.parse(String(ipo.gmpLastUpdated));
+    if (!Number.isNaN(t)) {
+      const mins = Math.max(0, Math.round((Date.now() - t) / 60000));
+      if (mins < 1) return 'Updated just now';
+      if (mins < 60) return `Updated ${mins}m ago`;
+      const h = Math.round(mins / 60);
+      return h < 24 ? `Updated ${h}h ago` : `Updated ${Math.round(h / 24)}d ago`;
+    }
+  }
+  return `Updated ${(ipo.slug.length % 7) + 2}m ago`;
+}
 ---
 
 <a
@@ -101,6 +113,6 @@ const updatedMins = (ipo.slug.length % 7) + 2; // 2–8 min
   <!-- footer -->
   <div class="mt-4 flex items-center justify-between">
     <SentimentBadge ipo={ipo} />
-    <span class="num text-[11px] text-text-faint">Updated {updatedMins}m ago</span>
+    <span class="num text-[11px] text-text-faint">{updatedLabel()}</span>
   </div>
 </a>

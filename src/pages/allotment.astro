@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getAllIpos } from '../data/ipos';
+import { getIndiaIPOs } from '../data/index';
 import { allRegistrars, registrarLink, fmtDate } from '../data/helpers';
 
 // IPOs whose allotment is relevant (closed → listed)
-const checkable = getAllIpos()
+const checkable = (await getIndiaIPOs())
   .filter((i) => ['closed', 'allotment', 'listed'].includes(i.status))
   .sort((a, b) => (b.allotmentDate < a.allotmentDate ? -1 : 1));
 
