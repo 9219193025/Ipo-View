@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getAllIpos } from '../data/ipos';
+import { getIndiaIPOs } from '../data/index';
 import { rupee, pct, times, gmpTrend, gmpPct, listingEstimate, sentiment, byGmpDesc } from '../data/helpers';
 
-const all = getAllIpos();
+const all = await getIndiaIPOs();
 
 // Build a flat, client-friendly record per IPO (incl. a 0–100×0–30 sparkline path).
 function sparkPath(history: { gmp: number }[]) {

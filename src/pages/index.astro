@@ -1,17 +1,21 @@
 ---
+// SSR so live Google-Sheets GMP edits appear without a rebuild.
+export const prerender = false;
+
 import BaseLayout from '../layouts/BaseLayout.astro';
 import IpoCard from '../components/IpoCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import IpoCalculator from '../components/IpoCalculator.astro';
-import { getAllIpos, getByStatus } from '../data/ipos';
+import { getIndiaIPOs, getGmpFreshness } from '../data/index';
 import {
   rupee, pct, marketSentiment, siteAccuracy, byGmpDesc, listingGain, listingEstimate,
 } from '../data/helpers';
 
-const all = getAllIpos();
-const open = getByStatus('open').sort(byGmpDesc);
-const upcoming = getByStatus('upcoming').sort(byGmpDesc);
-const recentlyListed = getByStatus('listed')
+const all = await getIndiaIPOs();
+const open = all.filter((i) => i.status === 'open').sort(byGmpDesc);
+const upcoming = all.filter((i) => i.status === 'upcoming').sort(byGmpDesc);
+const recentlyListed = all
+  .filter((i) => i.status === 'listed')
   .sort((a, b) => (b.listingDate < a.listingDate ? -1 : 1))
   .slice(0, 4);
 
@@ -19,6 +23,16 @@ const topGmp = [...all].filter((i) => i.status !== 'listed').sort(byGmpDesc)[0];
 const mood = marketSentiment(all);
 const accuracy = siteAccuracy(all);
 const avgSub = open.length ? open.reduce((a, i) => a + i.subscription.total, 0) / open.length : 0;
+
+// GMP freshness from the Google Sheet (India = Sheets-only).
+const fresh = await getGmpFreshness();
+function freshnessLabel(): string {
+  if (!fresh.configured) return 'Live GMP via Google Sheets';
+  if (fresh.ageMinutes == null) return 'GMP synced';
+  if (fresh.ageMinutes < 1) return 'GMP updated just now';
+  if (fresh.ageMinutes < 60) return `GMP updated ${fresh.ageMinutes} min ago`;
+  return `GMP updated ${Math.round(fresh.ageMinutes / 60)}h ago`;
+}
 
 const moodTone: Record<string, string> = {
   pos: 'text-pos border-pos/50',
@@ -56,6 +70,10 @@ const itemListLd = {
       <div class="flex flex-wrap items-center gap-2">
         <span class={`pill border ${moodTone[mood.tone]}`}>Market sentiment: {mood.mood}</span>
         <span class="num pill border border-border text-text-muted">Avg GMP {pct(mood.avgGmpPct)} of price</span>
+        <span class="num pill border border-border text-text-faint">{freshnessLabel()}</span>
+        {fresh.stale && (
+          <span class="num pill border border-warn/50 text-warn" title="The newest GMP edit is over 2 hours old">⚠ GMP may be stale</span>
+        )}
       </div>
 
       <h1 class="hero-title mt-5 max-w-3xl text-balance">

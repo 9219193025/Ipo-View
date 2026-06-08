@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getAllIpos } from '../data/ipos';
+import { getIndiaIPOs } from '../data/index';
 import { fmtDate } from '../data/helpers';
 
 type EventKind = 'open' | 'close' | 'allotment' | 'listing';
@@ -17,13 +17,16 @@ const KIND_LABEL: Record<EventKind, string> = {
   open: 'Opens', close: 'Closes', allotment: 'Allotment', listing: 'Lists',
 };
 
-const all = getAllIpos();
+const all = await getIndiaIPOs();
 const events: CalEvent[] = [];
 for (const i of all) {
-  events.push({ date: i.openDate, kind: 'open', name: i.name, slug: i.slug, type: i.type });
-  events.push({ date: i.closeDate, kind: 'close', name: i.name, slug: i.slug, type: i.type });
-  events.push({ date: i.allotmentDate, kind: 'allotment', name: i.name, slug: i.slug, type: i.type });
-  events.push({ date: i.listingDate, kind: 'listing', name: i.name, slug: i.slug, type: i.type });
+  const push = (date: string, kind: EventKind) => {
+    if (date) events.push({ date, kind, name: i.name, slug: i.slug, type: i.type });
+  };
+  push(i.openDate, 'open');
+  push(i.closeDate, 'close');
+  push(i.allotmentDate, 'allotment');
+  push(i.listingDate, 'listing');
 }
 events.sort((a, b) => a.date.localeCompare(b.date));
 

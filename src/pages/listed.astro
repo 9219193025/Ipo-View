@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getByStatus } from '../data/ipos';
+import { getIndiaIPOs } from '../data/index';
 import { rupee, pct, times, fmtDate, listingGain, gmpAccuracy, siteAccuracy } from '../data/helpers';
 
-const listed = getByStatus('listed').sort((a, b) => (b.listingDate < a.listingDate ? -1 : 1));
+const listed = (await getIndiaIPOs())
+  .filter((i) => i.status === 'listed')
+  .sort((a, b) => (b.listingDate < a.listingDate ? -1 : 1));
 const site = siteAccuracy(listed);
 const years = [...new Set(listed.map((i) => i.listingDate.slice(0, 4)))].sort().reverse();
 

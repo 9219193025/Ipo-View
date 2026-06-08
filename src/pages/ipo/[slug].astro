@@ -7,14 +7,15 @@ import SubscriptionBars from '../../components/SubscriptionBars.astro';
 import BrokerButtons from '../../components/BrokerButtons.astro';
 import NotifyButton from '../../components/NotifyButton.astro';
 import IpoCalculator from '../../components/IpoCalculator.astro';
-import { getAllIpos } from '../../data/ipos';
+import { getIndiaIPOs } from '../../data/index';
 import {
   rupee, pct, times, fmtDate, gmpTrend, gmpPct, listingEstimate, listingGain,
   gmpAccuracy, registrarLink,
 } from '../../data/helpers';
 
-export function getStaticPaths() {
-  return getAllIpos().map((ipo) => ({ params: { slug: ipo.slug }, props: { ipo } }));
+export async function getStaticPaths() {
+  const all = await getIndiaIPOs();
+  return all.map((ipo) => ({ params: { slug: ipo.slug }, props: { ipo } }));
 }
 
 const { ipo } = Astro.props;

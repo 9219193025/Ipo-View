@@ -11,6 +11,8 @@ interface Props {
   /** extra JSON-LD objects to inline (per-page structured data) */
   jsonLd?: Record<string, unknown>[];
   ogType?: string;
+  /** keep this page out of search indexes (e.g. /admin) */
+  noindex?: boolean;
 }
 
 const {
@@ -19,6 +21,7 @@ const {
   canonical,
   jsonLd = [],
   ogType = 'website',
+  noindex = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://ipoviews.com');
@@ -68,6 +71,7 @@ const allLd = [websiteLd, ...jsonLd];
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
 
     <!-- icons / PWA -->

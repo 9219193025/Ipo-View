@@ -1,0 +1,170 @@
+---
+// Password-protected GMP editor (Part 1, Step 3). Server-rendered.
+export const prerender = false;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getIndiaIPOs } from '../data/index';
+import { rupee, fmtDate } from '../data/helpers';
+
+/** Static env reads (import.meta.env for build/dev) + process.env (serverless runtime). */
+const ADMIN_PASSWORD =
+  (import.meta.env.ADMIN_PASSWORD as string | undefined) ||
+  (globalThis as any)?.process?.env?.ADMIN_PASSWORD ||
+  undefined;
+const WEBHOOK =
+  (import.meta.env.SHEETS_WEBHOOK_URL as string | undefined) ||
+  (globalThis as any)?.process?.env?.SHEETS_WEBHOOK_URL ||
+  undefined;
+const secure = Astro.url.protocol === 'https:';
+
+async function sha256(s: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Cookie token = hash of the secret, so it can't be forged without the password.
+const expectedToken = ADMIN_PASSWORD ? await sha256('ipoviews|' + ADMIN_PASSWORD) : null;
+
+let flash: { type: 'success' | 'error' | 'info'; msg: string } | null = null;
+
+if (!ADMIN_PASSWORD) {
+  flash = { type: 'error', msg: 'ADMIN_PASSWORD is not set. Add it to your environment variables.' };
+}
+
+if (Astro.request.method === 'POST' && ADMIN_PASSWORD) {
+  const form = await Astro.request.formData();
+  const action = String(form.get('action') ?? '');
+
+  if (action === 'login') {
+    if (String(form.get('password') ?? '') === ADMIN_PASSWORD && expectedToken) {
+      Astro.cookies.set('admin_token', expectedToken, {
+        httpOnly: true, secure, sameSite: 'strict', path: '/admin', maxAge: 60 * 60 * 8,
+      });
+      return Astro.redirect('/admin');
+    }
+    flash = { type: 'error', msg: 'Incorrect password.' };
+  } else if (action === 'logout') {
+    Astro.cookies.delete('admin_token', { path: '/admin' });
+    return Astro.redirect('/admin');
+  } else if (action === 'update') {
+    const authed = Astro.cookies.get('admin_token')?.value === expectedToken;
+    if (!authed) {
+      flash = { type: 'error', msg: 'Session expired — please log in again.' };
+    } else if (!WEBHOOK) {
+      flash = { type: 'error', msg: 'SHEETS_WEBHOOK_URL is not configured.' };
+    } else {
+      // Server forwards the secret to Apps Script — the password never touches the client.
+      const payload = {
+        name: String(form.get('name') ?? ''),
+        gmp: Number(form.get('gmp') ?? 0),
+        kostak: Number(form.get('kostak') ?? 0),
+        sub2: Number(form.get('sub2') ?? 0),
+        password: ADMIN_PASSWORD,
+      };
+      try {
+        const r = await fetch(WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          redirect: 'follow',
+        });
+        const j: any = await r.json().catch(() => ({}));
+        if (r.ok && j?.success) {
+          flash = { type: 'success', msg: `Updated “${payload.name}” → GMP ${rupee(payload.gmp)}, Kostak ${rupee(payload.kostak)}, Sub ${payload.sub2}x.` };
+        } else {
+          flash = { type: 'error', msg: j?.error || `Update failed (HTTP ${r.status}).` };
+        }
+      } catch (e) {
+        flash = { type: 'error', msg: 'Could not reach the webhook: ' + (e as Error).message };
+      }
+    }
+  }
+}
+
+const authed = !!expectedToken && Astro.cookies.get('admin_token')?.value === expectedToken;
+const ipos = authed ? await getIndiaIPOs() : [];
+
+const flashClass: Record<string, string> = {
+  success: 'border-pos/50 text-pos',
+  error: 'border-neg/50 text-neg',
+  info: 'border-info/50 text-info',
+};
+---
+
+<BaseLayout title="Admin — GMP Editor | IPO Views" description="Internal GMP editor." noindex>
+  <div class="container-page py-8 sm:py-10">
+    <div class="flex items-center justify-between gap-4">
+      <h1 class="page-title">GMP Editor</h1>
+      {authed && (
+        <form method="POST">
+          <input type="hidden" name="action" value="logout" />
+          <button type="submit" class="btn btn-ghost">Log out</button>
+        </form>
+      )}
+    </div>
+    <p class="mt-2 max-w-2xl text-sm text-text-muted">
+      Update grey-market values here; changes are written to the Google Sheet via your
+      Apps Script web app. The site picks them up within ~10 minutes.
+    </p>
+
+    {flash && (
+      <div class={`mt-5 rounded-[var(--radius-control)] border bg-surface px-4 py-3 text-sm ${flashClass[flash.type]}`}>
+        {flash.msg}
+      </div>
+    )}
+
+    {!authed ? (
+      <form method="POST" class="card mt-6 max-w-sm p-5">
+        <input type="hidden" name="action" value="login" />
+        <label class="label" for="password">Admin password</label>
+        <input
+          id="password" name="password" type="password" required autocomplete="current-password"
+          class="mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2.5 text-sm focus-visible:border-brand"
+        />
+        <button type="submit" class="btn btn-primary mt-4 w-full">Log in</button>
+      </form>
+    ) : (
+      <div class="mt-6 overflow-x-auto rounded-[var(--radius-card)] border border-border">
+        <table class="w-full min-w-[760px] text-sm">
+          <thead class="bg-surface-2 text-left">
+            <tr class="label">
+              <th class="px-4 py-3 font-medium">IPO</th>
+              <th class="px-4 py-3 font-medium">Current</th>
+              <th class="px-4 py-3 font-medium">GMP ₹</th>
+              <th class="px-4 py-3 font-medium">Kostak ₹</th>
+              <th class="px-4 py-3 font-medium">Sub (x)</th>
+              <th class="px-4 py-3 font-medium"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {ipos.map((i) => (
+              <tr class="border-t border-border align-middle">
+                <td class="px-4 py-3">
+                  <p class="font-medium">{i.name}</p>
+                  <p class="num text-xs text-text-faint">{i.slug} · {i.status}</p>
+                </td>
+                <td class="num px-4 py-3 text-text-muted">
+                  {rupee(i.gmp)}
+                  {i.gmpLastUpdated && <span class="block text-xs text-text-faint">@ {fmtDate(String(i.gmpLastUpdated).slice(0, 10))}</span>}
+                </td>
+                <td class="px-4 py-3" colspan="4">
+                  <form method="POST" class="flex flex-wrap items-center gap-2">
+                    <input type="hidden" name="action" value="update" />
+                    <input type="hidden" name="name" value={i.name} />
+                    <input name="gmp" type="number" step="1" value={i.gmp}
+                      class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`GMP for ${i.name}`} />
+                    <input name="kostak" type="number" step="1" value={i.kostak ?? 0}
+                      class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`Kostak for ${i.name}`} />
+                    <input name="sub2" type="number" step="0.01" value={i.subscription.total}
+                      class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`Subscription for ${i.name}`} />
+                    <button type="submit" class="btn btn-primary !min-h-0 !h-9 px-3">Update</button>
+                  </form>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </div>
+</BaseLayout>

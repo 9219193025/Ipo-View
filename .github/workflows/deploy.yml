@@ -1,0 +1,26 @@
+name: Deploy on data change
+
+# Pings the Vercel deploy hook whenever data files change on main from a *human*
+# commit. The scraper's own commits use "[skip ci]", so they don't trigger this
+# (the scrape workflow calls the hook itself) — this avoids double deploys.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "VERCEL_DEPLOY_HOOK secret not set — skipping."
+            exit 0
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
+          echo "Deploy hook triggered."
