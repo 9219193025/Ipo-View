@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-07T18:21:10.916930+00:00",
+  "generatedAt": "2026-06-08T16:19:07.201367+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -44,16 +44,6 @@
     },
     {
       "country": "US",
-      "name": "Innovative Digital Investors Acquisition Corp.",
-      "filingDate": "2026-05-19",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Meridian3 Industrials Acquisition Corp",
       "filingDate": "2026-06-04",
       "listingDate": "",
@@ -61,6 +51,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Innovative Digital Investors Acquisition Corp.",
+      "filingDate": "2026-05-19",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
     },
     {
       "country": "US",
@@ -124,16 +124,6 @@
     },
     {
       "country": "US",
-      "name": "Snow Rothschild Acquisition Corp.",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Freedom Metals Acquisition Corp.",
       "filingDate": "2026-05-15",
       "listingDate": "",
@@ -151,6 +141,16 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101470&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Snow Rothschild Acquisition Corp.",
+      "filingDate": "2026-05-22",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
     },
     {
       "country": "US",
@@ -265,7 +265,7 @@
     {
       "country": "US",
       "name": "Safepoint Holdings, Inc.",
-      "filingDate": "2026-05-08",
+      "filingDate": "2026-06-01",
       "listingDate": "",
       "amount": "",
       "industry": "Insurance",
@@ -301,16 +301,6 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1960355&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Neutron Holdings, Inc.",
-      "filingDate": "2026-05-08",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1699963&type=S-1"
     },
     {
       "country": "US",
@@ -391,6 +381,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-05-26",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
