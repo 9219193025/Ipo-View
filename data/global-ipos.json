@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-09T18:16:10.238225+00:00",
+  "generatedAt": "2026-06-09T20:31:20.481725+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -44,16 +44,6 @@
     },
     {
       "country": "US",
-      "name": "Meridian3 Industrials Acquisition Corp",
-      "filingDate": "2026-06-04",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Innovative Digital Investors Acquisition Corp.",
       "filingDate": "2026-05-19",
       "listingDate": "",
@@ -61,6 +51,16 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Meridian3 Industrials Acquisition Corp",
+      "filingDate": "2026-06-04",
+      "listingDate": "",
+      "amount": "",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
     },
     {
       "country": "US",
@@ -124,6 +124,16 @@
     },
     {
       "country": "US",
+      "name": "Snow Rothschild Acquisition Corp.",
+      "filingDate": "2026-05-22",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Freedom Metals Acquisition Corp.",
       "filingDate": "2026-05-15",
       "listingDate": "",
@@ -141,16 +151,6 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101470&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Snow Rothschild Acquisition Corp.",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
     },
     {
       "country": "US",
@@ -191,6 +191,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1657677&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Texas Ventures Acquisition IV Corp",
+      "filingDate": "2026-06-09",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096755&type=S-1"
     },
     {
       "country": "US",
