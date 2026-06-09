@@ -15,7 +15,10 @@ const WEBHOOK =
   (import.meta.env.SHEETS_WEBHOOK_URL as string | undefined) ||
   (globalThis as any)?.process?.env?.SHEETS_WEBHOOK_URL ||
   undefined;
-const secure = Astro.url.protocol === 'https:';
+// Proxy-aware: Vercel terminates TLS at its edge, so trust x-forwarded-proto too.
+const secure =
+  Astro.url.protocol === 'https:' ||
+  Astro.request.headers.get('x-forwarded-proto') === 'https';
 
 async function sha256(s: string): Promise<string> {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
@@ -31,6 +34,7 @@ if (!ADMIN_PASSWORD) {
   flash = { type: 'error', msg: 'ADMIN_PASSWORD is not set. Add it to your environment variables.' };
 }
 
+try {
 if (Astro.request.method === 'POST' && ADMIN_PASSWORD) {
   const form = await Astro.request.formData();
   const action = String(form.get('action') ?? '');
@@ -80,9 +84,20 @@ if (Astro.request.method === 'POST' && ADMIN_PASSWORD) {
     }
   }
 }
+} catch (e) {
+  // Never let a runtime error blank the page — surface it so the form still shows.
+  flash = { type: 'error', msg: 'Unexpected error: ' + (e as Error).message };
+}
 
 const authed = !!expectedToken && Astro.cookies.get('admin_token')?.value === expectedToken;
-const ipos = authed ? await getIndiaIPOs() : [];
+let ipos: Awaited<ReturnType<typeof getIndiaIPOs>> = [];
+if (authed) {
+  try {
+    ipos = await getIndiaIPOs();
+  } catch (e) {
+    flash = { type: 'error', msg: 'Could not load IPO list: ' + (e as Error).message };
+  }
+}
 
 const flashClass: Record<string, string> = {
   success: 'border-pos/50 text-pos',
