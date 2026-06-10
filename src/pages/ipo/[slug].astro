@@ -1,4 +1,7 @@
 ---
+// SSR so IPOs added/edited via the Google Sheet appear without a rebuild.
+export const prerender = false;
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StatusPill from '../../components/StatusPill.astro';
 import SentimentBadge from '../../components/SentimentBadge.astro';
@@ -7,18 +10,14 @@ import SubscriptionBars from '../../components/SubscriptionBars.astro';
 import BrokerButtons from '../../components/BrokerButtons.astro';
 import NotifyButton from '../../components/NotifyButton.astro';
 import IpoCalculator from '../../components/IpoCalculator.astro';
-import { getIndiaIPOs } from '../../data/index';
+import { getIPOBySlug } from '../../data/index';
 import {
   rupee, pct, times, fmtDate, gmpTrend, gmpPct, listingEstimate, listingGain,
   gmpAccuracy, registrarLink,
 } from '../../data/helpers';
 
-export async function getStaticPaths() {
-  const all = await getIndiaIPOs();
-  return all.map((ipo) => ({ params: { slug: ipo.slug }, props: { ipo } }));
-}
-
-const { ipo } = Astro.props;
+const ipo = await getIPOBySlug(Astro.params.slug!);
+if (!ipo) return Astro.redirect('/404');
 
 const trend = gmpTrend(ipo.gmpHistory);
 const gp = gmpPct(ipo);

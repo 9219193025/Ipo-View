@@ -1,5 +1,7 @@
 ---
-// Password-protected GMP editor (Part 1, Step 3). Server-rendered.
+// Password-protected IPO manager. Server-rendered.
+// Manages the full IPO record (add / edit / delete + quick GMP) via the Apps
+// Script webhook, so new IPOs never require a code edit.
 export const prerender = false;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -34,10 +36,56 @@ if (!ADMIN_PASSWORD) {
   flash = { type: 'error', msg: 'ADMIN_PASSWORD is not set. Add it to your environment variables.' };
 }
 
+function slugify(s: string): string {
+  return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+/** POST a payload (with the secret appended) to the Apps Script webhook. */
+async function callWebhook(payload: Record<string, unknown>): Promise<{ ok: boolean; error?: string }> {
+  if (!WEBHOOK) return { ok: false, error: 'SHEETS_WEBHOOK_URL is not configured.' };
+  try {
+    const r = await fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, password: ADMIN_PASSWORD }),
+      redirect: 'follow',
+    });
+    const j: any = await r.json().catch(() => ({}));
+    if (r.ok && j?.success) return { ok: true };
+    return { ok: false, error: j?.error || `Request failed (HTTP ${r.status}).` };
+  } catch (e) {
+    return { ok: false, error: 'Could not reach the webhook: ' + (e as Error).message };
+  }
+}
+
+/** Read the full set of IPO fields from a submitted form. */
+function readIpoForm(form: FormData) {
+  const name = String(form.get('name') ?? '').trim();
+  return {
+    name,
+    slug: String(form.get('slug') ?? '').trim() || slugify(name),
+    type: String(form.get('type') ?? '').trim(),
+    exchange: String(form.get('exchange') ?? '').trim(),
+    price_min: String(form.get('price_min') ?? '').trim(),
+    price_max: String(form.get('price_max') ?? '').trim(),
+    lot_size: String(form.get('lot_size') ?? '').trim(),
+    open_date: String(form.get('open_date') ?? '').trim(),
+    close_date: String(form.get('close_date') ?? '').trim(),
+    allotment_date: String(form.get('allotment_date') ?? '').trim(),
+    listing_date: String(form.get('listing_date') ?? '').trim(),
+    gmp: String(form.get('gmp') ?? '').trim(),
+    kostak: String(form.get('kostak') ?? '').trim(),
+    sub2: String(form.get('sub2') ?? '').trim(),
+    status: String(form.get('status') ?? '').trim(),
+    registrar: String(form.get('registrar') ?? '').trim(),
+  };
+}
+
 try {
 if (Astro.request.method === 'POST' && ADMIN_PASSWORD) {
   const form = await Astro.request.formData();
   const action = String(form.get('action') ?? '');
+  const authed = Astro.cookies.get('admin_token')?.value === expectedToken;
 
   if (action === 'login') {
     if (String(form.get('password') ?? '') === ADMIN_PASSWORD && expectedToken) {
@@ -50,38 +98,39 @@ if (Astro.request.method === 'POST' && ADMIN_PASSWORD) {
   } else if (action === 'logout') {
     Astro.cookies.delete('admin_token', { path: '/admin' });
     return Astro.redirect('/admin');
+  } else if (!authed) {
+    flash = { type: 'error', msg: 'Session expired — please log in again.' };
   } else if (action === 'update') {
-    const authed = Astro.cookies.get('admin_token')?.value === expectedToken;
-    if (!authed) {
-      flash = { type: 'error', msg: 'Session expired — please log in again.' };
-    } else if (!WEBHOOK) {
-      flash = { type: 'error', msg: 'SHEETS_WEBHOOK_URL is not configured.' };
+    // Quick inline GMP/Kostak/Sub update (legacy fast path).
+    const payload = {
+      action: 'updateGMP',
+      name: String(form.get('name') ?? ''),
+      gmp: Number(form.get('gmp') ?? 0),
+      kostak: Number(form.get('kostak') ?? 0),
+      sub2: Number(form.get('sub2') ?? 0),
+    };
+    const res = await callWebhook(payload);
+    flash = res.ok
+      ? { type: 'success', msg: `Updated “${payload.name}” → GMP ${rupee(payload.gmp)}, Kostak ${rupee(payload.kostak)}, Sub ${payload.sub2}x.` }
+      : { type: 'error', msg: res.error! };
+  } else if (action === 'addIPO' || action === 'updateIPO') {
+    const ipo = readIpoForm(form);
+    if (!ipo.name) {
+      flash = { type: 'error', msg: 'Company name is required.' };
     } else {
-      // Server forwards the secret to Apps Script — the password never touches the client.
-      const payload = {
-        name: String(form.get('name') ?? ''),
-        gmp: Number(form.get('gmp') ?? 0),
-        kostak: Number(form.get('kostak') ?? 0),
-        sub2: Number(form.get('sub2') ?? 0),
-        password: ADMIN_PASSWORD,
-      };
-      try {
-        const r = await fetch(WEBHOOK, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          redirect: 'follow',
-        });
-        const j: any = await r.json().catch(() => ({}));
-        if (r.ok && j?.success) {
-          flash = { type: 'success', msg: `Updated “${payload.name}” → GMP ${rupee(payload.gmp)}, Kostak ${rupee(payload.kostak)}, Sub ${payload.sub2}x.` };
-        } else {
-          flash = { type: 'error', msg: j?.error || `Update failed (HTTP ${r.status}).` };
-        }
-      } catch (e) {
-        flash = { type: 'error', msg: 'Could not reach the webhook: ' + (e as Error).message };
-      }
+      const res = await callWebhook({ action, ...ipo });
+      const verb = action === 'addIPO' ? 'Added' : 'Updated';
+      flash = res.ok
+        ? { type: 'success', msg: `${verb} “${ipo.name}”. Changes appear site-wide within ~10 minutes.` }
+        : { type: 'error', msg: res.error! };
     }
+  } else if (action === 'deleteIPO') {
+    const name = String(form.get('name') ?? '').trim();
+    const slug = String(form.get('slug') ?? '').trim();
+    const res = await callWebhook({ action: 'deleteIPO', name, slug });
+    flash = res.ok
+      ? { type: 'success', msg: `Deleted “${name || slug}”.` }
+      : { type: 'error', msg: res.error! };
   }
 }
 } catch (e) {
@@ -104,12 +153,18 @@ const flashClass: Record<string, string> = {
   error: 'border-neg/50 text-neg',
   info: 'border-info/50 text-info',
 };
+
+const TYPES = ['mainboard', 'sme'];
+const EXCHANGES = ['NSE', 'BSE', 'NSE+BSE'];
+const STATUSES = ['upcoming', 'open', 'closed', 'allotment', 'listed'];
+const inputCls =
+  'mt-1 w-full rounded-[var(--radius-control)] border border-border bg-bg px-3 py-2 text-sm focus-visible:border-brand';
 ---
 
-<BaseLayout title="Admin — GMP Editor | IPO Views" description="Internal GMP editor." noindex>
+<BaseLayout title="Admin — IPO Manager | IPO Views" description="Internal IPO manager." noindex>
   <div class="container-page py-8 sm:py-10">
     <div class="flex items-center justify-between gap-4">
-      <h1 class="page-title">GMP Editor</h1>
+      <h1 class="page-title">IPO Manager</h1>
       {authed && (
         <form method="POST">
           <input type="hidden" name="action" value="logout" />
@@ -118,8 +173,8 @@ const flashClass: Record<string, string> = {
       )}
     </div>
     <p class="mt-2 max-w-2xl text-sm text-text-muted">
-      Update grey-market values here; changes are written to the Google Sheet via your
-      Apps Script web app. The site picks them up within ~10 minutes.
+      Add, edit, or remove IPOs and update grey-market values. All changes write to the
+      Google Sheet via your Apps Script web app and appear across the site within ~10 minutes.
     </p>
 
     {flash && (
@@ -139,47 +194,257 @@ const flashClass: Record<string, string> = {
         <button type="submit" class="btn btn-primary mt-4 w-full">Log in</button>
       </form>
     ) : (
-      <div class="mt-6 overflow-x-auto rounded-[var(--radius-card)] border border-border">
-        <table class="w-full min-w-[760px] text-sm">
-          <thead class="bg-surface-2 text-left">
-            <tr class="label">
-              <th class="px-4 py-3 font-medium">IPO</th>
-              <th class="px-4 py-3 font-medium">Current</th>
-              <th class="px-4 py-3 font-medium">GMP ₹</th>
-              <th class="px-4 py-3 font-medium">Kostak ₹</th>
-              <th class="px-4 py-3 font-medium">Sub (x)</th>
-              <th class="px-4 py-3 font-medium"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {ipos.map((i) => (
-              <tr class="border-t border-border align-middle">
-                <td class="px-4 py-3">
-                  <p class="font-medium">{i.name}</p>
-                  <p class="num text-xs text-text-faint">{i.slug} · {i.status}</p>
-                </td>
-                <td class="num px-4 py-3 text-text-muted">
-                  {rupee(i.gmp)}
-                  {i.gmpLastUpdated && <span class="block text-xs text-text-faint">@ {fmtDate(String(i.gmpLastUpdated).slice(0, 10))}</span>}
-                </td>
-                <td class="px-4 py-3" colspan="4">
-                  <form method="POST" class="flex flex-wrap items-center gap-2">
-                    <input type="hidden" name="action" value="update" />
-                    <input type="hidden" name="name" value={i.name} />
-                    <input name="gmp" type="number" step="1" value={i.gmp}
-                      class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`GMP for ${i.name}`} />
-                    <input name="kostak" type="number" step="1" value={i.kostak ?? 0}
-                      class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`Kostak for ${i.name}`} />
-                    <input name="sub2" type="number" step="0.01" value={i.subscription.total}
-                      class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`Subscription for ${i.name}`} />
-                    <button type="submit" class="btn btn-primary !min-h-0 !h-9 px-3">Update</button>
-                  </form>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="mt-8 space-y-10">
+        {/* ---------------------------------------------------------- ADD NEW */}
+        <section>
+          <h2 class="text-lg font-semibold">Add new IPO</h2>
+          <p class="mt-1 text-sm text-text-muted">Create a brand-new IPO. Slug auto-fills from the name; edit it if needed.</p>
+          <form method="POST" class="card mt-4 p-5" data-ipo-form>
+            <input type="hidden" name="action" value="addIPO" />
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="sm:col-span-2 lg:col-span-1">
+                <label class="label">Company name</label>
+                <input name="name" required class={inputCls} data-name-src placeholder="Acme Industries" />
+              </div>
+              <div>
+                <label class="label">Slug</label>
+                <input name="slug" class={inputCls} data-slug-dst placeholder="acme-industries" />
+              </div>
+              <div>
+                <label class="label">Type</label>
+                <select name="type" class={inputCls}>
+                  {TYPES.map((t) => <option value={t}>{t}</option>)}
+                </select>
+              </div>
+              <div>
+                <label class="label">Exchange</label>
+                <select name="exchange" class={inputCls}>
+                  {EXCHANGES.map((e) => <option value={e} selected={e === 'NSE+BSE'}>{e}</option>)}
+                </select>
+              </div>
+              <div>
+                <label class="label">Status</label>
+                <select name="status" class={inputCls}>
+                  {STATUSES.map((s) => <option value={s}>{s}</option>)}
+                </select>
+              </div>
+              <div>
+                <label class="label">Price band min (₹)</label>
+                <input name="price_min" type="number" step="1" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Price band max (₹)</label>
+                <input name="price_max" type="number" step="1" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Lot size</label>
+                <input name="lot_size" type="number" step="1" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Open date</label>
+                <input name="open_date" type="date" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Close date</label>
+                <input name="close_date" type="date" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Allotment date</label>
+                <input name="allotment_date" type="date" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Listing date</label>
+                <input name="listing_date" type="date" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">GMP (₹)</label>
+                <input name="gmp" type="number" step="1" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Kostak (₹)</label>
+                <input name="kostak" type="number" step="1" class={`num ${inputCls}`} />
+              </div>
+              <div>
+                <label class="label">Sub (x)</label>
+                <input name="sub2" type="number" step="0.01" class={`num ${inputCls}`} />
+              </div>
+              <div class="sm:col-span-2 lg:col-span-2">
+                <label class="label">Registrar</label>
+                <input name="registrar" class={inputCls} placeholder="KFin Technologies" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-5">Add IPO</button>
+          </form>
+        </section>
+
+        {/* ---------------------------------------------------------- EXISTING */}
+        <section>
+          <h2 class="text-lg font-semibold">Existing IPOs</h2>
+          <p class="mt-1 text-sm text-text-muted">Quick-update GMP inline, or expand a row to edit every field. Delete removes the IPO from the Sheet.</p>
+          <div class="mt-4 overflow-x-auto rounded-[var(--radius-card)] border border-border">
+            <table class="w-full min-w-[760px] text-sm">
+              <thead class="bg-surface-2 text-left">
+                <tr class="label">
+                  <th class="px-4 py-3 font-medium">IPO</th>
+                  <th class="px-4 py-3 font-medium">Current</th>
+                  <th class="px-4 py-3 font-medium">GMP ₹</th>
+                  <th class="px-4 py-3 font-medium">Kostak ₹</th>
+                  <th class="px-4 py-3 font-medium">Sub (x)</th>
+                  <th class="px-4 py-3 font-medium"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {ipos.map((i) => (
+                  <>
+                    <tr class="border-t border-border align-middle">
+                      <td class="px-4 py-3">
+                        <p class="font-medium">{i.name}</p>
+                        <p class="num text-xs text-text-faint">{i.slug} · {i.status}</p>
+                      </td>
+                      <td class="num px-4 py-3 text-text-muted">
+                        {rupee(i.gmp)}
+                        {i.gmpLastUpdated && <span class="block text-xs text-text-faint">@ {fmtDate(String(i.gmpLastUpdated).slice(0, 10))}</span>}
+                      </td>
+                      <td class="px-4 py-3" colspan="4">
+                        <div class="flex flex-wrap items-center gap-2">
+                          <form method="POST" class="flex flex-wrap items-center gap-2">
+                            <input type="hidden" name="action" value="update" />
+                            <input type="hidden" name="name" value={i.name} />
+                            <input name="gmp" type="number" step="1" value={i.gmp}
+                              class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`GMP for ${i.name}`} />
+                            <input name="kostak" type="number" step="1" value={i.kostak ?? 0}
+                              class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`Kostak for ${i.name}`} />
+                            <input name="sub2" type="number" step="0.01" value={i.subscription.total}
+                              class="num w-24 rounded-[var(--radius-control)] border border-border bg-bg px-2 py-1.5 text-sm" aria-label={`Subscription for ${i.name}`} />
+                            <button type="submit" class="btn btn-primary !min-h-0 !h-9 px-3">Update</button>
+                          </form>
+                          <button type="button" class="btn btn-ghost !min-h-0 !h-9 px-3" data-edit-toggle={i.slug}>Edit all</button>
+                          <form method="POST" data-delete-form data-ipo-name={i.name}>
+                            <input type="hidden" name="action" value="deleteIPO" />
+                            <input type="hidden" name="name" value={i.name} />
+                            <input type="hidden" name="slug" value={i.slug} />
+                            <button type="submit" class="btn btn-ghost !min-h-0 !h-9 px-3 text-neg">Delete</button>
+                          </form>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="hidden border-t border-border bg-surface" data-edit-row={i.slug}>
+                      <td colspan="6" class="px-4 py-5">
+                        <form method="POST">
+                          <input type="hidden" name="action" value="updateIPO" />
+                          <input type="hidden" name="slug" value={i.slug} />
+                          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="sm:col-span-2 lg:col-span-1">
+                              <label class="label">Company name</label>
+                              <input name="name" value={i.name} required class={inputCls} />
+                            </div>
+                            <div>
+                              <label class="label">Type</label>
+                              <select name="type" class={inputCls}>
+                                {TYPES.map((t) => <option value={t} selected={t === i.type}>{t}</option>)}
+                              </select>
+                            </div>
+                            <div>
+                              <label class="label">Exchange</label>
+                              <select name="exchange" class={inputCls}>
+                                {EXCHANGES.map((e) => <option value={e} selected={e === i.exchange}>{e}</option>)}
+                              </select>
+                            </div>
+                            <div>
+                              <label class="label">Status</label>
+                              <select name="status" class={inputCls}>
+                                {STATUSES.map((s) => <option value={s} selected={s === i.status}>{s}</option>)}
+                              </select>
+                            </div>
+                            <div>
+                              <label class="label">Price band min (₹)</label>
+                              <input name="price_min" type="number" step="1" value={i.priceBand.min} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Price band max (₹)</label>
+                              <input name="price_max" type="number" step="1" value={i.priceBand.max} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Lot size</label>
+                              <input name="lot_size" type="number" step="1" value={i.lotSize} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Open date</label>
+                              <input name="open_date" type="date" value={i.openDate} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Close date</label>
+                              <input name="close_date" type="date" value={i.closeDate} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Allotment date</label>
+                              <input name="allotment_date" type="date" value={i.allotmentDate} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Listing date</label>
+                              <input name="listing_date" type="date" value={i.listingDate} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">GMP (₹)</label>
+                              <input name="gmp" type="number" step="1" value={i.gmp} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Kostak (₹)</label>
+                              <input name="kostak" type="number" step="1" value={i.kostak ?? 0} class={`num ${inputCls}`} />
+                            </div>
+                            <div>
+                              <label class="label">Sub (x)</label>
+                              <input name="sub2" type="number" step="0.01" value={i.subscription.total} class={`num ${inputCls}`} />
+                            </div>
+                            <div class="sm:col-span-2 lg:col-span-2">
+                              <label class="label">Registrar</label>
+                              <input name="registrar" value={i.registrar} class={inputCls} />
+                            </div>
+                          </div>
+                          <div class="mt-5 flex gap-2">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-ghost" data-edit-toggle={i.slug}>Cancel</button>
+                          </div>
+                        </form>
+                      </td>
+                    </tr>
+                  </>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     )}
   </div>
+
+  <script is:inline>
+    // Auto-generate slug from name in the "Add new IPO" form until the user edits the slug.
+    document.querySelectorAll('[data-ipo-form]').forEach((form) => {
+      const nameEl = form.querySelector('[data-name-src]');
+      const slugEl = form.querySelector('[data-slug-dst]');
+      if (!nameEl || !slugEl) return;
+      let touched = false;
+      slugEl.addEventListener('input', () => { touched = slugEl.value.trim() !== ''; });
+      nameEl.addEventListener('input', () => {
+        if (touched) return;
+        slugEl.value = nameEl.value.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      });
+    });
+    // Toggle the full-edit row.
+    document.querySelectorAll('[data-edit-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const slug = btn.getAttribute('data-edit-toggle');
+        const row = document.querySelector(`[data-edit-row="${slug}"]`);
+        if (row) row.classList.toggle('hidden');
+      });
+    });
+    // Confirm before deleting (quote-safe — no server-side string interpolation).
+    document.querySelectorAll('[data-delete-form]').forEach((form) => {
+      form.addEventListener('submit', (e) => {
+        const name = form.getAttribute('data-ipo-name') || 'this IPO';
+        if (!confirm('Delete “' + name + '”? This removes it from the Sheet.')) e.preventDefault();
+      });
+    });
+  </script>
 </BaseLayout>
