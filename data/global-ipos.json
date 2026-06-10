@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T05:03:36.539685+00:00",
+  "generatedAt": "2026-06-10T09:06:00.180733+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -124,16 +124,6 @@
     },
     {
       "country": "US",
-      "name": "Snow Rothschild Acquisition Corp.",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Freedom Metals Acquisition Corp.",
       "filingDate": "2026-05-15",
       "listingDate": "",
@@ -151,6 +141,16 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101470&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Snow Rothschild Acquisition Corp.",
+      "filingDate": "2026-05-22",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
     },
     {
       "country": "US",
