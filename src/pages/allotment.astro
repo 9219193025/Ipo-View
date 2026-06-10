@@ -1,4 +1,7 @@
 ---
+// SSR so IPOs added/edited via the Google Sheet appear without a rebuild.
+export const prerender = false;
+
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getIndiaIPOs } from '../data/index';
 import { allRegistrars, registrarLink, fmtDate } from '../data/helpers';

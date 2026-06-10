@@ -1,9 +1,16 @@
 /**
- * Google Sheets GMP CMS (Part 1).
+ * Google Sheets IPO CMS (Part 1).
  *
- * You maintain GMP by editing a published Google Sheet; the site fetches it.
- * Expected columns (in this order):
- *   name | slug | gmp | kostak | sub2 | sentiment | last_updated
+ * You maintain India IPOs by editing a published Google Sheet; the site fetches it.
+ * The Sheet is now the source of truth for the *full* IPO record, not just GMP.
+ *
+ * Expected columns (header row, lowercase — order is flexible, extras are ignored):
+ *   name | slug | type | exchange | price_min | price_max | lot_size |
+ *   open_date | close_date | allotment_date | listing_date |
+ *   gmp | kostak | sub2 | status | registrar | sentiment | last_updated
+ *
+ * Only `name` is strictly required per row; every other column is optional and
+ * falls back to the code seed (for existing IPOs) or a sensible default (for new ones).
  *
  * Set SHEETS_GMP_URL to EITHER:
  *   - a "Publish to web" CSV URL  (…/pub?gid=0&single=true&output=csv), or
@@ -18,9 +25,21 @@
 export interface GmpEntry {
   name: string;
   slug: string;
+  /** '' when the cell was blank — callers treat blanks as "keep seed/default". */
+  type: string;
+  exchange: string;
+  priceMin: number | null;
+  priceMax: number | null;
+  lotSize: number | null;
+  openDate: string;
+  closeDate: string;
+  allotmentDate: string;
+  listingDate: string;
   gmp: number;
   kostak: number;
   sub2: number;
+  status: string;
+  registrar: string;
   sentiment: string;
   lastUpdated: string;
 }
@@ -35,12 +54,19 @@ function getSheetsUrl(): string | undefined {
   return fromMeta || fromProc || undefined;
 }
 
-/** Pull the first number out of a cell like "₹196", "+34", "1.2x", "12,500". */
+/** Pull the first number out of a cell like "₹196", "+34", "1.2x", "12,500". Blank → null. */
+function numOrNull(v: unknown): number | null {
+  if (v == null || v === '') return null;
+  if (typeof v === 'number') return Number.isFinite(v) ? v : null;
+  const s = String(v).trim();
+  if (!s) return null;
+  const m = s.replace(/,/g, '').match(/-?\d+(\.\d+)?/);
+  return m ? parseFloat(m[0]) : null;
+}
+
+/** Like numOrNull but blanks/garbage become 0 (for GMP/kostak/sub where 0 is meaningful). */
 function num(v: unknown): number {
-  if (v == null) return 0;
-  if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
-  const m = String(v).replace(/,/g, '').match(/-?\d+(\.\d+)?/);
-  return m ? parseFloat(m[0]) : 0;
+  return numOrNull(v) ?? 0;
 }
 
 function str(v: unknown): string {
@@ -75,50 +101,80 @@ function parseCSV(text: string): string[][] {
   return rows;
 }
 
+/** Map of normalized header name → column index. */
+type ColMap = Record<string, number>;
+
+function headerMap(headerRow: unknown[]): ColMap {
+  const map: ColMap = {};
+  headerRow.forEach((h, i) => {
+    const key = String(h ?? '').trim().toLowerCase();
+    if (key && !(key in map)) map[key] = i;
+  });
+  return map;
+}
+
+/** Build a GmpEntry from a row + header map. `cell(i)` reads a raw value by column index. */
+function rowToEntry(cols: ColMap, cell: (i: number) => unknown): GmpEntry {
+  const get = (name: string): unknown => {
+    const i = cols[name];
+    return i === undefined ? undefined : cell(i);
+  };
+  return {
+    name: str(get('name')),
+    slug: str(get('slug')),
+    type: str(get('type')).toLowerCase(),
+    exchange: str(get('exchange')),
+    priceMin: numOrNull(get('price_min')),
+    priceMax: numOrNull(get('price_max')),
+    lotSize: numOrNull(get('lot_size')),
+    openDate: str(get('open_date')),
+    closeDate: str(get('close_date')),
+    allotmentDate: str(get('allotment_date')),
+    listingDate: str(get('listing_date')),
+    gmp: num(get('gmp')),
+    kostak: num(get('kostak')),
+    sub2: num(get('sub2')),
+    status: str(get('status')).toLowerCase(),
+    registrar: str(get('registrar')),
+    sentiment: str(get('sentiment')),
+    lastUpdated: str(get('last_updated')),
+  };
+}
+
 // gviz JSON arrives wrapped in a JS callback prefix/suffix; slice to the JSON body.
 function parseGviz(text: string): GmpEntry[] {
   const start = text.indexOf('{');
   const end = text.lastIndexOf('}');
   if (start < 0 || end < 0) return [];
   const json = JSON.parse(text.slice(start, end + 1));
+  const tableCols: any[] = json?.table?.cols ?? [];
   const rows: any[] = json?.table?.rows ?? [];
+  // gviz exposes header labels on cols[].label (falls back to id).
+  const cols = headerMap(tableCols.map((c) => c?.label || c?.id || ''));
   return rows
     .map((r) => {
       const c = r.c ?? [];
-      const cell = (i: number) => (c[i] ? (c[i].v ?? c[i].f) : undefined);
-      return {
-        name: str(cell(0)),
-        slug: str(cell(1)),
-        gmp: num(cell(2)),
-        kostak: num(cell(3)),
-        sub2: num(cell(4)),
-        sentiment: str(cell(5)),
-        lastUpdated: str(cell(6)),
-      };
+      return rowToEntry(cols, (i) => (c[i] ? (c[i].v ?? c[i].f) : undefined));
     })
     .filter((e) => e.name || e.slug);
 }
 
 function rowsToEntries(rows: string[][]): GmpEntry[] {
   if (!rows.length) return [];
-  // Drop the header row if the first cell looks like a header.
-  const first = (rows[0][0] || '').toLowerCase();
-  const body = first === 'name' ? rows.slice(1) : rows;
+  const cols = headerMap(rows[0]);
+  // Only treat row 0 as a header if it actually names columns we know.
+  const hasHeader = 'name' in cols || 'slug' in cols;
+  const body = hasHeader ? rows.slice(1) : rows;
+  const colMap = hasHeader
+    ? cols
+    : { name: 0, slug: 1, gmp: 2, kostak: 3, sub2: 4, sentiment: 5, last_updated: 6 };
   return body
-    .map((r) => ({
-      name: str(r[0]),
-      slug: str(r[1]),
-      gmp: num(r[2]),
-      kostak: num(r[3]),
-      sub2: num(r[4]),
-      sentiment: str(r[5]),
-      lastUpdated: str(r[6]),
-    }))
+    .map((r) => rowToEntry(colMap, (i) => r[i]))
     .filter((e) => e.name || e.slug);
 }
 
 /**
- * Fetch + parse the GMP sheet. Cached for 10 minutes. Never throws — returns []
+ * Fetch + parse the IPO sheet. Cached for 10 minutes. Never throws — returns []
  * on any failure (missing URL, network error, bad payload).
  */
 export async function getGmpEntries(): Promise<GmpEntry[]> {
@@ -145,12 +201,12 @@ export async function getGmpEntries(): Promise<GmpEntry[]> {
     cache = { at: Date.now(), data };
     return data;
   } catch (err) {
-    console.warn('[sheets] GMP fetch failed, using fallback:', (err as Error).message);
+    console.warn('[sheets] IPO fetch failed, using fallback:', (err as Error).message);
     return cache?.data ?? [];
   }
 }
 
-/** Convenience: GMP entries keyed by slug (and by lowercased name as backup). */
+/** Convenience: IPO entries keyed by slug (and by lowercased name as backup). */
 export async function getGmpMap(): Promise<Map<string, GmpEntry>> {
   const entries = await getGmpEntries();
   const map = new Map<string, GmpEntry>();
