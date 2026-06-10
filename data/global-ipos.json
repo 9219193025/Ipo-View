@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T19:42:36.118844+00:00",
+  "generatedAt": "2026-06-10T22:12:36.223759+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -44,16 +44,6 @@
     },
     {
       "country": "US",
-      "name": "Meridian3 Industrials Acquisition Corp",
-      "filingDate": "2026-06-04",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Innovative Digital Investors Acquisition Corp.",
       "filingDate": "2026-05-19",
       "listingDate": "",
@@ -61,6 +51,16 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Meridian3 Industrials Acquisition Corp",
+      "filingDate": "2026-06-04",
+      "listingDate": "",
+      "amount": "",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
     },
     {
       "country": "US",
@@ -361,6 +361,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1900851&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Swarmer, Inc",
+      "filingDate": "2026-06-10",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2092574&type=S-1"
     },
     {
       "country": "US",
