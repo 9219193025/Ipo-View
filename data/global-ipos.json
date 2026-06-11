@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-11T09:18:24.637506+00:00",
+  "generatedAt": "2026-06-11T13:04:08.343590+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -34,16 +34,6 @@
     },
     {
       "country": "US",
-      "name": "Innovative Digital Investors Acquisition Corp.",
-      "filingDate": "2026-05-19",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Meridian3 Industrials Acquisition Corp",
       "filingDate": "2026-06-04",
       "listingDate": "",
@@ -51,6 +41,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Innovative Digital Investors Acquisition Corp.",
+      "filingDate": "2026-05-19",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
     },
     {
       "country": "US",
@@ -84,16 +84,6 @@
     },
     {
       "country": "US",
-      "name": "FutureCorp Space Acquisition 1",
-      "filingDate": "2026-05-20",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131853&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Yorkville International Capital Corp.",
       "filingDate": "2026-06-05",
       "listingDate": "",
@@ -104,13 +94,13 @@
     },
     {
       "country": "US",
-      "name": "Snow Rothschild Acquisition Corp.",
-      "filingDate": "2026-05-22",
+      "name": "FutureCorp Space Acquisition 1",
+      "filingDate": "2026-05-20",
       "listingDate": "",
       "amount": "",
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131853&type=S-1"
     },
     {
       "country": "US",
@@ -131,6 +121,16 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101470&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Snow Rothschild Acquisition Corp.",
+      "filingDate": "2026-05-22",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
     },
     {
       "country": "US",
@@ -164,16 +164,6 @@
     },
     {
       "country": "US",
-      "name": "Parabilis Medicines, Inc.",
-      "filingDate": "2026-05-19",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1657677&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Texas Ventures Acquisition IV Corp",
       "filingDate": "2026-06-09",
       "listingDate": "",
@@ -181,6 +171,16 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096755&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Parabilis Medicines, Inc.",
+      "filingDate": "2026-05-19",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1657677&type=S-1"
     },
     {
       "country": "US",
