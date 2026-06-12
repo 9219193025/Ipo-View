@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-12T19:15:01.399558+00:00",
+  "generatedAt": "2026-06-12T21:16:14.278998+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -51,6 +51,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2137777&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Solidion Technology Inc.",
+      "filingDate": "2026-06-12",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Electronics",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1881551&type=S-1"
     },
     {
       "country": "US",
@@ -121,16 +131,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "ENTRATA, INC.",
-      "filingDate": "2026-06-11",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
     }
   ]
 }
