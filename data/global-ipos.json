@@ -1,167 +1,7 @@
 {
-  "generatedAt": "2026-06-12T13:34:31.614150+00:00",
+  "generatedAt": "2026-06-12T15:38:00.288015+00:00",
   "source": "SEC+HKEX",
   "ipos": [
-    {
-      "country": "US",
-      "name": "Oceanhawk Acquisition Corp.",
-      "filingDate": "2026-05-19",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2090787&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Jones Ventures INTL Acquisition1 Corp",
-      "filingDate": "2026-05-15",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2129056&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Innovative Digital Investors Acquisition Corp.",
-      "filingDate": "2026-05-19",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Meridian3 Industrials Acquisition Corp",
-      "filingDate": "2026-06-04",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Columbus Circle Capital Corp III",
-      "filingDate": "2026-05-26",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123471&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "DISCIPLINED GROWTH ACQUISITION Corp",
-      "filingDate": "2026-05-20",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2111038&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Ocean Capital Acquisition Corp",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1926314&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Yorkville International Capital Corp.",
-      "filingDate": "2026-06-05",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2130386&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "FutureCorp Space Acquisition 1",
-      "filingDate": "2026-05-20",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131853&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Freedom Metals Acquisition Corp.",
-      "filingDate": "2026-05-15",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2129659&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Wilco 63 Corp",
-      "filingDate": "2026-05-29",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101470&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Snow Rothschild Acquisition Corp.",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "AmperCap Acquisition Co",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101393&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "East West Ave Acquisition Corp.",
-      "filingDate": "2026-06-03",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2100704&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "RMG ML Sports Holdings",
-      "filingDate": "2026-06-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104879&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Texas Ventures Acquisition IV Corp",
-      "filingDate": "2026-06-09",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096755&type=S-1"
-    },
     {
       "country": "US",
       "name": "Parabilis Medicines, Inc.",
@@ -194,46 +34,6 @@
     },
     {
       "country": "US",
-      "name": "JAB Acquisition Corp I",
-      "filingDate": "2026-05-29",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2128739&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Alpex Acquisition Corp",
-      "filingDate": "2026-06-05",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2125551&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Gores Holdings XI, Inc.",
-      "filingDate": "2026-06-03",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2086438&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Southern Cross Acquisition I Corp.",
-      "filingDate": "2026-06-12",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2116230&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Safepoint Holdings, Inc.",
       "filingDate": "2026-06-01",
       "listingDate": "",
@@ -244,53 +44,13 @@
     },
     {
       "country": "US",
-      "name": "Cantor Equity Partners VII, Inc.",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2087965&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Research Alliance Corp IV",
       "filingDate": "2026-06-08",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2137777&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Viking Acquisition Corp. II",
-      "filingDate": "2026-06-11",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2139246&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Aeon Acquisition I Corp.",
-      "filingDate": "2026-05-18",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2082526&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "AParadise II Acquisition Corp.",
-      "filingDate": "2026-06-08",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2114463&type=S-1"
     },
     {
       "country": "US",
@@ -327,20 +87,10 @@
       "name": "Swarmer, Inc",
       "filingDate": "2026-06-10",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2092574&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Long Table Growth Corp.",
-      "filingDate": "2026-05-29",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104177&type=S-1"
     },
     {
       "country": "US",
@@ -357,30 +107,10 @@
       "name": "Starton Holdings, Inc.",
       "filingDate": "2026-06-09",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2049977&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Keystone Acquisition Corp.",
-      "filingDate": "2026-05-28",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2102771&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "American Ventures Acquisition Corp. I",
-      "filingDate": "2026-06-10",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2111009&type=S-1"
     },
     {
       "country": "US",
@@ -397,7 +127,7 @@
       "name": "ENTRATA, INC.",
       "filingDate": "2026-06-11",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
