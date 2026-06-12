@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-11T22:11:28.112301+00:00",
+  "generatedAt": "2026-06-12T00:06:33.878288+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -14,16 +14,6 @@
     },
     {
       "country": "US",
-      "name": "GSR V Acquisition Corp.",
-      "filingDate": "2026-05-12",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2111762&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Jones Ventures INTL Acquisition1 Corp",
       "filingDate": "2026-05-15",
       "listingDate": "",
@@ -34,16 +24,6 @@
     },
     {
       "country": "US",
-      "name": "Innovative Digital Investors Acquisition Corp.",
-      "filingDate": "2026-05-19",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Meridian3 Industrials Acquisition Corp",
       "filingDate": "2026-06-04",
       "listingDate": "",
@@ -51,6 +31,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136530&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Innovative Digital Investors Acquisition Corp.",
+      "filingDate": "2026-05-19",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997389&type=S-1"
     },
     {
       "country": "US",
@@ -104,16 +94,6 @@
     },
     {
       "country": "US",
-      "name": "Snow Rothschild Acquisition Corp.",
-      "filingDate": "2026-05-22",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Freedom Metals Acquisition Corp.",
       "filingDate": "2026-05-15",
       "listingDate": "",
@@ -131,6 +111,16 @@
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101470&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Snow Rothschild Acquisition Corp.",
+      "filingDate": "2026-05-22",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Investment",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123475&type=S-1"
     },
     {
       "country": "US",
@@ -214,16 +204,6 @@
     },
     {
       "country": "US",
-      "name": "Tidewise Acquisition Corp",
-      "filingDate": "2026-05-12",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2129595&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "JAB Acquisition Corp I",
       "filingDate": "2026-05-29",
       "listingDate": "",
@@ -281,6 +261,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2137777&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Viking Acquisition Corp. II",
+      "filingDate": "2026-06-11",
+      "listingDate": "",
+      "amount": "",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2139246&type=S-1"
     },
     {
       "country": "US",
@@ -354,16 +344,6 @@
     },
     {
       "country": "US",
-      "name": "Berto Acquisition Corp. II",
-      "filingDate": "2026-05-12",
-      "listingDate": "",
-      "amount": "",
-      "industry": "Investment",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2081515&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "BIOVENTRIX, INC.",
       "filingDate": "2026-05-15",
       "listingDate": "",
@@ -411,6 +391,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "ENTRATA, INC.",
+      "filingDate": "2026-06-11",
+      "listingDate": "",
+      "amount": "",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
     }
   ]
 }
