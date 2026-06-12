@@ -38,6 +38,36 @@ DATA_DIR = os.path.join(ROOT, "data")
 SEC_UA = "IPO Views (ipoviews.com) contact@ipoviews.com"
 SEC_FTS = "https://efts.sec.gov/LATEST/search-index"
 
+# --- SPAC / shell-company filtering ----------------------------------------- #
+# 95% of raw S-1 filings are SPACs (blank-cheque shells) — useless to investors.
+# Drop them by (a) name and (b) SIC code. SIC is the primary signal on live runs;
+# the name regex is the fallback (and the only signal for already-stored records
+# that predate SIC capture).
+#
+# Word-boundary "acquisition" catches the suffix variants the literal brief list
+# misses: "Acquisition Corp", "Acquisition Co", "Acquisition I Corp",
+# "Acquisition1 Corp". The remaining tokens are well-known SPAC naming patterns.
+SPAC_NAME_RE = re.compile(
+    r"\bacquisition"
+    r"|\bspacs?\b"
+    r"|blank check"
+    r"|special purpose"
+    r"|capital corp"
+    r"|equity partners"
+    r"|growth corp",
+    re.IGNORECASE,
+)
+# 6770 = blank checks, 6199 = finance services (commonly SPAC vehicles).
+SPAC_SIC_CODES = {"6770", "6199"}
+
+
+def is_spac(name, sic=None):
+    if name and SPAC_NAME_RE.search(name):
+        return True
+    if sic and str(sic).strip() in SPAC_SIC_CODES:
+        return True
+    return False
+
 HKEX_CSV = "https://www1.hkex.com.hk/hkexwidget/data/getupcomingipodata?lang=eng"
 HKEX_CSV_FALLBACK = "https://www.hkex.com.hk/eng/market/sec_tradinfo/stockcode/eisdeqsec_pf.htm"
 
@@ -65,7 +95,11 @@ def sic_to_industry(sic):
 
 
 def clean_name(name):
-    name = re.sub(r"\s*\(.*?\)\s*$", "", str(name)).strip()
+    name = str(name)
+    # SEC display_names sometimes prefix a state/country incorporation token,
+    # e.g. "us Acme Robotics Inc." — strip a leading 2-letter code + space.
+    name = re.sub(r"^\s*[a-z]{2}\s+", "", name)
+    name = re.sub(r"\s*\(.*?\)\s*$", "", name).strip()
     return re.sub(r"/[A-Z]{2}/?$", "", name).strip()
 
 
@@ -87,6 +121,70 @@ def get(url, headers, retries=1, timeout=20):
 # --------------------------------------------------------------------------- #
 # US — SEC EDGAR
 # --------------------------------------------------------------------------- #
+def _extract_amount(src):
+    """Pull a dollar issue size out of the FTS index if present; else None.
+    The final price lives inside the S-1 document, so this is usually absent at
+    the S-1 stage and gets filled later from an S-1/A amendment."""
+    for key in ("amount", "offering_amount", "aggregate_offering"):
+        v = src.get(key)
+        if v:
+            return str(v)
+    return None
+
+
+def _parse_s1_hits(data):
+    """Parse SEC FTS hits into raw records (name, cik, sic, date, amount)."""
+    hits = (data.get("hits") or {}).get("hits") or []
+    out = []
+    for h in hits:
+        src = h.get("_source", {})
+        names = src.get("display_names") or []
+        raw = names[0] if names else ""
+        name = clean_name(raw)
+        if not name:
+            continue
+        cik = ""
+        m = re.search(r"CIK\s*0*(\d+)", raw)
+        if m:
+            cik = m.group(1)
+        sics = src.get("sics")
+        sic = sics[0] if isinstance(sics, list) and sics else src.get("sic")
+        out.append({
+            "name": name,
+            "cik": cik,
+            "sic": sic,
+            "filingDate": src.get("file_date", ""),
+            "amount": _extract_amount(src),
+        })
+    return out
+
+
+def fetch_s1a_amounts():
+    """Fetch recent S-1/A amendments and map company name -> amount.
+    Amended filings usually carry the real offering amount."""
+    start = (datetime.now(timezone.utc) - timedelta(days=60)).strftime("%Y-%m-%d")
+    end = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    params = f'?q=%22S-1%2FA%22&forms=S-1%2FA&startdt={start}&enddt={end}'
+    url = SEC_FTS + params
+    log(f"US (SEC): fetching S-1/A amendments {start}..{end}")
+    r = get(url, headers={"User-Agent": SEC_UA, "Accept": "application/json"}, retries=1)
+    if r is None:
+        log("US: no S-1/A response from SEC.")
+        return {}
+    try:
+        data = r.json()
+    except ValueError:
+        log("US: non-JSON S-1/A from SEC.")
+        return {}
+    amounts = {}
+    for rec in _parse_s1_hits(data):
+        amt = rec.get("amount")
+        if amt:
+            amounts[rec["name"].lower()] = amt
+    log(f"US: found {len(amounts)} S-1/A amounts.")
+    return amounts
+
+
 def fetch_us():
     start = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
     end = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -103,34 +201,32 @@ def fetch_us():
         log("US: non-JSON from SEC.")
         return []
 
-    hits = (data.get("hits") or {}).get("hits") or []
-    out, seen = [], set()
-    for h in hits:
-        src = h.get("_source", {})
-        names = src.get("display_names") or []
-        name = clean_name(names[0]) if names else ""
-        if not name or name.lower() in seen:
+    s1a_amounts = fetch_s1a_amounts()
+
+    out, seen, dropped = [], set(), 0
+    for rec in _parse_s1_hits(data):
+        name = rec["name"]
+        if name.lower() in seen:
             continue
         seen.add(name.lower())
-        cik = ""
-        if names:
-            m = re.search(r"CIK\s*0*(\d+)", names[0])
-            if m:
-                cik = m.group(1)
-        sics = src.get("sics")
-        sic = sics[0] if isinstance(sics, list) and sics else src.get("sic")
+        if is_spac(name, rec.get("sic")):
+            dropped += 1
+            continue
+        # Amount: prefer S-1 value, else S-1/A amendment, else "TBA".
+        amount = rec.get("amount") or s1a_amounts.get(name.lower()) or "TBA"
+        cik = rec.get("cik", "")
         out.append({
             "country": "US",
             "name": name,
-            "filingDate": src.get("file_date", ""),
+            "filingDate": rec.get("filingDate", ""),
             "listingDate": "",  # not known at S-1 stage
-            "amount": "",       # lives inside the filing document, not the FTS index
-            "industry": sic_to_industry(sic),
+            "amount": amount,
+            "industry": sic_to_industry(rec.get("sic")),
             "exchange": "NASDAQ / NYSE",
             "url": (f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={cik}&type=S-1"
                     if cik else "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=S-1"),
         })
-    log(f"US: parsed {len(out)} S-1 filers.")
+    log(f"US: parsed {len(out)} real IPO filers ({dropped} SPACs/shells filtered).")
     return out
 
 
@@ -208,7 +304,17 @@ def main():
     log("=== Global IPO scrape starting ===")
     us = fetch_us()
     hk = fetch_hk()
+
+    # HK feed has its own shells — apply the same SPAC filter for consistency.
+    hk = [i for i in hk if not is_spac(i.get("name", ""))]
+
     ipos = us + hk
+
+    # Normalize: a blank/zero amount becomes "TBA" (never "—" in the UI).
+    for i in ipos:
+        amt = str(i.get("amount") or "").strip()
+        if not amt or amt in {"0", "—", "-"}:
+            i["amount"] = "TBA"
 
     path = os.path.join(DATA_DIR, "global-ipos.json")
     existing = load_existing(path)

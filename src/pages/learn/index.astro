@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ARTICLES, readTimeMinutes, type ArticleCategory } from '../../data/articles';
+
+const CATEGORIES: { name: ArticleCategory; blurb: string }[] = [
+  { name: 'IPO Basics', blurb: 'Start here — how IPOs and the market actually work.' },
+  { name: 'Grey Market', blurb: 'GMP, Kostak and Sub2 — what the unofficial signals mean.' },
+  { name: 'How to Apply', blurb: 'The practical steps: applying, allotment and refunds.' },
+  { name: 'Investment Strategy', blurb: 'Make smarter decisions on listing day and beyond.' },
+];
+
+const byCategory = (cat: ArticleCategory) => ARTICLES.filter((a) => a.category === cat);
+
+const title = 'IPO Education & Learning Hub — Guides for Indian Investors | IPO Views';
+const description =
+  'Free IPO education for Indian investors: what an IPO is, how GMP works, how to apply step by step, allotment chances, mainboard vs SME, and listing-gain strategy.';
+
+// ItemList structured data for the hub.
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'IPO Education Articles',
+  itemListElement: ARTICLES.map((a, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    name: a.title,
+    url: new URL(`/learn/${a.slug}`, Astro.site).href,
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={[itemListLd]}>
+  <div class="container-page py-8 sm:py-10">
+    <header class="max-w-2xl">
+      <h1 class="page-title">Learn IPO Investing</h1>
+      <p class="mt-3 text-text-muted">
+        Plain-English guides to help Indian retail investors understand IPOs, the grey
+        market, the application process and how to think about listing gains. No jargon,
+        no hype — just what you need to invest with confidence.
+      </p>
+    </header>
+
+    {CATEGORIES.map((cat) => {
+      const articles = byCategory(cat.name);
+      if (!articles.length) return null;
+      return (
+        <section class="mt-10">
+          <div class="mb-4">
+            <h2 class="text-h2 font-bold">{cat.name}</h2>
+            <p class="mt-1 text-sm text-text-muted">{cat.blurb}</p>
+          </div>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.map((a) => (
+              <a href={`/learn/${a.slug}`} class="card card-link flex flex-col p-5">
+                <span class="pill self-start border border-brand/50 text-brand-hover">{a.category}</span>
+                <h3 class="mt-3 text-base font-semibold leading-snug">{a.title}</h3>
+                <p class="mt-2 flex-1 text-sm text-text-muted">{a.teaser}</p>
+                <span class="num mt-4 text-xs text-text-faint">{readTimeMinutes(a)} min read · Read article →</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+
+    <section class="mt-14">
+      <div class="card flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 class="text-h3 font-semibold">Ready to put it into practice?</h2>
+          <p class="mt-1 text-sm text-text-muted">See live GMP, subscription and listing estimates for every open IPO.</p>
+        </div>
+        <a href="/" class="btn btn-primary shrink-0">Check Live IPO GMP →</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

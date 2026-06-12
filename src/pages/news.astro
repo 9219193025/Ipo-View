@@ -1,0 +1,49 @@
+---
+// SSR so the news feed is fetched fresh (with 30-min cache) per request.
+export const prerender = false;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsSection from '../components/NewsSection.astro';
+import { getNews } from '../data/news';
+
+const hasNews = (await getNews(20)).length > 0;
+
+const title = 'Latest IPO News — Indian Markets | IPO Views';
+const description =
+  'Latest IPO and stock-market news for Indian investors — mainboard & SME IPO updates, listings, subscription and GMP headlines from ET Markets, Moneycontrol and Mint.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-page py-8 sm:py-10">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h1 class="page-title">Latest IPO News</h1>
+        <p class="mt-2 max-w-2xl text-text-muted">
+          Headlines from Indian markets, aggregated from free public RSS feeds and
+          refreshed every 30 minutes. Click any story to read it at the source.
+        </p>
+      </div>
+      <a
+        href="https://economictimes.indiatimes.com/markets/ipos"
+        target="_blank"
+        rel="noopener"
+        class="num pill border border-border text-text-faint"
+      >View all news ↗</a>
+    </div>
+
+    <NewsSection limit={20} heading={false} />
+
+    {!hasNews && (
+      <p class="card mt-6 p-6 text-center text-text-muted">
+        News feeds are temporarily unavailable. Please check back shortly, or visit
+        <a href="https://economictimes.indiatimes.com/markets/ipos" target="_blank" rel="noopener" class="text-brand-hover hover:underline"> ET Markets ↗</a>.
+      </p>
+    )}
+
+    <p class="mt-6 text-xs text-text-faint">
+      News headlines and links are the property of their respective publishers
+      (ET Markets, Moneycontrol, Mint). IPO Views aggregates public RSS feeds and
+      links back to the original articles.
+    </p>
+  </div>
+</BaseLayout>

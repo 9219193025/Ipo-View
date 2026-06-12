@@ -12,12 +12,17 @@ const cols = [
     { href: '/#calculator', label: 'IPO Calculator' },
     { href: '/listed#accuracy', label: 'GMP Accuracy' },
   ]},
+  { title: 'Learn', links: [
+    { href: '/learn', label: 'Education Hub' },
+    { href: '/learn/what-is-gmp', label: 'What is GMP?' },
+    { href: '/news', label: 'IPO News' },
+  ]},
 ];
 ---
 
 <footer class="mt-16 border-t border-border bg-surface">
-  <div class="container-page grid grid-cols-2 gap-8 py-10 sm:grid-cols-4">
-    <div class="col-span-2 sm:col-span-2">
+  <div class="container-page grid grid-cols-2 gap-8 py-10 sm:grid-cols-3 lg:grid-cols-5">
+    <div class="col-span-2 sm:col-span-3 lg:col-span-2">
       <a href="/" class="flex items-center gap-2">
         <span class="grid h-7 w-7 place-items-center rounded-md bg-brand font-bold text-white">IV</span>
         <span class="text-base font-bold">IPO<span class="text-brand-hover">Views</span></span>

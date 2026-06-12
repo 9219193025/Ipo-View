@@ -11,6 +11,25 @@ const sync = getSyncMeta();
 
 const flag: Record<string, string> = { US: '🇺🇸', HK: '🇭🇰' };
 
+// A blank, zero, or digit-less amount means the issue size isn't disclosed yet.
+function hasAmount(a?: string): boolean {
+  if (!a) return false;
+  const m = String(a).replace(/,/g, '').match(/\d+(\.\d+)?/);
+  return !!m && parseFloat(m[0]) > 0;
+}
+
+// SPAC heuristic from the brief: "Acquisition Corp" or "SPAC" in the name. We key
+// off the distinctive "Acquisition" token (the corp suffix varies — "Acquisition
+// Corp", "Acquisition I Corp", "Acquisition1 Corp"), plus a standalone SPAC token.
+// The leading \b keeps "Space"/"SpaceX" from matching the SPAC pattern.
+function isSpac(name: string): boolean {
+  return /\bacquisition/i.test(name) || /\bspacs?\b/i.test(name);
+}
+
+const usReal = us.filter((i) => !isSpac(i.name)).length;
+const hkReal = hk.filter((i) => !isSpac(i.name)).length;
+const panels: [string, GlobalIPO[], number][] = [['US', us, usReal], ['HK', hk, hkReal]];
+
 function syncedLabel(): string {
   if (!sync.globalGeneratedAt) return 'Awaiting first sync';
   const mins = Math.max(0, Math.round((Date.now() - Date.parse(sync.globalGeneratedAt)) / 60000));
@@ -36,51 +55,70 @@ const description = 'Upcoming US (SEC S-1 filings) and Hong Kong (HKEX) IPOs —
       <span class="num pill border border-border text-text-faint">{syncedLabel()}</span>
     </div>
 
-    <!-- tabs -->
-    <div class="mt-6 flex gap-2" role="tablist" data-global>
-      <button type="button" data-tab="US" role="tab" aria-selected="true"
-        class="pill border border-brand/50 text-text">
-        🇺🇸 United States <span class="num text-text-faint">({us.length})</span>
-      </button>
-      <button type="button" data-tab="HK" role="tab" aria-selected="false"
-        class="pill border border-border text-text-muted">
-        🇭🇰 Hong Kong <span class="num text-text-faint">({hk.length})</span>
-      </button>
+    <!-- tabs + SPAC toggle -->
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <div class="flex gap-2" role="tablist" data-global>
+        <button type="button" data-tab="US" role="tab" aria-selected="true"
+          class="pill border border-brand/50 text-text">
+          🇺🇸 United States <span class="num text-text-faint">(<span data-count="US">{usReal}</span>)</span>
+        </button>
+        <button type="button" data-tab="HK" role="tab" aria-selected="false"
+          class="pill border border-border text-text-muted">
+          🇭🇰 Hong Kong <span class="num text-text-faint">(<span data-count="HK">{hkReal}</span>)</span>
+        </button>
+      </div>
+      <label class="ml-auto flex cursor-pointer select-none items-center gap-2 pill border border-border text-text-muted"
+        title="SPACs are blank-cheque shell companies, not operating businesses">
+        <input type="checkbox" id="spac-toggle" class="h-3.5 w-3.5 accent-brand" />
+        Show SPACs
+      </label>
     </div>
 
-    {[['US', us], ['HK', hk]].map(([code, list]) => (
+    {panels.map(([code, list, real]) => (
       <section data-panel={code} class={code === 'US' ? 'mt-5' : 'mt-5 hidden'}>
-        {(list as GlobalIPO[]).length ? (
-          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {(list as GlobalIPO[]).map((i) => (
-              <a href={i.url} target="_blank" rel="noopener"
-                class="card card-link block p-4 sm:p-5">
-                <div class="flex items-start justify-between gap-3">
-                  <h3 class="text-base font-semibold leading-tight">
-                    <span aria-hidden="true">{flag[i.country]}</span> {i.name}
-                  </h3>
-                  {i.industry && <span class="pill shrink-0 border border-info/50 text-info">{i.industry}</span>}
-                </div>
-                <div class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-border pt-3.5">
-                  <div>
-                    <p class="label">{i.filingDate ? 'Filed' : 'Listing'}</p>
-                    <p class="num text-sm font-semibold">{fmtDate(i.filingDate || i.listingDate)}</p>
+        {list.length ? (
+          <>
+            <div data-grid class={`grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 ${real === 0 ? 'hidden' : ''}`}>
+              {list.map((i) => (
+                <a href={i.url} target="_blank" rel="noopener"
+                  data-card data-spac={String(isSpac(i.name))}
+                  class={`card card-link block p-4 sm:p-5 ${isSpac(i.name) ? 'hidden' : ''}`}>
+                  <div class="flex items-start justify-between gap-3">
+                    <h3 class="text-base font-semibold leading-tight">
+                      <span aria-hidden="true">{flag[i.country]}</span> {i.name}
+                    </h3>
+                    {i.industry && <span class="pill shrink-0 border border-info/50 text-info">{i.industry}</span>}
                   </div>
-                  <div>
-                    <p class="label">Exchange</p>
-                    <p class="text-sm font-semibold">{i.exchange ?? '—'}</p>
+                  <div class="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-border pt-3.5">
+                    <div>
+                      <p class="label">{i.filingDate ? 'Filed' : 'Listing'}</p>
+                      <p class="num text-sm font-semibold">{fmtDate(i.filingDate || i.listingDate)}</p>
+                    </div>
+                    <div>
+                      <p class="label">Exchange</p>
+                      <p class="text-sm font-semibold">{i.exchange ?? '—'}</p>
+                    </div>
+                    <div>
+                      <p class="label">Amount</p>
+                      {hasAmount(i.amount) ? (
+                        <p class="num text-sm font-semibold">{i.amount}</p>
+                      ) : (
+                        <p class="num text-sm font-semibold text-text-faint cursor-help"
+                          title="Amount not yet disclosed in filing">TBA</p>
+                      )}
+                    </div>
+                    <div class="flex items-end justify-end">
+                      <span class="text-xs font-medium text-brand-hover">Filing ↗</span>
+                    </div>
                   </div>
-                  <div>
-                    <p class="label">Amount</p>
-                    <p class="num text-sm font-semibold">{i.amount || '—'}</p>
-                  </div>
-                  <div class="flex items-end justify-end">
-                    <span class="text-xs font-medium text-brand-hover">Filing ↗</span>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+                </a>
+              ))}
+            </div>
+            <p data-empty-filtered class={`card p-6 text-center text-text-muted ${real > 0 ? 'hidden' : ''}`}>
+              All {list.length} {code === 'US' ? 'US' : 'Hong Kong'} {list.length === 1 ? 'IPO' : 'IPOs'} in the latest sync
+              {list.length === 1 ? ' is a SPAC' : ' are SPACs'}. Turn on “Show SPACs” to view them.
+            </p>
+          </>
         ) : (
           <p class="card p-6 text-center text-text-muted">
             {code === 'HK'
@@ -93,7 +131,8 @@ const description = 'Upcoming US (SEC S-1 filings) and Hong Kong (HKEX) IPOs —
 
     <p class="mt-6 text-xs text-text-faint">
       Data from SEC EDGAR &amp; HKEX. Updated every 30 minutes via GitHub Actions.
-      US amounts are filed inside the S-1 document and aren't shown in the filing index.
+      US amounts are filed inside the S-1 document and aren't shown in the filing index, so they appear as “TBA”.
+      SPACs (blank-cheque shell companies) are hidden by default.
     </p>
   </div>
 
@@ -114,6 +153,34 @@ const description = 'Upcoming US (SEC S-1 filings) and Hong Kong (HKEX) IPOs —
         });
         panels.forEach((p) => p.classList.toggle('hidden', p.dataset.panel !== code));
       }));
+    }
+
+    // SPAC filter: hide "Acquisition Corp"/SPAC cards unless the toggle is on.
+    // Server pre-hides them, so the initial run is a no-op; it also keeps the
+    // per-tab counts and empty-states in sync when toggled.
+    const spacToggle = document.querySelector('#spac-toggle') as HTMLInputElement | null;
+    function applySpacFilter() {
+      const show = !!spacToggle && spacToggle.checked;
+      document.querySelectorAll('[data-panel]').forEach((panel) => {
+        const p = panel as HTMLElement;
+        const cards = Array.from(p.querySelectorAll('[data-card]')) as HTMLElement[];
+        let visible = 0;
+        cards.forEach((c) => {
+          const hide = c.dataset.spac === 'true' && !show;
+          c.classList.toggle('hidden', hide);
+          if (!hide) visible++;
+        });
+        const badge = document.querySelector(`[data-count="${p.dataset.panel}"]`);
+        if (badge) badge.textContent = String(visible);
+        const grid = p.querySelector('[data-grid]');
+        const empty = p.querySelector('[data-empty-filtered]');
+        if (grid) grid.classList.toggle('hidden', visible === 0);
+        if (empty) empty.classList.toggle('hidden', visible > 0 || cards.length === 0);
+      });
+    }
+    if (spacToggle) {
+      spacToggle.addEventListener('change', applySpacFilter);
+      applySpacFilter();
     }
   </script>
 </BaseLayout>
