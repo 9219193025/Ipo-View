@@ -1,0 +1,76 @@
+---
+/**
+ * NewsSection — latest IPO / market news from free RSS feeds (Improvement #3).
+ * Server-side fetch with 30-min cache + multi-feed fallback (see data/news.ts).
+ * If all feeds fail it renders nothing (silent), so callers can drop it in safely.
+ *
+ * Compact horizontal cards: date badge left, title + excerpt right, source pill.
+ */
+import { getNews, timeAgo, type NewsItem } from '../data/news';
+
+interface Props {
+  /** How many items to show (homepage: 6, /news: 20). */
+  limit?: number;
+  /** Whether to render the SectionHeader heading (homepage yes, /news has its own h1). */
+  heading?: boolean;
+}
+const { limit = 6, heading = true } = Astro.props;
+
+const items: NewsItem[] = await getNews(limit);
+
+// Short source label for the badge.
+function sourceLabel(s: string): string {
+  return s;
+}
+---
+
+{items.length > 0 && (
+  <section class="mt-16">
+    {heading && (
+      <div class="mb-4 flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-h2 font-bold">Latest IPO News</h2>
+          <p class="mt-1 text-sm text-text-muted">Headlines from Indian markets, refreshed every 30 minutes.</p>
+        </div>
+        <a
+          href="https://economictimes.indiatimes.com/markets/ipos"
+          target="_blank"
+          rel="noopener"
+          class="shrink-0 text-sm font-medium text-brand-hover hover:underline"
+        >View all news →</a>
+      </div>
+    )}
+
+    <ul class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+      {items.map((n) => (
+        <li>
+          <a
+            href={n.link}
+            target="_blank"
+            rel="noopener"
+            class="card card-link flex items-stretch gap-4 p-4"
+          >
+            <div class="flex w-16 shrink-0 flex-col items-center justify-center rounded-[var(--radius-control)] border border-border bg-surface-2 px-2 py-2 text-center">
+              <span class="num text-[11px] font-semibold leading-tight text-text-muted">{timeAgo(n.pubDate)}</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2">
+                <span class="pill border border-info/50 text-info">{sourceLabel(n.source)}</span>
+              </div>
+              <h3 class="mt-1.5 line-clamp-2 text-sm font-semibold leading-snug text-text">{n.title}</h3>
+              {n.description && (
+                <p class="mt-1 line-clamp-2 text-xs text-text-muted">{n.description}</p>
+              )}
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {heading && (
+      <p class="mt-4 text-xs text-text-faint">
+        News headlines and links are the property of their respective publishers (ET Markets, Moneycontrol, Mint).
+      </p>
+    )}
+  </section>
+)}

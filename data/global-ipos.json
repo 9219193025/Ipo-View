@@ -107,7 +107,7 @@
       "name": "Wilco 63 Corp",
       "filingDate": "2026-05-29",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101470&type=S-1"
@@ -147,7 +147,7 @@
       "name": "RMG ML Sports Holdings",
       "filingDate": "2026-06-05",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104879&type=S-1"
@@ -167,7 +167,7 @@
       "name": "Parabilis Medicines, Inc.",
       "filingDate": "2026-05-19",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1657677&type=S-1"
@@ -177,27 +177,17 @@
       "name": "Quantinuum Inc.",
       "filingDate": "2026-05-26",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110105&type=S-1"
     },
     {
       "country": "US",
-      "name": "Crestone Strategic Capital Acquisition Corp",
-      "filingDate": "2026-05-26",
-      "listingDate": "",
-      "amount": "",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136449&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "DPC Holdings Ltd",
       "filingDate": "2026-05-26",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2107018&type=S-1"
@@ -227,7 +217,7 @@
       "name": "Gores Holdings XI, Inc.",
       "filingDate": "2026-06-03",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Investment",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2086438&type=S-1"
@@ -247,7 +237,7 @@
       "name": "Safepoint Holdings, Inc.",
       "filingDate": "2026-06-01",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Insurance",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1653827&type=S-1"
@@ -307,7 +297,7 @@
       "name": "Forbright, Inc.",
       "filingDate": "2026-05-15",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Banking",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1925062&type=S-1"
@@ -317,7 +307,7 @@
       "name": "Kardigan, Inc.",
       "filingDate": "2026-05-26",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123613&type=S-1"
@@ -327,7 +317,7 @@
       "name": "Ambitious Entertainment, Inc.",
       "filingDate": "2026-05-15",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1900851&type=S-1"
@@ -357,7 +347,7 @@
       "name": "BIOVENTRIX, INC.",
       "filingDate": "2026-05-15",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1283259&type=S-1"
@@ -397,7 +387,7 @@
       "name": "ITG, Inc.",
       "filingDate": "2026-06-05",
       "listingDate": "",
-      "amount": "",
+      "amount": "TBA",
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
