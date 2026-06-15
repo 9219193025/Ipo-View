@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T22:45:00.272233+00:00",
+  "generatedAt": "2026-06-15T00:20:07.863631+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -64,16 +64,6 @@
     },
     {
       "country": "US",
-      "name": "Forbright, Inc.",
-      "filingDate": "2026-05-15",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Banking",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1925062&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Kardigan, Inc.",
       "filingDate": "2026-05-26",
       "listingDate": "",
@@ -81,16 +71,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123613&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Ambitious Entertainment, Inc.",
-      "filingDate": "2026-05-15",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1900851&type=S-1"
     },
     {
       "country": "US",
@@ -104,16 +84,6 @@
     },
     {
       "country": "US",
-      "name": "BIOVENTRIX, INC.",
-      "filingDate": "2026-05-15",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1283259&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Starton Holdings, Inc.",
       "filingDate": "2026-06-09",
       "listingDate": "",
@@ -124,6 +94,16 @@
     },
     {
       "country": "US",
+      "name": "BIOVENTRIX, INC.",
+      "filingDate": "2026-05-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Instruments / MedTech",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1283259&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "ITG, Inc.",
       "filingDate": "2026-06-05",
       "listingDate": "",
@@ -131,6 +111,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "ENTRATA, INC.",
+      "filingDate": "2026-06-11",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
     }
   ]
 }
