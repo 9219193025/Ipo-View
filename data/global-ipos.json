@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-17T05:02:44.738155+00:00",
-  "source": "preserved-previous",
+  "generatedAt": "2026-06-17T10:16:34.158670+00:00",
+  "source": "SEC+HKEX",
   "ipos": [
     {
       "country": "US",
@@ -64,6 +64,16 @@
     },
     {
       "country": "US",
+      "name": "bioAffinity Technologies, Inc.",
+      "filingDate": "2026-06-16",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Professional Services",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1712762&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Kardigan, Inc.",
       "filingDate": "2026-05-26",
       "listingDate": "",
@@ -101,26 +111,6 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1283259&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "ITG, Inc.",
-      "filingDate": "2026-06-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "ENTRATA, INC.",
-      "filingDate": "2026-06-11",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
     }
   ]
 }
