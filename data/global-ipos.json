@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-19T23:40:10.507971+00:00",
+  "generatedAt": "2026-06-20T04:24:51.285845+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -111,6 +111,26 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1283259&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "ITG, Inc.",
+      "filingDate": "2026-06-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "ENTRATA, INC.",
+      "filingDate": "2026-06-11",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
     }
   ]
 }
