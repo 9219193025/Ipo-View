@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Contact | IPO Views';
+const description =
+  'Get in touch with IPO Views. Email us for data corrections, questions, or feedback. We typically respond within 1–2 business days.';
+const email = 'contact@ipoviews.com';
+---
+
+<BaseLayout title={title} description={description} canonical="/contact">
+  <div class="container-page py-8 sm:py-12">
+    <article class="mx-auto w-full max-w-[640px]">
+      <span class="pill border border-brand/50 text-brand-hover">Company</span>
+      <h1 class="page-title mt-3">Contact us</h1>
+      <p class="mt-5 text-lg leading-relaxed text-text-muted">
+        Spotted a wrong number, have a question, or want to suggest an IPO we're missing?
+        We'd love to hear from you.
+      </p>
+
+      <div class="card mt-8 p-6 sm:p-7">
+        <p class="label">Email</p>
+        <a
+          href={`mailto:${email}`}
+          class="num mt-1 block text-xl font-bold text-info transition-colors hover:text-text sm:text-2xl"
+        >
+          {email}
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-text-muted">
+          For data corrections, please include the IPO name and the figure you believe is
+          off — it helps us verify and fix it faster.
+        </p>
+        <a href={`mailto:${email}`} class="btn btn-primary mt-5">Send an email →</a>
+      </div>
+
+      <div class="mt-6 flex items-start gap-3 rounded-[var(--radius-card)] border border-border bg-surface-2/40 p-4">
+        <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-pos" aria-hidden="true"></span>
+        <p class="text-sm leading-relaxed text-text-muted">
+          <strong class="text-text">Response time:</strong> we're a small team and typically
+          reply within <strong class="text-text">1–2 business days</strong>. We read every
+          message, but we can't provide individual investment advice.
+        </p>
+      </div>
+
+      <p class="mt-8 text-sm text-text-muted">
+        Looking for the fine print? See our
+        <a href="/terms" class="text-info hover:text-text">Terms of Use</a> and
+        <a href="/privacy-policy" class="text-info hover:text-text">Privacy Policy</a>.
+      </p>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Page not found (404) | IPO Views';
+const description = "The page you're looking for doesn't exist or may have moved.";
+---
+
+<BaseLayout title={title} description={description} noindex>
+  <section class="hero-surface">
+    <div class="container-page grid min-h-[60vh] place-items-center py-16 text-center sm:py-24">
+      <div class="mx-auto w-full max-w-[560px]">
+        <p class="num text-6xl font-bold tracking-tight text-brand-hover sm:text-7xl">404</p>
+        <h1 class="page-title mt-4">This page slipped through the grey market</h1>
+        <p class="mx-auto mt-4 max-w-md text-text-muted">
+          The page you're looking for doesn't exist, may have been delisted, or moved to a
+          new address. Let's get you back to the live numbers.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="/" class="btn btn-primary">← Back to live IPO GMP</a>
+          <a href="/calendar" class="btn btn-ghost">IPO Calendar</a>
+        </div>
+
+        <div class="mt-10">
+          <p class="label mb-3">Popular pages</p>
+          <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-text-muted" aria-label="Popular pages">
+            <a href="/listed" class="hover:text-text">Listed IPOs</a>
+            <a href="/compare" class="hover:text-text">Compare IPOs</a>
+            <a href="/allotment" class="hover:text-text">Allotment Status</a>
+            <a href="/learn" class="hover:text-text">Learn</a>
+            <a href="/news" class="hover:text-text">IPO News</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

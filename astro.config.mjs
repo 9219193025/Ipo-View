@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
@@ -19,7 +18,10 @@ export default defineConfig({
   // request and a forged POST can't be authenticated. (/ is the only other SSR
   // route and it processes no POSTs.)
   security: { checkOrigin: false },
-  integrations: [sitemap()],
+  // Sitemap is served by a dynamic SSR endpoint (src/pages/sitemap.xml.ts) instead of
+  // @astrojs/sitemap, because the homepage and all /ipo/[slug] pages are SSR
+  // (prerender:false) and would be silently omitted from a build-time sitemap.
+  integrations: [],
   vite: {
     // Cast: @tailwindcss/vite and astro can resolve slightly different vite
     // Plugin types depending on hoisting; the plugin is valid at runtime.

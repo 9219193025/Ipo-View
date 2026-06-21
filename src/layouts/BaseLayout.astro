@@ -26,26 +26,42 @@ const {
 
 const site = Astro.site ?? new URL('https://ipoviews.com');
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, site).href;
-const ogImage = new URL('/og-default.svg', site).href;
+// Raster PNG (not SVG) — Facebook / LinkedIn / X don't render SVG OG images.
+const ogImage = new URL('/og-default.png', site).href;
 
-// Site-wide structured data (WebSite) always present.
+// Site-wide structured data — Organization (brand entity) + WebSite, always present.
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${site.href}#organization`,
+  name: 'IPO Views',
+  url: site.href,
+  logo: new URL('/favicon.svg', site).href,
+  description:
+    'Live Indian IPO GMP (Grey Market Premium), subscription status, allotment and listing-gain tracker for retail investors.',
+  // Add real profile URLs here as they go live (X, LinkedIn, etc.).
+  sameAs: [],
+};
 const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${site.href}#website`,
   name: 'IPO Views',
   url: site.href,
   description: 'Live Indian IPO GMP (Grey Market Premium) tracker',
+  inLanguage: 'en-IN',
+  publisher: { '@id': `${site.href}#organization` },
   potentialAction: {
     '@type': 'SearchAction',
     target: `${site.href}listed?q={query}`,
     'query-input': 'required name=query',
   },
 };
-const allLd = [websiteLd, ...jsonLd];
+const allLd = [orgLd, websiteLd, ...jsonLd];
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en-IN" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -71,11 +87,21 @@ const allLd = [websiteLd, ...jsonLd];
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Locale / geo targeting (India) -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
 
     <!-- icons / PWA -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- fonts: preconnect + display=swap for fast paint -->
@@ -89,16 +115,22 @@ const allLd = [websiteLd, ...jsonLd];
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="IPO Views" />
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="IPO Views — live Indian IPO GMP tracker" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="IPO Views — live Indian IPO GMP tracker" />
 
     {allLd.map((ld) => (
       <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />

@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About IPO Views | Live Indian IPO GMP Tracker';
+const description =
+  'IPO Views tracks live grey-market premium (GMP), subscription and listing estimates for Indian IPOs. Learn what we do, why GMP matters for retail investors, and our data disclaimer.';
+---
+
+<BaseLayout title={title} description={description} canonical="/about">
+  <div class="container-page py-8 sm:py-12">
+    <article class="mx-auto w-full max-w-[720px]">
+      <span class="pill border border-brand/50 text-brand-hover">Company</span>
+      <h1 class="page-title mt-3">About IPO Views</h1>
+      <p class="mt-5 text-lg leading-relaxed text-text-muted">
+        IPO Views is an independent tracker that brings the Indian IPO grey market into one
+        clear, fast, mobile-first dashboard — live GMP, day-wise subscription, allotment
+        status and honest listing estimates, with the numbers always front and centre.
+      </p>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">What this site does</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            We aggregate publicly-circulated grey-market data and official exchange
+            information so retail investors can see, at a glance, how an upcoming or open IPO
+            is being received before it lists. For every IPO we surface:
+          </p>
+          <ul class="ml-1 flex flex-col gap-2">
+            {[
+              'Live GMP (Grey Market Premium) with 7-day trend and sentiment',
+              'Day-wise subscription across QIB, NII and RII categories',
+              'Kostak and Subject-to-Sauda (Sub2) rates where available',
+              'Price band, lot size, important dates and a listing-gain estimate',
+              'Allotment status links and a built-in IPO calculator',
+            ].map((li) => (
+              <li class="flex gap-2.5">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true"></span>
+                <span>{li}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Why GMP tracking matters for Indian retail investors</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            For most Indian retail investors, the IPO grey market is the only early read on
+            demand before a stock actually lists. The Grey Market Premium — the price at which
+            an IPO's shares informally change hands ahead of listing — acts as a crowd-sourced
+            sentiment gauge: a rising GMP signals strong appetite, while a cooling or negative
+            GMP can be an early warning of a muted or weak debut.
+          </p>
+          <p>
+            That signal used to live in scattered WhatsApp and Telegram groups, quoted
+            inconsistently and impossible to track over time. IPO Views consolidates it into
+            one timestamped, mobile-first view so you can follow how sentiment shifts across a
+            subscription window — and weigh it alongside subscription numbers and fundamentals
+            rather than chasing a single number.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <div class="card accent-l accent-allotment p-5 sm:p-6">
+          <h2 class="text-h3 font-semibold">Important disclaimer</h2>
+          <div class="mt-2 flex flex-col gap-3 text-sm leading-relaxed text-text-muted">
+            <p>
+              <strong class="text-text">GMP is unofficial grey-market data.</strong> Grey
+              Market Premium, Kostak and Sub2 rates are informal, community-sourced indicators
+              of an unregulated market. They are <strong class="text-text">not endorsed,
+              issued, or verified by SEBI, the NSE, the BSE</strong> or any IPO's registrar,
+              lead manager or issuing company.
+            </p>
+            <p>
+              Nothing on IPO Views is investment advice or a recommendation to apply for,
+              buy, or sell any security. IPO Views is not a SEBI-registered investment
+              adviser. Figures may be delayed, incomplete, or inaccurate. Always do your own
+              research and consult a qualified, registered financial adviser before investing.
+              IPO investments are subject to market risks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="card mt-10 flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 class="text-h3 font-semibold">Questions or corrections?</h2>
+          <p class="mt-1 text-sm text-text-muted">We're happy to hear from you — data fixes welcome.</p>
+        </div>
+        <a href="/contact" class="btn btn-primary shrink-0">Contact us →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import type { Faq } from '../data/faqs';
+
+interface Props {
+  faqs: Faq[];
+}
+const { faqs } = Astro.props;
+---
+
+<!--
+  Zero-JS accordion (DESIGN.md §1.4). Native <details name="faq"> gives
+  exclusive "one open at a time" behaviour in modern browsers; older browsers
+  simply allow multiple open (graceful degradation). Chevron rotates via CSS.
+-->
+<section class="mt-16" aria-label="Frequently asked questions">
+  <SectionHeader
+    title="Frequently asked questions"
+    subtitle="GMP, Kostak, Sub2 and IPO basics, explained simply."
+  />
+  <div class="flex flex-col gap-2.5">
+    {faqs.map((f) => (
+      <details name="faq" class="group card overflow-hidden transition-colors hover:border-border-strong">
+        <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 text-text sm:px-5 [&::-webkit-details-marker]:hidden">
+          <h3 class="text-base font-semibold leading-snug">{f.q}</h3>
+          <svg
+            class="chevron h-5 w-5 shrink-0 text-text-muted transition-transform duration-200 ease-out group-open:rotate-180"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 9l6 6l6 -6"></path>
+          </svg>
+        </summary>
+        <div class="px-4 pb-4 pt-0 text-sm leading-relaxed text-text-muted sm:px-5 sm:pb-5">
+          {f.a}
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Reduced-motion users get no chevron rotation animation (handled globally too). */
+  @media (prefers-reduced-motion: reduce) {
+    .chevron { transition: none; }
+  }
+</style>

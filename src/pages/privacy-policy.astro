@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Privacy Policy | IPO Views';
+const description =
+  'IPO Views privacy policy: we collect no personal data beyond standard analytics, require no account, and use cookies only for analytics. How to make a data request.';
+const updated = 'June 21, 2026';
+---
+
+<BaseLayout title={title} description={description} canonical="/privacy-policy">
+  <div class="container-page py-8 sm:py-12">
+    <article class="mx-auto w-full max-w-[720px]">
+      <span class="pill border border-info/50 text-info">Legal</span>
+      <h1 class="page-title mt-3">Privacy Policy</h1>
+      <p class="num mt-3 text-xs text-text-faint">Last updated: {updated}</p>
+
+      <p class="mt-6 text-lg leading-relaxed text-text-muted">
+        IPO Views is built privacy-first. We don't ask you to create an account, and we
+        don't collect personal data beyond the standard, anonymised analytics every website
+        uses to understand traffic. This page explains exactly what that means.
+      </p>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Information we collect</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            <strong>No personal data.</strong> You can browse every page on IPO Views without
+            signing up, logging in, or telling us who you are. We do not collect names, phone
+            numbers, PAN, demat details, or any other personally identifying information.
+          </p>
+          <p>
+            <strong>Standard analytics.</strong> We use Google Analytics to understand
+            aggregate, anonymous usage — which pages are popular, rough geographic region,
+            device type and referral source. This helps us improve the site. Google Analytics
+            may process a truncated IP address and usage events on our behalf; we do not use
+            it to identify individual visitors.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Cookies</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            We use cookies (and similar local storage) for two narrow purposes:
+            <strong>analytics</strong> — so Google Analytics can measure aggregate traffic —
+            and a small <strong>preference</strong> value that remembers your light/dark theme
+            choice. We do not use advertising or cross-site tracking cookies.
+          </p>
+          <p>
+            You can block or delete cookies anytime in your browser settings. The site will
+            continue to work; only your saved theme preference may reset.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">How we use information</h2>
+        <div class="mt-3 leading-relaxed text-text">
+          <p>
+            Aggregate analytics are used solely to operate, secure and improve IPO Views. We
+            do <strong>not</strong> sell, rent, or share your data with third parties for
+            marketing, and we do not build advertising profiles.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Your data requests</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            Because we don't hold account or personally identifying data, there is typically
+            nothing personal to export or delete. If you have a question about your privacy or
+            would like to make a data request, email us at
+            <a href="mailto:contact@ipoviews.com" class="text-info hover:text-text">contact@ipoviews.com</a>
+            and we'll respond.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Changes to this policy</h2>
+        <div class="mt-3 leading-relaxed text-text">
+          <p>
+            We may update this policy as the site evolves. Material changes will be reflected
+            by the "Last updated" date above.
+          </p>
+        </div>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

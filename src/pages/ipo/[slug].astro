@@ -56,7 +56,9 @@ const productLd = {
   '@type': 'Product',
   name: `${ipo.name} IPO`,
   description: ipo.about ?? description,
-  category: 'IPO',
+  category: `${ipo.type === 'sme' ? 'SME' : 'Mainboard'} IPO`,
+  url: new URL(`/ipo/${ipo.slug}`, Astro.site).href,
+  brand: { '@type': 'Brand', name: ipo.name },
   offers: {
     '@type': 'AggregateOffer',
     priceCurrency: 'INR',
