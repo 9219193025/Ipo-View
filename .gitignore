@@ -26,5 +26,6 @@ Thumbs.db
 .vscode/
 .idea/
 
+
 # Python bytecode cache
 scripts/__pycache__/

@@ -7,6 +7,8 @@ import IpoCard from '../components/IpoCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import IpoCalculator from '../components/IpoCalculator.astro';
 import NewsSection from '../components/NewsSection.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import { HOMEPAGE_FAQS } from '../data/faqs';
 import { getIndiaIPOs, getGmpFreshness } from '../data/index';
 import {
   rupee, pct, marketSentiment, siteAccuracy, byGmpDesc, listingGain, listingEstimate,
@@ -48,8 +50,8 @@ const stats = [
   { label: 'GMP accuracy', value: accuracy.count ? accuracy.score + '%' : '—', sub: `${accuracy.count} listed tracked` },
 ];
 
-const title = 'IPO GMP Today — Live Grey Market Premium Tracker | IPO Views';
-const description = `Live IPO GMP today: ${open.length} open IPOs, top GMP ${topGmp ? rupee(topGmp.gmp) : '—'} (${topGmp?.name ?? ''}). Day-wise subscription, listing estimates & ${accuracy.score}% GMP accuracy.`;
+const title = 'IPO GMP Today Live — Grey Market Premium Tracker | IPO Views';
+const description = `IPO GMP today, live: ${open.length} open IPOs, top GMP ${topGmp ? rupee(topGmp.gmp) : '—'} (${topGmp?.name ?? ''}). Day-wise subscription status, allotment, SME & mainboard IPO listing-gain estimates & ${accuracy.score}% GMP accuracy.`;
 
 const itemListLd = {
   '@context': 'https://schema.org',
@@ -62,9 +64,20 @@ const itemListLd = {
     url: new URL(`/ipo/${i.slug}`, Astro.site).href,
   })),
 };
+
+// FAQPage structured data — mirrors the rendered accordion below.
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: HOMEPAGE_FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
-<BaseLayout title={title} description={description} jsonLd={[itemListLd]}>
+<BaseLayout title={title} description={description} jsonLd={[itemListLd, faqLd]}>
   <!-- HERO -->
   <section class="hero-surface border-b border-border">
     <div class="container-page py-10 sm:py-16">
@@ -80,9 +93,15 @@ const itemListLd = {
       <h1 class="hero-title mt-5 max-w-3xl text-balance">
         Live IPO <em class="italic text-text">Grey Market Premium</em>, tracked honestly.
       </h1>
-      <p class="mt-5 max-w-xl text-text-muted">
-        Real-time GMP, day-wise subscription and the most accurate listing estimates for
-        every mainboard &amp; SME IPO — built for Indian retail investors.
+      <p class="mt-5 max-w-2xl text-text-muted">
+        Track <strong class="font-semibold text-text">IPO GMP today</strong> — live
+        <a href="/learn/what-is-gmp" class="text-info hover:text-text">grey market premium</a>,
+        day-wise subscription status and the most accurate
+        <a href="/listed" class="text-info hover:text-text">listing gain</a> estimates for every
+        mainboard &amp; SME IPO. Check the
+        <a href="/calendar" class="text-info hover:text-text">IPO calendar</a> and
+        <a href="/allotment" class="text-info hover:text-text">allotment status</a> — built for
+        Indian retail investors.
       </p>
 
       <!-- stats bar: horizontal scroll on mobile, grid on desktop -->
@@ -173,5 +192,87 @@ const itemListLd = {
 
     <!-- LATEST NEWS -->
     <NewsSection limit={6} />
+
+    <!-- ABOUT THE TOOL: long-form SEO content -->
+    <section class="mt-16 border-t border-border pt-10" aria-labelledby="about-tool">
+      <div class="max-w-3xl">
+        <h2 id="about-tool" class="page-title">IPO GMP Today — Live Grey Market Premium Tracker</h2>
+        <div class="mt-5 flex flex-col gap-4 leading-relaxed text-text-muted">
+          <p>
+            IPO Views is a free, mobile-first <strong class="text-text">IPO GMP</strong> tracker built
+            for Indian retail investors who want the grey market premium today, live, and without the
+            noise. The <strong class="text-text">IPO grey market premium</strong> (GMP) is the
+            unofficial price at which an IPO's shares change hands before they list on the NSE or BSE,
+            and it has become the single most-watched early signal of listing-day demand. We bring that
+            signal — along with subscription status, allotment timelines and listing-gain estimates —
+            into one clean dashboard, with honest timestamps instead of fake "live" flashing.
+          </p>
+
+          <h3 class="mt-4 text-h3 font-semibold text-text">What is IPO GMP and why it matters</h3>
+          <p>
+            The IPO grey market premium tells you how much extra, over the issue price, buyers are
+            willing to pay ahead of listing. A rising <strong class="text-text">IPO GMP today</strong>
+            usually points to strong demand and a healthy <a href="/listed" class="text-info hover:text-text">listing gain</a>,
+            while a flat or negative GMP is an early warning of a muted debut. Because grey-market quotes
+            were once scattered across WhatsApp and Telegram groups, IPO Views consolidates them into one
+            place so you can see how IPO GMP today compares with yesterday and follow the trend across the
+            full subscription window.
+          </p>
+
+          <h3 class="mt-4 text-h3 font-semibold text-text">Live GMP for SME and Mainboard IPOs</h3>
+          <p>
+            Every open and upcoming IPO shows its <strong class="text-text">IPO GMP live</strong>, the
+            premium as a percentage of the issue price, and a seven-day trend. We cover both
+            <strong class="text-text">mainboard IPO GMP</strong> and <strong class="text-text">SME IPO GMP</strong>,
+            clearly labelled, because the two behave very differently — SME issues carry larger minimum lot
+            values and thinner liquidity. Whether you are checking ipo gmp today live before applying or
+            researching an upcoming IPO in 2026, the numbers stay front and centre and refresh as our data
+            updates.
+          </p>
+
+          <h3 class="mt-4 text-h3 font-semibold text-text">Subscription status, allotment and listing gains</h3>
+          <p>
+            Beyond GMP, IPO Views tracks day-wise <strong class="text-text">IPO subscription status</strong>
+            across the QIB, NII and retail categories, so you can gauge real demand rather than rely on
+            grey-market sentiment alone. Once bidding closes, use our
+            <a href="/allotment" class="text-info hover:text-text">IPO allotment status</a> checker to look up
+            your application by PAN through the official registrar. After listing, our
+            <a href="/listed" class="text-info hover:text-text">listed IPOs</a> page records the actual IPO
+            listing gain against our earlier GMP-based estimate and publishes a transparent accuracy score —
+            because a tracker is only worth using if it is honest about how often it is right.
+          </p>
+
+          <h3 class="mt-4 text-h3 font-semibold text-text">Kostak rate, Sub2 and grey-market basics</h3>
+          <p>
+            New to the grey market? Our <a href="/learn" class="text-info hover:text-text">education hub</a>
+            explains the <strong class="text-text">kostak rate</strong> (a fixed price paid for your entire
+            application regardless of allotment), Subject to Sauda (Sub2, where payment depends on actually
+            receiving an allotment), and how GMP is discovered in the first place. These terms matter if you
+            plan to deal in applications rather than simply apply, and understanding them helps you read GMP
+            movements with the right context.
+          </p>
+
+          <h3 class="mt-4 text-h3 font-semibold text-text">IPO calendar, news and tools</h3>
+          <p>
+            Use the <a href="/calendar" class="text-info hover:text-text">IPO calendar India</a> to see every
+            open, close, allotment and listing date for mainboard and SME issues on one colour-coded grid, and
+            the <a href="/news" class="text-info hover:text-text">latest IPO news</a> feed for headlines from
+            leading Indian market sources. Our IPO calculator estimates your listing-day profit after tax, and
+            the <a href="/compare" class="text-info hover:text-text">compare tool</a> lets you weigh up to three
+            IPOs side by side on GMP, subscription and price band. Bookmark this page to follow every
+            upcoming IPO in 2026 and check IPO GMP today before each application window closes.
+          </p>
+
+          <p class="text-sm text-text-faint">
+            IPO Views is independent and free to use. Grey market premium is an unofficial,
+            community-sourced indicator — it is not investment advice and is not endorsed by SEBI, the NSE
+            or the BSE. Always read the prospectus and do your own research before investing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (SEO + FAQPage JSON-LD) -->
+    <FaqAccordion faqs={HOMEPAGE_FAQS} />
   </div>
 </BaseLayout>

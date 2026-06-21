@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Terms of Use | IPO Views';
+const description =
+  'IPO Views terms of use: GMP, Kostak and Sub2 data is informational only, not investment advice, sourced from public community channels, may be inaccurate. Invest at your own risk.';
+const updated = 'June 21, 2026';
+---
+
+<BaseLayout title={title} description={description} canonical="/terms">
+  <div class="container-page py-8 sm:py-12">
+    <article class="mx-auto w-full max-w-[720px]">
+      <span class="pill border border-info/50 text-info">Legal</span>
+      <h1 class="page-title mt-3">Terms of Use</h1>
+      <p class="num mt-3 text-xs text-text-faint">Last updated: {updated}</p>
+
+      <p class="mt-6 text-lg leading-relaxed text-text-muted">
+        By accessing or using IPO Views (ipoviews.com), you agree to these terms. Please read
+        them carefully — they explain what our data is, what it isn't, and the limits of our
+        responsibility.
+      </p>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Informational use only — not investment advice</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            All content on IPO Views — including GMP (Grey Market Premium), Kostak rates,
+            Subject-to-Sauda (Sub2) rates, subscription figures, listing estimates and any
+            commentary — is provided strictly for <strong>general informational and
+            educational purposes</strong>. It is <strong>not investment advice</strong>, not a
+            recommendation, and not a solicitation to apply for, buy, sell, or hold any
+            security.
+          </p>
+          <p>
+            <strong>IPO Views is not a SEBI-registered investment adviser</strong> or research
+            analyst. Nothing here should be treated as a substitute for advice from a
+            qualified, registered financial professional who understands your circumstances.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Data sources and accuracy</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            Grey-market figures are <strong>sourced from public community channels</strong>
+            and informal market participants. The grey market is unofficial and unregulated;
+            quotes vary between sources and change rapidly.
+          </p>
+          <p>
+            As a result, the data on IPO Views <strong>may not be 100% accurate, complete, or
+            current</strong>, and may be delayed. It is not endorsed or verified by SEBI, the
+            NSE, the BSE, or any IPO's registrar, lead manager or issuer. We make no warranty,
+            express or implied, as to its accuracy or reliability.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Your responsibility and risk</h2>
+        <div class="mt-3 flex flex-col gap-4 leading-relaxed text-text">
+          <p>
+            <strong>You invest at your own risk.</strong> Any decision you make using
+            information from this site is solely your own responsibility. IPO investments are
+            subject to market risks; the value of investments can go down as well as up, and
+            you may lose money.
+          </p>
+          <p>
+            To the fullest extent permitted by law, IPO Views and its operators accept no
+            liability for any loss or damage — direct or indirect — arising from your use of,
+            or reliance on, this site or its data. Always read the official Red Herring
+            Prospectus (RHP) and do your own research before applying to any IPO.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Acceptable use</h2>
+        <div class="mt-3 leading-relaxed text-text">
+          <p>
+            You agree not to scrape, overload, disrupt, or attempt to gain unauthorised access
+            to the site, and not to reproduce our content at scale without permission.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <h2 class="text-h2 font-bold">Changes</h2>
+        <div class="mt-3 leading-relaxed text-text">
+          <p>
+            We may revise these terms at any time. Continued use of the site after changes
+            take effect constitutes acceptance of the revised terms.
+          </p>
+        </div>
+      </section>
+
+      <p class="mt-10 text-sm text-text-muted">
+        Questions about these terms? Email
+        <a href="mailto:contact@ipoviews.com" class="text-info hover:text-text">contact@ipoviews.com</a>.
+      </p>
+    </article>
+  </div>
+</BaseLayout>
