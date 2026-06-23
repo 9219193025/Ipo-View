@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-23T04:14:16.494895+00:00",
-  "source": "preserved-previous",
+  "generatedAt": "2026-06-23T08:05:18.074656+00:00",
+  "source": "SEC+HKEX",
   "ipos": [
     {
       "country": "US",
@@ -141,6 +141,16 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Ambitious Entertainment, Inc.",
+      "filingDate": "2026-06-22",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1900851&type=S-1"
     },
     {
       "country": "US",
