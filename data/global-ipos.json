@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T08:29:42.537215+00:00",
+  "generatedAt": "2026-06-24T11:25:09.012588+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -161,16 +161,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Sinda Ltd.",
-      "filingDate": "2026-06-22",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Mining",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096861&type=S-1"
     }
   ]
 }
