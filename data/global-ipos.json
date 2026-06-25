@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T15:29:55.365633+00:00",
+  "generatedAt": "2026-06-25T17:33:20.889736+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -94,16 +94,6 @@
     },
     {
       "country": "US",
-      "name": "Advasa Holdings, Inc.",
-      "filingDate": "2026-06-25",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2084227&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Swarmer, Inc",
       "filingDate": "2026-06-10",
       "listingDate": "",
@@ -164,13 +154,13 @@
     },
     {
       "country": "US",
-      "name": "Csquare, Inc.",
-      "filingDate": "2026-06-25",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-05-26",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "Technology / Software",
+      "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2105398&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
