@@ -1,27 +1,7 @@
 {
-  "generatedAt": "2026-06-25T23:54:51.236824+00:00",
+  "generatedAt": "2026-06-26T04:23:41.045924+00:00",
   "source": "SEC+HKEX",
   "ipos": [
-    {
-      "country": "US",
-      "name": "Quantinuum Inc.",
-      "filingDate": "2026-05-26",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110105&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "DPC Holdings Ltd",
-      "filingDate": "2026-05-26",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2107018&type=S-1"
-    },
     {
       "country": "US",
       "name": "Safepoint Holdings, Inc.",
@@ -64,6 +44,16 @@
     },
     {
       "country": "US",
+      "name": "DPC Holdings Ltd",
+      "filingDate": "2026-06-15",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2107018&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "bioAffinity Technologies, Inc.",
       "filingDate": "2026-06-16",
       "listingDate": "",
@@ -74,13 +64,13 @@
     },
     {
       "country": "US",
-      "name": "Kardigan, Inc.",
-      "filingDate": "2026-05-26",
+      "name": "Quantinuum Inc.",
+      "filingDate": "2026-06-01",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "Pharma / Chemicals",
+      "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2123613&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110105&type=S-1"
     },
     {
       "country": "US",
@@ -171,6 +161,16 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2105398&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Sinda Ltd.",
+      "filingDate": "2026-06-24",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Mining",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096861&type=S-1"
     }
   ]
 }
