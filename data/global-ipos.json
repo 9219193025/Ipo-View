@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T22:36:51.404732+00:00",
+  "generatedAt": "2026-06-29T00:16:33.263267+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -111,16 +111,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2049977&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "BIOVENTRIX, INC.",
-      "filingDate": "2026-05-29",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1283259&type=S-1"
     },
     {
       "country": "US",
