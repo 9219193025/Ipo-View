@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-06-29T21:54:36.212290+00:00",
+  "generatedAt": "2026-06-29T23:07:17.870897+00:00",
   "source": "SEC+HKEX",
   "ipos": [
+    {
+      "country": "US",
+      "name": "SeeQC, Inc.",
+      "filingDate": "2026-06-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
+    },
     {
       "country": "US",
       "name": "Safepoint Holdings, Inc.",
@@ -61,6 +71,16 @@
       "industry": "Professional Services",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1712762&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Exyn Technologies, Inc.",
+      "filingDate": "2026-06-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1960355&type=S-1"
     },
     {
       "country": "US",
