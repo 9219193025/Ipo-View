@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T18:06:02.584319+00:00",
+  "generatedAt": "2026-06-30T20:31:15.413408+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -61,6 +61,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2107018&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Factorial Energy Inc.",
+      "filingDate": "2026-06-30",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Electronics",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2049662&type=S-1"
     },
     {
       "country": "US",
