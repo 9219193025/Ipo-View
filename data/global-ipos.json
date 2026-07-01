@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-01T08:52:53.291303+00:00",
-  "source": "preserved-previous",
+  "generatedAt": "2026-07-01T12:14:09.546279+00:00",
+  "source": "SEC+HKEX",
   "ipos": [
     {
       "country": "US",
@@ -91,6 +91,16 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1960355&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Encore Medical, Inc.",
+      "filingDate": "2026-07-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Instruments / MedTech",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
     },
     {
       "country": "US",
