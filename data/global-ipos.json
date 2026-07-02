@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T23:52:52.433208+00:00",
+  "generatedAt": "2026-07-02T04:13:54.516296+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -11,16 +11,6 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Safepoint Holdings, Inc.",
-      "filingDate": "2026-06-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Insurance",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1653827&type=S-1"
     },
     {
       "country": "US",
@@ -101,16 +91,6 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Quantinuum Inc.",
-      "filingDate": "2026-06-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110105&type=S-1"
     },
     {
       "country": "US",
