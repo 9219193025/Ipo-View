@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-06T20:08:59.776892+00:00",
+  "generatedAt": "2026-07-06T21:57:34.705312+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -71,6 +71,16 @@
       "industry": "Professional Services",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1712762&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Syntiant Corp.",
+      "filingDate": "2026-07-06",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Electronics",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1718728&type=S-1"
     },
     {
       "country": "US",
