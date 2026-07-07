@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T21:57:17.101287+00:00",
+  "generatedAt": "2026-07-07T23:10:17.546318+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -174,16 +174,6 @@
     },
     {
       "country": "US",
-      "name": "Standard Nuclear, Inc.",
-      "filingDate": "2026-07-07",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2086716&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Csquare, Inc.",
       "filingDate": "2026-06-25",
       "listingDate": "",
@@ -191,6 +181,16 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2105398&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Standard Nuclear, Inc.",
+      "filingDate": "2026-07-07",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2086716&type=S-1"
     },
     {
       "country": "US",
