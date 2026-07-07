@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T15:47:25.015735+00:00",
+  "generatedAt": "2026-07-07T18:08:10.282338+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -171,16 +171,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1900851&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Standard Nuclear, Inc.",
-      "filingDate": "2026-07-07",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2086716&type=S-1"
     },
     {
       "country": "US",
