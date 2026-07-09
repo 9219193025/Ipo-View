@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T23:17:17.014685+00:00",
+  "generatedAt": "2026-07-09T01:11:31.297557+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -21,16 +21,6 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1699963&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Research Alliance Corp IV",
-      "filingDate": "2026-06-08",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2137777&type=S-1"
     },
     {
       "country": "US",
@@ -201,6 +191,16 @@
       "industry": "Mining",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096861&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
