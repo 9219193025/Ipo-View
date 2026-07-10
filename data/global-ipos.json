@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T23:48:06.616309+00:00",
+  "generatedAt": "2026-07-10T04:03:58.315521+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -114,16 +114,6 @@
     },
     {
       "country": "US",
-      "name": "Starton Holdings, Inc.",
-      "filingDate": "2026-06-09",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2049977&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "ITG, Inc.",
       "filingDate": "2026-06-26",
       "listingDate": "",
@@ -191,6 +181,16 @@
       "industry": "Mining",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096861&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
