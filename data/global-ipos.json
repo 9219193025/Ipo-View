@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T18:08:39.767570+00:00",
+  "generatedAt": "2026-07-10T20:00:21.545402+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -61,6 +61,16 @@
       "industry": "Professional Services",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1712762&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Tailored Brands, Inc. / DE",
+      "filingDate": "2026-07-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2045151&type=S-1"
     },
     {
       "country": "US",
