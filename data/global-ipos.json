@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T08:00:32.135992+00:00",
+  "generatedAt": "2026-07-10T11:26:32.712490+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -181,16 +181,6 @@
       "industry": "Mining",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096861&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "VARSAL TECH, INC.",
-      "filingDate": "2026-07-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
