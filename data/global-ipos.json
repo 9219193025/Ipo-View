@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T22:33:58.610445+00:00",
+  "generatedAt": "2026-07-11T00:05:10.995026+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -131,16 +131,6 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2084227&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Swarmer, Inc",
-      "filingDate": "2026-06-10",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2092574&type=S-1"
     },
     {
       "country": "US",
