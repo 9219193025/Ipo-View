@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T23:31:37.473105+00:00",
+  "generatedAt": "2026-07-12T03:42:06.203198+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -141,16 +141,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110117&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "ENTRATA, INC.",
-      "filingDate": "2026-06-11",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
     },
     {
       "country": "US",
