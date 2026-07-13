@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T23:30:59.772502+00:00",
+  "generatedAt": "2026-07-13T03:45:11.854729+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -41,16 +41,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Solidion Technology Inc.",
-      "filingDate": "2026-06-12",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Electronics",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1881551&type=S-1"
     },
     {
       "country": "US",
@@ -181,6 +171,26 @@
       "industry": "Mining",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096861&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Holtec Nuclear Corp",
+      "filingDate": "2026-07-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
     }
   ]
 }
