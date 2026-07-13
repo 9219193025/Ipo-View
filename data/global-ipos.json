@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T20:20:19.970067+00:00",
+  "generatedAt": "2026-07-13T21:30:17.375095+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -115,12 +115,22 @@
     {
       "country": "US",
       "name": "Advasa Holdings, Inc.",
-      "filingDate": "2026-06-25",
+      "filingDate": "2026-07-13",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2084227&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Starton Holdings, Inc.",
+      "filingDate": "2026-07-13",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2049977&type=S-1"
     },
     {
       "country": "US",
