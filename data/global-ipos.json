@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T20:36:09.037792+00:00",
+  "generatedAt": "2026-07-15T22:08:41.499513+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -74,6 +74,16 @@
     },
     {
       "country": "US",
+      "name": "Encore Medical, Inc.",
+      "filingDate": "2026-07-15",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Instruments / MedTech",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "bioAffinity Technologies, Inc.",
       "filingDate": "2026-06-16",
       "listingDate": "",
@@ -111,16 +121,6 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1960355&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Encore Medical, Inc.",
-      "filingDate": "2026-07-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
     },
     {
       "country": "US",
