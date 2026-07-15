@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15T14:22:25.094930+00:00",
+  "generatedAt": "2026-07-15T16:05:30.590014+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -125,7 +125,7 @@
     {
       "country": "US",
       "name": "Advasa Holdings, Inc.",
-      "filingDate": "2026-06-25",
+      "filingDate": "2026-07-13",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Technology / Software",
@@ -201,16 +201,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131524&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "VARSAL TECH, INC.",
-      "filingDate": "2026-07-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     },
     {
       "country": "US",
