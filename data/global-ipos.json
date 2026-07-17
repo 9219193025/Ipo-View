@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16T22:31:10.255475+00:00",
+  "generatedAt": "2026-07-17T00:05:11.658122+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -71,16 +71,6 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "bioAffinity Technologies, Inc.",
-      "filingDate": "2026-06-16",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Professional Services",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1712762&type=S-1"
     },
     {
       "country": "US",
@@ -201,6 +191,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2107018&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Holtec Nuclear Corp",
+      "filingDate": "2026-07-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
     }
   ]
 }
