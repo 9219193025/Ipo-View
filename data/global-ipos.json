@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T17:00:46.311303+00:00",
+  "generatedAt": "2026-07-20T19:14:55.343423+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -44,16 +44,6 @@
     },
     {
       "country": "US",
-      "name": "Scribe Therapeutics, Inc.",
-      "filingDate": "2026-07-10",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Attovia Therapeutics, Inc.",
       "filingDate": "2026-07-14",
       "listingDate": "",
@@ -61,6 +51,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2058707&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Scribe Therapeutics, Inc.",
+      "filingDate": "2026-07-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
     },
     {
       "country": "US",
@@ -204,6 +204,16 @@
     },
     {
       "country": "US",
+      "name": "Holtec Nuclear Corp",
+      "filingDate": "2026-07-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "VARSAL TECH, INC.",
       "filingDate": "2026-07-01",
       "listingDate": "",
@@ -214,13 +224,13 @@
     },
     {
       "country": "US",
-      "name": "Holtec Nuclear Corp",
-      "filingDate": "2026-07-10",
+      "name": "Vogenx, Inc.",
+      "filingDate": "2026-07-15",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "General",
+      "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
     }
   ]
 }
