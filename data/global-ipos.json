@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-07-20T10:18:37.051138+00:00",
+  "generatedAt": "2026-07-20T12:34:35.704801+00:00",
   "source": "SEC+HKEX",
   "ipos": [
+    {
+      "country": "US",
+      "name": "Reformation Inc.",
+      "filingDate": "2026-07-20",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1787117&type=S-1"
+    },
     {
       "country": "US",
       "name": "Apnimed, Inc.",
@@ -194,16 +204,6 @@
     },
     {
       "country": "US",
-      "name": "VARSAL TECH, INC.",
-      "filingDate": "2026-07-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Holtec Nuclear Corp",
       "filingDate": "2026-07-10",
       "listingDate": "",
@@ -214,13 +214,13 @@
     },
     {
       "country": "US",
-      "name": "Vogenx, Inc.",
-      "filingDate": "2026-07-15",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-01",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
