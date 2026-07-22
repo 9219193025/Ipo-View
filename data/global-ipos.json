@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T23:34:58.141103+00:00",
+  "generatedAt": "2026-07-22T03:31:22.473671+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -204,16 +204,6 @@
     },
     {
       "country": "US",
-      "name": "VARSAL TECH, INC.",
-      "filingDate": "2026-07-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Holtec Nuclear Corp",
       "filingDate": "2026-07-10",
       "listingDate": "",
@@ -221,6 +211,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
