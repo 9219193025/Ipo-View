@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T23:35:57.519248+00:00",
+  "generatedAt": "2026-07-25T03:29:58.890780+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -164,16 +164,6 @@
     },
     {
       "country": "US",
-      "name": "Sinda Ltd.",
-      "filingDate": "2026-06-24",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Mining",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2096861&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Braveheart Bio, Inc.",
       "filingDate": "2026-07-15",
       "listingDate": "",
@@ -184,6 +174,16 @@
     },
     {
       "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Holtec Nuclear Corp",
       "filingDate": "2026-07-10",
       "listingDate": "",
@@ -191,16 +191,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "VARSAL TECH, INC.",
-      "filingDate": "2026-07-22",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     }
   ]
 }
