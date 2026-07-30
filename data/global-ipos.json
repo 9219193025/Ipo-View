@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T22:31:09.193259+00:00",
+  "generatedAt": "2026-07-30T00:05:33.468723+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -21,16 +21,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1745648&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "SeeQC, Inc.",
-      "filingDate": "2026-06-29",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
     },
     {
       "country": "US",
@@ -91,16 +81,6 @@
       "industry": "Electronics",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1718728&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Exyn Technologies, Inc.",
-      "filingDate": "2026-06-29",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1960355&type=S-1"
     },
     {
       "country": "US",
@@ -181,6 +161,26 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-22",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Vogenx, Inc.",
+      "filingDate": "2026-07-15",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
     }
   ]
 }
