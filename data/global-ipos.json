@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T16:08:07.468740+00:00",
+  "generatedAt": "2026-07-30T17:58:00.638128+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -24,16 +24,6 @@
     },
     {
       "country": "US",
-      "name": "Attovia Therapeutics, Inc.",
-      "filingDate": "2026-07-14",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2058707&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Scribe Therapeutics, Inc.",
       "filingDate": "2026-07-10",
       "listingDate": "",
@@ -41,6 +31,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Attovia Therapeutics, Inc.",
+      "filingDate": "2026-07-14",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2058707&type=S-1"
     },
     {
       "country": "US",
@@ -154,16 +154,6 @@
     },
     {
       "country": "US",
-      "name": "VARSAL TECH, INC.",
-      "filingDate": "2026-07-01",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Holtec Nuclear Corp",
       "filingDate": "2026-07-10",
       "listingDate": "",
@@ -171,6 +161,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VARSAL TECH, INC.",
+      "filingDate": "2026-07-22",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
     },
     {
       "country": "US",
