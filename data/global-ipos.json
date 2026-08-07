@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T09:11:21.721506+00:00",
+  "generatedAt": "2026-08-07T10:27:50.075349+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -41,6 +41,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "KiNRG, Inc.",
+      "filingDate": "2026-08-07",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=95572&type=S-1"
     },
     {
       "country": "US",
@@ -131,16 +141,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131524&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Holtec Nuclear Corp",
-      "filingDate": "2026-07-10",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2104277&type=S-1"
     }
   ]
 }
