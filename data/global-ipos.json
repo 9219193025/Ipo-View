@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T07:35:52.565473+00:00",
+  "generatedAt": "2026-08-07T09:11:21.721506+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -24,16 +24,6 @@
     },
     {
       "country": "US",
-      "name": "Scribe Therapeutics, Inc.",
-      "filingDate": "2026-07-10",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Attovia Therapeutics, Inc.",
       "filingDate": "2026-07-14",
       "listingDate": "",
@@ -41,6 +31,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2058707&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Scribe Therapeutics, Inc.",
+      "filingDate": "2026-07-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
     },
     {
       "country": "US",
