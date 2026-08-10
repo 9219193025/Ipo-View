@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T22:47:48.783415+00:00",
+  "generatedAt": "2026-08-10T23:41:52.671162+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -14,6 +14,16 @@
     },
     {
       "country": "US",
+      "name": "Gores Holdings XII, Inc.",
+      "filingDate": "2026-08-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2147267&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Attovia Therapeutics, Inc.",
       "filingDate": "2026-07-14",
       "listingDate": "",
@@ -21,6 +31,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2058707&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "GigCapital10 Corp.",
+      "filingDate": "2026-08-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2149294&type=S-1"
     },
     {
       "country": "US",
@@ -55,7 +75,7 @@
     {
       "country": "US",
       "name": "Encore Medical, Inc.",
-      "filingDate": "2026-07-15",
+      "filingDate": "2026-08-10",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Instruments / MedTech",
@@ -144,16 +164,6 @@
     },
     {
       "country": "US",
-      "name": "Neuro Spectrum Insights, Inc.",
-      "filingDate": "2026-07-30",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2034588&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Vogenx, Inc.",
       "filingDate": "2026-07-15",
       "listingDate": "",
@@ -164,23 +174,13 @@
     },
     {
       "country": "US",
-      "name": "Little West Holdings Inc.",
-      "filingDate": "2026-07-24",
+      "name": "Neuro Spectrum Insights, Inc.",
+      "filingDate": "2026-07-30",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "Food",
+      "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "NuvOx Therapeutics, Inc.",
-      "filingDate": "2026-07-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2034588&type=S-1"
     }
   ]
 }
