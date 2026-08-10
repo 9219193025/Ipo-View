@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T07:58:06.075489+00:00",
+  "generatedAt": "2026-08-10T09:42:55.721354+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -144,16 +144,6 @@
     },
     {
       "country": "US",
-      "name": "Vogenx, Inc.",
-      "filingDate": "2026-07-15",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Neuro Spectrum Insights, Inc.",
       "filingDate": "2026-07-30",
       "listingDate": "",
@@ -161,6 +151,16 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2034588&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Vogenx, Inc.",
+      "filingDate": "2026-07-15",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
     },
     {
       "country": "US",
