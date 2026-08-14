@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T23:50:51.258420+00:00",
+  "generatedAt": "2026-08-14T02:33:11.852880+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -21,16 +21,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2147267&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Attovia Therapeutics, Inc.",
-      "filingDate": "2026-07-14",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2058707&type=S-1"
     },
     {
       "country": "US",
@@ -151,6 +141,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1853921&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Vogenx, Inc.",
+      "filingDate": "2026-07-15",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
     }
   ]
 }
