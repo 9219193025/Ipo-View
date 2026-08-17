@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T23:48:55.207881+00:00",
+  "generatedAt": "2026-08-17T01:47:42.980799+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -171,16 +171,6 @@
       "industry": "Food",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "NuvOx Therapeutics, Inc.",
-      "filingDate": "2026-07-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
     }
   ]
 }
