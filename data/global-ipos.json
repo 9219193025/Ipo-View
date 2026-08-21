@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T19:30:56.649490+00:00",
+  "generatedAt": "2026-08-21T20:33:05.809448+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -84,6 +84,16 @@
     },
     {
       "country": "US",
+      "name": "CoVolt Power, Inc.",
+      "filingDate": "2026-08-21",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131613&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Teamshares Inc",
       "filingDate": "2026-07-29",
       "listingDate": "",
@@ -161,16 +171,6 @@
       "industry": "Food",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Alopexx, Inc.",
-      "filingDate": "2026-08-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
     }
   ]
 }
