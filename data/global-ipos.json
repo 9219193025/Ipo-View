@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T20:33:05.809448+00:00",
+  "generatedAt": "2026-08-21T21:31:40.359673+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -71,6 +71,16 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Bitari Inc",
+      "filingDate": "2026-08-21",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Brokerage",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2091680&type=S-1"
     },
     {
       "country": "US",
@@ -161,16 +171,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Little West Holdings Inc.",
-      "filingDate": "2026-07-24",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Food",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
     }
   ]
 }
