@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T19:35:44.199651+00:00",
+  "generatedAt": "2026-08-24T20:39:03.975039+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -181,16 +181,6 @@
       "industry": "Food",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Alopexx, Inc.",
-      "filingDate": "2026-08-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
     }
   ]
 }
