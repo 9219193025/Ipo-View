@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23T23:51:44.265245+00:00",
+  "generatedAt": "2026-08-24T01:49:42.921320+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -175,12 +175,22 @@
     {
       "country": "US",
       "name": "Little West Holdings Inc.",
-      "filingDate": "2026-07-24",
+      "filingDate": "2026-08-21",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Food",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Alopexx, Inc.",
+      "filingDate": "2026-08-17",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
     }
   ]
 }
