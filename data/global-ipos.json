@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T21:00:02.157465+00:00",
+  "generatedAt": "2026-08-27T00:44:08.092970+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -114,16 +114,6 @@
     },
     {
       "country": "US",
-      "name": "Apnimed, Inc.",
-      "filingDate": "2026-07-27",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1745648&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Ambitious Entertainment, Inc.",
       "filingDate": "2026-08-06",
       "listingDate": "",
@@ -171,6 +161,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Little West Holdings Inc.",
+      "filingDate": "2026-08-21",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Food",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
     }
   ]
 }
