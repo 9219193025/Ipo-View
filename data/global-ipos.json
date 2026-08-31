@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T13:34:37.370058+00:00",
+  "generatedAt": "2026-08-31T19:56:24.902624+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -171,6 +171,16 @@
       "industry": "Food",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "La Beaute Inc.",
+      "filingDate": "2026-08-31",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2151905&type=S-1"
     },
     {
       "country": "US",
