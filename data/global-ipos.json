@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T09:55:02.740052+00:00",
+  "generatedAt": "2026-09-01T14:42:57.294263+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -11,6 +11,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2113088&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "SB Energy, Inc.",
+      "filingDate": "2026-09-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Utilities",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133037&type=S-1"
     },
     {
       "country": "US",
@@ -134,6 +144,16 @@
     },
     {
       "country": "US",
+      "name": "ENTRATA, INC.",
+      "filingDate": "2026-09-01",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2028464&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Ambitious Entertainment, Inc.",
       "filingDate": "2026-08-06",
       "listingDate": "",
@@ -181,36 +201,6 @@
       "industry": "Food",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "La Beaute Inc.",
-      "filingDate": "2026-08-31",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2151905&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Alopexx, Inc.",
-      "filingDate": "2026-08-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Amaero Inc.",
-      "filingDate": "2026-08-28",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
     }
   ]
 }
