@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T17:49:57.896205+00:00",
+  "generatedAt": "2026-09-02T20:55:40.465687+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -184,6 +184,16 @@
     },
     {
       "country": "US",
+      "name": "Accelevation Holdings Corp.",
+      "filingDate": "2026-09-02",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Electronics",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141406&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Vogenx, Inc.",
       "filingDate": "2026-08-10",
       "listingDate": "",
@@ -191,16 +201,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1903784&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Little West Holdings Inc.",
-      "filingDate": "2026-08-21",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Food",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
     }
   ]
 }
