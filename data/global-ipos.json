@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T23:43:33.905640+00:00",
+  "generatedAt": "2026-09-07T04:19:27.129757+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -61,16 +61,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1670747&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "KiNRG, Inc.",
-      "filingDate": "2026-08-07",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=95572&type=S-1"
     },
     {
       "country": "US",
@@ -221,6 +211,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Lyntris Inc.",
+      "filingDate": "2026-08-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Instruments / MedTech",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2132582&type=S-1"
     }
   ]
 }
