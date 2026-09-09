@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T19:40:34.504119+00:00",
+  "generatedAt": "2026-09-09T22:26:32.825337+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -224,13 +224,13 @@
     },
     {
       "country": "US",
-      "name": "Lyntris Inc.",
-      "filingDate": "2026-08-10",
+      "name": "MapLight Therapeutics, Inc.",
+      "filingDate": "2026-09-09",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "Instruments / MedTech",
+      "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2132582&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1770069&type=S-1"
     }
   ]
 }
