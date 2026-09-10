@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T15:06:59.932410+00:00",
+  "generatedAt": "2026-09-10T18:38:59.175658+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -191,16 +191,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1770069&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Lyntris Inc.",
-      "filingDate": "2026-08-12",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2132582&type=S-1"
     }
   ]
 }
