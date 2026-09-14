@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-09-14T07:50:03.313698+00:00",
+  "generatedAt": "2026-09-14T14:57:43.397816+00:00",
   "source": "SEC+HKEX",
   "ipos": [
+    {
+      "country": "US",
+      "name": "Bamboo Insurance Services, Inc.",
+      "filingDate": "2026-09-14",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2125355&type=S-1"
+    },
     {
       "country": "US",
       "name": "Graf Industrial Corp. II",
@@ -21,16 +31,6 @@
       "industry": "Utilities",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133037&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Bamboo Insurance Services, Inc.",
-      "filingDate": "2026-08-28",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2125355&type=S-1"
     },
     {
       "country": "US",
@@ -65,7 +65,7 @@
     {
       "country": "US",
       "name": "Electra Therapeutics, Inc.",
-      "filingDate": "2026-08-28",
+      "filingDate": "2026-09-14",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Pharma / Chemicals",
