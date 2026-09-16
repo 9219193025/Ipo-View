@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T18:48:00.198947+00:00",
+  "generatedAt": "2026-09-16T22:02:19.758941+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -45,7 +45,7 @@
     {
       "country": "US",
       "name": "Bitari Inc",
-      "filingDate": "2026-08-21",
+      "filingDate": "2026-09-15",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Brokerage",
@@ -181,16 +181,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "MapLight Therapeutics, Inc.",
-      "filingDate": "2026-09-09",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1770069&type=S-1"
     }
   ]
 }
