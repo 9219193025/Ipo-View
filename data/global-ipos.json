@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T22:02:19.758941+00:00",
+  "generatedAt": "2026-09-17T00:50:04.642760+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -124,16 +124,6 @@
     },
     {
       "country": "US",
-      "name": "VARSAL TECH, INC.",
-      "filingDate": "2026-08-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109801&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Accelevation Holdings Corp.",
       "filingDate": "2026-09-02",
       "listingDate": "",
@@ -161,16 +151,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2151905&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Alopexx, Inc.",
-      "filingDate": "2026-08-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
     },
     {
       "country": "US",
