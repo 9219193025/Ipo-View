@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T05:59:45.822585+00:00",
+  "generatedAt": "2026-09-17T11:33:06.750345+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -45,7 +45,7 @@
     {
       "country": "US",
       "name": "Bitari Inc",
-      "filingDate": "2026-08-21",
+      "filingDate": "2026-09-15",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Brokerage",
