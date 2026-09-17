@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T20:09:24.625795+00:00",
+  "generatedAt": "2026-09-17T23:01:01.451520+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -45,7 +45,7 @@
     {
       "country": "US",
       "name": "Bitari Inc",
-      "filingDate": "2026-09-15",
+      "filingDate": "2026-08-21",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Brokerage",
@@ -151,6 +151,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2151905&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Alopexx, Inc.",
+      "filingDate": "2026-09-17",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
     },
     {
       "country": "US",
