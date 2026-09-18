@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T06:31:04.166592+00:00",
+  "generatedAt": "2026-09-18T12:11:01.637655+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -41,6 +41,16 @@
       "industry": "Utilities",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133037&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VME Companies, Inc.",
+      "filingDate": "2026-09-18",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Industrials",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2113640&type=S-1"
     },
     {
       "country": "US",
@@ -151,16 +161,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Amaero Inc.",
-      "filingDate": "2026-08-28",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
     }
   ]
 }
