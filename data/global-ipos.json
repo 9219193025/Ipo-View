@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T19:16:19.665772+00:00",
+  "generatedAt": "2026-09-19T21:40:36.837768+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -44,16 +44,6 @@
     },
     {
       "country": "US",
-      "name": "VME Companies, Inc.",
-      "filingDate": "2026-09-18",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Industrials",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2113640&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Bitari Inc",
       "filingDate": "2026-08-21",
       "listingDate": "",
@@ -61,6 +51,16 @@
       "industry": "Brokerage",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2091680&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "VME Companies, Inc.",
+      "filingDate": "2026-09-18",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Industrials",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2113640&type=S-1"
     },
     {
       "country": "US",
