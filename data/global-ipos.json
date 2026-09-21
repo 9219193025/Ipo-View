@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T23:08:47.985846+00:00",
+  "generatedAt": "2026-09-21T01:30:05.167097+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -64,16 +64,6 @@
     },
     {
       "country": "US",
-      "name": "CoVolt Power, Inc.",
-      "filingDate": "2026-08-21",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2131613&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Electra Therapeutics, Inc.",
       "filingDate": "2026-09-14",
       "listingDate": "",
@@ -135,7 +125,7 @@
     {
       "country": "US",
       "name": "Little West Holdings Inc.",
-      "filingDate": "2026-08-21",
+      "filingDate": "2026-09-14",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Food",
@@ -171,6 +161,36 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Retension Pharmaceuticals, Inc.",
+      "filingDate": "2026-09-18",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "NuvOx Therapeutics, Inc.",
+      "filingDate": "2026-09-16",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "MapLight Therapeutics, Inc.",
+      "filingDate": "2026-09-09",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1770069&type=S-1"
     }
   ]
 }
