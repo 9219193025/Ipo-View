@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T18:57:28.322202+00:00",
+  "generatedAt": "2026-09-23T22:12:24.290706+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -41,6 +41,16 @@
       "industry": "Utilities",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133037&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Wella Co",
+      "filingDate": "2026-09-23",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2125056&type=S-1"
     },
     {
       "country": "US",
@@ -111,16 +121,6 @@
       "industry": "Automotive",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2108671&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Wella Co",
-      "filingDate": "2026-08-31",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2125056&type=S-1"
     },
     {
       "country": "US",
