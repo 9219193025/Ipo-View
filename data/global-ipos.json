@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T06:04:01.818281+00:00",
+  "generatedAt": "2026-09-29T13:15:28.486851+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -34,6 +34,16 @@
     },
     {
       "country": "US",
+      "name": "Bitari Inc",
+      "filingDate": "2026-09-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Brokerage",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2091680&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Encore Medical, Inc.",
       "filingDate": "2026-09-28",
       "listingDate": "",
@@ -61,16 +71,6 @@
       "industry": "Industrials",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2113640&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Bitari Inc",
-      "filingDate": "2026-09-15",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Brokerage",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2091680&type=S-1"
     },
     {
       "country": "US",
@@ -115,7 +115,7 @@
     {
       "country": "US",
       "name": "Rothe Development, Inc.",
-      "filingDate": "2026-09-21",
+      "filingDate": "2026-09-04",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Automotive",
@@ -144,16 +144,6 @@
     },
     {
       "country": "US",
-      "name": "Iambic Therapeutics, Inc.",
-      "filingDate": "2026-09-21",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997038&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "La Beaute Inc.",
       "filingDate": "2026-08-31",
       "listingDate": "",
@@ -161,6 +151,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2151905&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Iambic Therapeutics, Inc.",
+      "filingDate": "2026-09-21",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997038&type=S-1"
     },
     {
       "country": "US",
