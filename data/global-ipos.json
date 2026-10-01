@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T00:07:58.933959+00:00",
-  "source": "preserved-previous",
+  "generatedAt": "2026-10-01T06:26:19.860116+00:00",
+  "source": "SEC+HKEX",
   "ipos": [
     {
       "country": "US",
@@ -154,16 +154,6 @@
     },
     {
       "country": "US",
-      "name": "La Beaute Inc.",
-      "filingDate": "2026-08-31",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2151905&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Iambic Therapeutics, Inc.",
       "filingDate": "2026-09-21",
       "listingDate": "",
@@ -191,6 +181,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Retension Pharmaceuticals, Inc.",
+      "filingDate": "2026-09-18",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
     }
   ]
 }
