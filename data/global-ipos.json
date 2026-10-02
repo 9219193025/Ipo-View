@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T09:37:09.511031+00:00",
+  "generatedAt": "2026-10-02T16:12:23.838064+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -191,16 +191,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "MapLight Therapeutics, Inc.",
-      "filingDate": "2026-09-09",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1770069&type=S-1"
     }
   ]
 }
