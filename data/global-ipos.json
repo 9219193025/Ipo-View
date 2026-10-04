@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T22:23:04.896328+00:00",
+  "generatedAt": "2026-10-04T01:56:21.877213+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -104,16 +104,6 @@
     },
     {
       "country": "US",
-      "name": "Oura Inc.",
-      "filingDate": "2026-09-03",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Industrials",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133022&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Rothe Development, Inc.",
       "filingDate": "2026-09-04",
       "listingDate": "",
@@ -121,6 +111,16 @@
       "industry": "Automotive",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2108671&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Oura Inc.",
+      "filingDate": "2026-09-21",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Industrials",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133022&type=S-1"
     },
     {
       "country": "US",
