@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T06:49:23.438098+00:00",
+  "generatedAt": "2026-10-05T15:50:43.953498+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -105,7 +105,7 @@
     {
       "country": "US",
       "name": "Rothe Development, Inc.",
-      "filingDate": "2026-09-21",
+      "filingDate": "2026-10-05",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Automotive",
@@ -124,6 +124,16 @@
     },
     {
       "country": "US",
+      "name": "Neuro Spectrum Insights, Inc.",
+      "filingDate": "2026-10-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Instruments / MedTech",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2034588&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Little West Holdings Inc.",
       "filingDate": "2026-09-14",
       "listingDate": "",
@@ -131,6 +141,16 @@
       "industry": "Food",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "TRex Bio, Inc.",
+      "filingDate": "2026-10-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2139097&type=S-1"
     },
     {
       "country": "US",
@@ -154,6 +174,16 @@
     },
     {
       "country": "US",
+      "name": "Retension Pharmaceuticals, Inc.",
+      "filingDate": "2026-10-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Amaero Inc.",
       "filingDate": "2026-09-18",
       "listingDate": "",
@@ -161,16 +191,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Retension Pharmaceuticals, Inc.",
-      "filingDate": "2026-09-18",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
     },
     {
       "country": "US",
@@ -191,16 +211,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1770069&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Accelevation Holdings Corp.",
-      "filingDate": "2026-09-22",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Electronics",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141406&type=S-1"
     }
   ]
 }
