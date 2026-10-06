@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T22:30:11.513501+00:00",
+  "generatedAt": "2026-10-06T02:28:46.615339+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -21,6 +21,16 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=95572&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Lycia Therapeutics, Inc.",
+      "filingDate": "2026-10-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=S-1"
     },
     {
       "country": "US",
