@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T15:13:00.702028+00:00",
+  "generatedAt": "2026-10-09T20:17:53.054358+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -24,6 +24,16 @@
     },
     {
       "country": "US",
+      "name": "Aspen Neuroscience, Inc.",
+      "filingDate": "2026-10-09",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2124080&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Lycia Therapeutics, Inc.",
       "filingDate": "2026-10-05",
       "listingDate": "",
@@ -41,6 +51,16 @@
       "industry": "Utilities",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133037&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Simwon America Corp.",
+      "filingDate": "2026-10-09",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Automotive",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1698506&type=S-1"
     },
     {
       "country": "US",
@@ -191,36 +211,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2139097&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Alopexx, Inc.",
-      "filingDate": "2026-09-17",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Retension Pharmaceuticals, Inc.",
-      "filingDate": "2026-10-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Amaero Inc.",
-      "filingDate": "2026-09-18",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
     }
   ]
 }
