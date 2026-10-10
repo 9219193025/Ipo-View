@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T20:17:53.054358+00:00",
+  "generatedAt": "2026-10-10T00:16:41.975239+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -204,6 +204,26 @@
     },
     {
       "country": "US",
+      "name": "Patriot Mobile Inc.",
+      "filingDate": "2026-10-09",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Telecom",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2148546&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Bambusa Therapeutics, Inc.",
+      "filingDate": "2026-10-09",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2044950&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "TRex Bio, Inc.",
       "filingDate": "2026-10-05",
       "listingDate": "",
@@ -211,6 +231,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2139097&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Alopexx, Inc.",
+      "filingDate": "2026-09-17",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
     }
   ]
 }
