@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10T21:30:53.242718+00:00",
+  "generatedAt": "2026-10-11T00:48:09.049934+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -241,6 +241,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Retension Pharmaceuticals, Inc.",
+      "filingDate": "2026-10-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
     }
   ]
 }
