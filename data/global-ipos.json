@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T09:17:39.854151+00:00",
+  "generatedAt": "2026-10-13T17:05:20.261124+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -41,6 +41,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Apex Treasury Corp II",
+      "filingDate": "2026-10-13",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2159678&type=S-1"
     },
     {
       "country": "US",
@@ -105,7 +115,7 @@
     {
       "country": "US",
       "name": "VME Companies, Inc.",
-      "filingDate": "2026-09-18",
+      "filingDate": "2026-10-13",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Industrials",
@@ -241,26 +251,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Retension Pharmaceuticals, Inc.",
-      "filingDate": "2026-10-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Amaero Inc.",
-      "filingDate": "2026-09-18",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
     }
   ]
 }
