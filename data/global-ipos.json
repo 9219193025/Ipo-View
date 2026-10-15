@@ -1,17 +1,7 @@
 {
-  "generatedAt": "2026-10-14T21:32:46.469442+00:00",
+  "generatedAt": "2026-10-15T00:24:48.801599+00:00",
   "source": "SEC+HKEX",
   "ipos": [
-    {
-      "country": "US",
-      "name": "Bamboo Insurance Services, Inc.",
-      "filingDate": "2026-09-14",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2125355&type=S-1"
-    },
     {
       "country": "US",
       "name": "KiNRG, Inc.",
@@ -144,16 +134,6 @@
     },
     {
       "country": "US",
-      "name": "Electra Therapeutics, Inc.",
-      "filingDate": "2026-09-14",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2088082&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Ambitious Entertainment, Inc.",
       "filingDate": "2026-09-30",
       "listingDate": "",
@@ -201,16 +181,6 @@
       "industry": "Industrials",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1660851&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Little West Holdings Inc.",
-      "filingDate": "2026-09-14",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Food",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2065821&type=S-1"
     },
     {
       "country": "US",
