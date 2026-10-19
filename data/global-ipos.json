@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T22:21:46.347646+00:00",
+  "generatedAt": "2026-10-19T00:24:51.656660+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -211,16 +211,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Amaero Inc.",
-      "filingDate": "2026-09-18",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
     },
     {
       "country": "US",
