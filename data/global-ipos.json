@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T18:07:56.879684+00:00",
+  "generatedAt": "2026-10-22T21:52:18.562410+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -191,6 +191,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Neo Aeronautics, Inc.",
+      "filingDate": "2026-10-22",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Instruments / MedTech",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2036444&type=S-1"
     }
   ]
 }
