@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T23:27:27.804716+00:00",
+  "generatedAt": "2026-10-29T02:45:32.052197+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -81,16 +81,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1997038&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Encore Medical, Inc.",
-      "filingDate": "2026-09-28",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
     },
     {
       "country": "US",
@@ -211,6 +201,26 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "NuvOx Therapeutics, Inc.",
+      "filingDate": "2026-10-13",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Neo Aeronautics, Inc.",
+      "filingDate": "2026-10-22",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Instruments / MedTech",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2036444&type=S-1"
     }
   ]
 }
