@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T16:50:26.200276+00:00",
+  "generatedAt": "2026-10-29T21:43:18.038544+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -214,13 +214,13 @@
     },
     {
       "country": "US",
-      "name": "Neo Aeronautics, Inc.",
-      "filingDate": "2026-10-22",
+      "name": "KAT Construction Services, Inc.",
+      "filingDate": "2026-10-29",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "Instruments / MedTech",
+      "industry": "General",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2036444&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2142104&type=S-1"
     }
   ]
 }
