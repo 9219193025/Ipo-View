@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T20:03:54.031019+00:00",
+  "generatedAt": "2026-10-30T23:59:45.657106+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -74,6 +74,16 @@
     },
     {
       "country": "US",
+      "name": "Exascale Labs Holdings Inc.",
+      "filingDate": "2026-10-30",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109869&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Iambic Therapeutics, Inc.",
       "filingDate": "2026-10-08",
       "listingDate": "",
@@ -115,7 +125,7 @@
     {
       "country": "US",
       "name": "Evernorth Holdings Inc.",
-      "filingDate": "2026-10-23",
+      "filingDate": "2026-10-30",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Brokerage",
@@ -145,7 +155,7 @@
     {
       "country": "US",
       "name": "FireFly Robotics, Inc.",
-      "filingDate": "2026-10-07",
+      "filingDate": "2026-10-27",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Industrials",
@@ -201,36 +211,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "NuvOx Therapeutics, Inc.",
-      "filingDate": "2026-10-29",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "KAT Construction Services, Inc.",
-      "filingDate": "2026-10-29",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2142104&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Neo Aeronautics, Inc.",
-      "filingDate": "2026-10-22",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2036444&type=S-1"
     }
   ]
 }
