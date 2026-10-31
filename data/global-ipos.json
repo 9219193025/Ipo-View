@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T23:59:45.657106+00:00",
+  "generatedAt": "2026-10-31T05:26:26.416676+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -115,7 +115,7 @@
     {
       "country": "US",
       "name": "Ambitious Entertainment, Inc.",
-      "filingDate": "2026-09-30",
+      "filingDate": "2026-10-22",
       "listingDate": "",
       "amount": "TBA",
       "industry": "General",
@@ -155,7 +155,7 @@
     {
       "country": "US",
       "name": "FireFly Robotics, Inc.",
-      "filingDate": "2026-10-27",
+      "filingDate": "2026-10-07",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Industrials",
@@ -211,6 +211,26 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "NuvOx Therapeutics, Inc.",
+      "filingDate": "2026-10-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "KAT Construction Services, Inc.",
+      "filingDate": "2026-10-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2142104&type=S-1"
     }
   ]
 }
