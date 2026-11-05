@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T08:24:12.541341+00:00",
+  "generatedAt": "2026-11-05T16:42:23.404320+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -125,7 +125,7 @@
     {
       "country": "US",
       "name": "FireFly Robotics, Inc.",
-      "filingDate": "2026-10-07",
+      "filingDate": "2026-10-27",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Industrials",
@@ -201,16 +201,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Amaero Inc.",
-      "filingDate": "2026-10-08",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
     }
   ]
 }
