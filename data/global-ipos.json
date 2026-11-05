@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T20:54:06.038892+00:00",
+  "generatedAt": "2026-11-05T01:24:31.038505+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -21,16 +21,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2124080&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Lycia Therapeutics, Inc.",
-      "filingDate": "2026-10-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=S-1"
     },
     {
       "country": "US",
@@ -134,26 +124,6 @@
     },
     {
       "country": "US",
-      "name": "Rothe Development, Inc.",
-      "filingDate": "2026-10-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Automotive",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2108671&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Neuro Spectrum Insights, Inc.",
-      "filingDate": "2026-10-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Instruments / MedTech",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2034588&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "FireFly Robotics, Inc.",
       "filingDate": "2026-10-07",
       "listingDate": "",
@@ -194,26 +164,6 @@
     },
     {
       "country": "US",
-      "name": "TRex Bio, Inc.",
-      "filingDate": "2026-10-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2139097&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Retension Pharmaceuticals, Inc.",
-      "filingDate": "2026-10-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2002988&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "NuvOx Therapeutics, Inc.",
       "filingDate": "2026-10-29",
       "listingDate": "",
@@ -241,6 +191,26 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2036444&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Lycia Therapeutics, Inc.",
+      "filingDate": "2026-10-20",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Amaero Inc.",
+      "filingDate": "2026-10-08",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141616&type=S-1"
     }
   ]
 }
