@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T02:32:20.908715+00:00",
+  "generatedAt": "2026-11-09T11:16:49.450188+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -11,6 +11,16 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2130357&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Research Alliance Corp V",
+      "filingDate": "2026-11-09",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2137779&type=S-1"
     },
     {
       "country": "US",
@@ -155,7 +165,7 @@
     {
       "country": "US",
       "name": "Rezera Inc.",
-      "filingDate": "2026-11-05",
+      "filingDate": "2026-11-09",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Pharma / Chemicals",
@@ -171,26 +181,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "SeeQC, Inc.",
-      "filingDate": "2026-11-06",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "LIS Technologies Inc",
-      "filingDate": "2026-11-05",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1973276&type=S-1"
     }
   ]
 }
