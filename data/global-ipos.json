@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T22:48:23.607319+00:00",
+  "generatedAt": "2026-11-09T02:32:20.908715+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -14,16 +14,6 @@
     },
     {
       "country": "US",
-      "name": "Aspen Neuroscience, Inc.",
-      "filingDate": "2026-10-09",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2124080&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Apex Treasury Corp II",
       "filingDate": "2026-10-13",
       "listingDate": "",
@@ -31,16 +21,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2159678&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Simwon America Corp.",
-      "filingDate": "2026-10-09",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Automotive",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1698506&type=S-1"
     },
     {
       "country": "US",
@@ -84,16 +64,6 @@
     },
     {
       "country": "US",
-      "name": "CITY THERAPEUTICS, INC.",
-      "filingDate": "2026-10-09",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2143850&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Ambitious Entertainment, Inc.",
       "filingDate": "2026-10-22",
       "listingDate": "",
@@ -134,23 +104,13 @@
     },
     {
       "country": "US",
-      "name": "Patriot Mobile Inc.",
-      "filingDate": "2026-10-09",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Telecom",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2148546&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Bambusa Therapeutics, Inc.",
-      "filingDate": "2026-10-09",
+      "name": "Aspen Neuroscience, Inc.",
+      "filingDate": "2026-10-26",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2044950&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2124080&type=S-1"
     },
     {
       "country": "US",
@@ -191,6 +151,46 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Rezera Inc.",
+      "filingDate": "2026-11-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141583&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "MED-X, INC.",
+      "filingDate": "2026-10-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "SeeQC, Inc.",
+      "filingDate": "2026-11-06",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "LIS Technologies Inc",
+      "filingDate": "2026-11-05",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1973276&type=S-1"
     }
   ]
 }
