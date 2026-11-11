@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T20:24:12.666919+00:00",
+  "generatedAt": "2026-11-11T00:49:55.973399+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -61,6 +61,16 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2109869&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Agility Robotics, Inc.",
+      "filingDate": "2026-11-10",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Industrials",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2074973&type=S-1"
     },
     {
       "country": "US",
@@ -171,16 +181,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141583&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "MED-X, INC.",
-      "filingDate": "2026-10-29",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
     }
   ]
 }
