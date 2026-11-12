@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T12:30:05.048818+00:00",
+  "generatedAt": "2026-11-12T20:23:36.834984+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -101,6 +101,16 @@
       "industry": "Brokerage",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2092592&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Rothe Development, Inc.",
+      "filingDate": "2026-11-12",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Automotive",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2108671&type=S-1"
     },
     {
       "country": "US",
