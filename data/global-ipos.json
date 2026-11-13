@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T20:23:36.834984+00:00",
+  "generatedAt": "2026-11-13T01:24:55.276493+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -21,16 +21,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2137779&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Apex Treasury Corp II",
-      "filingDate": "2026-10-13",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "General",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2159678&type=S-1"
     },
     {
       "country": "US",
@@ -75,7 +65,7 @@
     {
       "country": "US",
       "name": "VME Companies, Inc.",
-      "filingDate": "2026-10-13",
+      "filingDate": "2026-11-10",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Industrials",
@@ -144,6 +134,16 @@
     },
     {
       "country": "US",
+      "name": "Nscale plc",
+      "filingDate": "2026-11-12",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2110365&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "KAT Construction Services, Inc.",
       "filingDate": "2026-10-29",
       "listingDate": "",
@@ -191,6 +191,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141583&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "MED-X, INC.",
+      "filingDate": "2026-10-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
     }
   ]
 }
