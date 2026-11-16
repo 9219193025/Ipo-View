@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T20:57:59.518140+00:00",
+  "generatedAt": "2026-11-16T00:55:35.160577+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -221,6 +221,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "SeeQC, Inc.",
+      "filingDate": "2026-11-06",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
     }
   ]
 }
