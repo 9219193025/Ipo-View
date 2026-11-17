@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T18:18:49.928695+00:00",
+  "generatedAt": "2026-11-17T02:00:12.561793+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -44,6 +44,16 @@
     },
     {
       "country": "US",
+      "name": "Agility Robotics, Inc.",
+      "filingDate": "2026-11-16",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Industrials",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2074973&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Exascale Labs Holdings Inc.",
       "filingDate": "2026-10-30",
       "listingDate": "",
@@ -54,13 +64,13 @@
     },
     {
       "country": "US",
-      "name": "Agility Robotics, Inc.",
-      "filingDate": "2026-11-10",
+      "name": "Encore Medical, Inc.",
+      "filingDate": "2026-11-16",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "Industrials",
+      "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2074973&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1838003&type=S-1"
     },
     {
       "country": "US",
@@ -221,16 +231,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "SeeQC, Inc.",
-      "filingDate": "2026-11-06",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
     }
   ]
 }
