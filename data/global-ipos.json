@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T10:37:04.338107+00:00",
+  "generatedAt": "2026-11-18T19:20:50.951192+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -221,6 +221,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2141583&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "LIS Technologies Inc",
+      "filingDate": "2026-11-18",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1973276&type=S-1"
     },
     {
       "country": "US",
