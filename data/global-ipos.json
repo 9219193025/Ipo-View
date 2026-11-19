@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T09:23:17.032161+00:00",
+  "generatedAt": "2026-11-19T18:34:31.404075+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -151,6 +151,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "SB Energy, Inc.",
+      "filingDate": "2026-11-19",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Utilities",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2133037&type=S-1"
     },
     {
       "country": "US",
