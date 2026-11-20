@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T17:58:06.733217+00:00",
+  "generatedAt": "2026-11-20T23:56:14.962283+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -104,6 +104,16 @@
     },
     {
       "country": "US",
+      "name": "Forge Nano Holdings, Inc.",
+      "filingDate": "2026-11-20",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Industrials",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101833&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "Rothe Development, Inc.",
       "filingDate": "2026-11-12",
       "listingDate": "",
@@ -171,6 +181,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2124080&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "bioAffinity Technologies, Inc.",
+      "filingDate": "2026-11-20",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Professional Services",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1712762&type=S-1"
     },
     {
       "country": "US",
