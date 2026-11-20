@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T18:34:31.404075+00:00",
+  "generatedAt": "2026-11-20T01:09:47.899334+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -214,16 +214,6 @@
     },
     {
       "country": "US",
-      "name": "Lycia Therapeutics, Inc.",
-      "filingDate": "2026-10-20",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1806540&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "Rezera Inc.",
       "filingDate": "2026-11-09",
       "listingDate": "",
@@ -241,6 +231,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1973276&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "BirchBioMed Inc.",
+      "filingDate": "2026-11-19",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1670747&type=S-1"
     },
     {
       "country": "US",
