@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T23:30:15.248229+00:00",
+  "generatedAt": "2026-11-23T03:58:03.367266+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -261,6 +261,26 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Zeno42 Inc.",
+      "filingDate": "2026-11-19",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136881&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Bambusa Therapeutics, Inc.",
+      "filingDate": "2026-10-26",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2044950&type=S-1"
     }
   ]
 }
