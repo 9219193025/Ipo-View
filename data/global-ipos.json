@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T12:20:23.245916+00:00",
+  "generatedAt": "2026-11-24T22:42:45.185842+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -144,6 +144,16 @@
     },
     {
       "country": "US",
+      "name": "Alopexx, Inc.",
+      "filingDate": "2026-11-24",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "FireFly Robotics, Inc.",
       "filingDate": "2026-10-27",
       "listingDate": "",
@@ -151,16 +161,6 @@
       "industry": "Industrials",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1660851&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Alopexx, Inc.",
-      "filingDate": "2026-10-27",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1880995&type=S-1"
     },
     {
       "country": "US",
@@ -204,6 +204,16 @@
     },
     {
       "country": "US",
+      "name": "Elmet Group Co.",
+      "filingDate": "2026-11-24",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "General",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2101698&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "KAT Construction Services, Inc.",
       "filingDate": "2026-10-29",
       "listingDate": "",
@@ -221,6 +231,16 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Patriot Mobile Inc.",
+      "filingDate": "2026-11-24",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Telecom",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2148546&type=S-1"
     },
     {
       "country": "US",
@@ -261,26 +281,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "SeeQC, Inc.",
-      "filingDate": "2026-11-06",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Zeno42 Inc.",
-      "filingDate": "2026-11-19",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136881&type=S-1"
     }
   ]
 }
