@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T14:25:36.493973+00:00",
+  "generatedAt": "2026-11-24T01:50:33.144150+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -271,16 +271,6 @@
       "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136881&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Bambusa Therapeutics, Inc.",
-      "filingDate": "2026-10-26",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2044950&type=S-1"
     }
   ]
 }
