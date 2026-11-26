@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-11-25T15:58:33.710132+00:00",
+  "generatedAt": "2026-11-26T00:12:15.517629+00:00",
   "source": "SEC+HKEX",
   "ipos": [
+    {
+      "country": "US",
+      "name": "Kalohexis, Inc.",
+      "filingDate": "2026-11-25",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2135148&type=S-1"
+    },
     {
       "country": "US",
       "name": "Earlens Corp",
@@ -11,16 +21,6 @@
       "industry": "Instruments / MedTech",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1490171&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Anthropic, PBC",
-      "filingDate": "2026-10-26",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Technology / Software",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2130357&type=S-1"
     },
     {
       "country": "US",
@@ -41,16 +41,6 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2049977&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Bitari Inc",
-      "filingDate": "2026-10-26",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Brokerage",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2091680&type=S-1"
     },
     {
       "country": "US",
@@ -174,16 +164,6 @@
     },
     {
       "country": "US",
-      "name": "Aspen Neuroscience, Inc.",
-      "filingDate": "2026-10-26",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2124080&type=S-1"
-    },
-    {
-      "country": "US",
       "name": "bioAffinity Technologies, Inc.",
       "filingDate": "2026-11-20",
       "listingDate": "",
@@ -214,6 +194,16 @@
     },
     {
       "country": "US",
+      "name": "NuvOx Therapeutics, Inc.",
+      "filingDate": "2026-10-29",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Pharma / Chemicals",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+    },
+    {
+      "country": "US",
       "name": "KAT Construction Services, Inc.",
       "filingDate": "2026-10-29",
       "listingDate": "",
@@ -224,13 +214,13 @@
     },
     {
       "country": "US",
-      "name": "NuvOx Therapeutics, Inc.",
-      "filingDate": "2026-10-29",
+      "name": "Anthropic, PBC",
+      "filingDate": "2026-11-10",
       "listingDate": "",
       "amount": "TBA",
-      "industry": "Pharma / Chemicals",
+      "industry": "Technology / Software",
       "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1966126&type=S-1"
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2130357&type=S-1"
     },
     {
       "country": "US",
