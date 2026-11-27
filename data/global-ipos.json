@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T18:56:39.161724+00:00",
+  "generatedAt": "2026-11-27T02:07:10.708391+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -145,7 +145,7 @@
     {
       "country": "US",
       "name": "FireFly Robotics, Inc.",
-      "filingDate": "2026-10-27",
+      "filingDate": "2026-11-12",
       "listingDate": "",
       "amount": "TBA",
       "industry": "Industrials",
@@ -271,6 +271,26 @@
       "industry": "Pharma / Chemicals",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1620704&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "SeeQC, Inc.",
+      "filingDate": "2026-11-06",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1779977&type=S-1"
+    },
+    {
+      "country": "US",
+      "name": "Zeno42 Inc.",
+      "filingDate": "2026-11-19",
+      "listingDate": "",
+      "amount": "TBA",
+      "industry": "Technology / Software",
+      "exchange": "NASDAQ / NYSE",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2136881&type=S-1"
     }
   ]
 }
