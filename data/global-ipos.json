@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T20:13:15.098576+00:00",
+  "generatedAt": "2026-11-28T02:55:05.160223+00:00",
   "source": "SEC+HKEX",
   "ipos": [
     {
@@ -31,16 +31,6 @@
       "industry": "General",
       "exchange": "NASDAQ / NYSE",
       "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2137779&type=S-1"
-    },
-    {
-      "country": "US",
-      "name": "Starton Holdings, Inc.",
-      "filingDate": "2026-10-28",
-      "listingDate": "",
-      "amount": "TBA",
-      "industry": "Pharma / Chemicals",
-      "exchange": "NASDAQ / NYSE",
-      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2049977&type=S-1"
     },
     {
       "country": "US",
